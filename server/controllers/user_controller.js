@@ -47,7 +47,13 @@ router.post('/login', (req, res) => {
                         res.status(200).json({
                             status: 200,
                             message: 'Successfully authenticated',
-                            user: user,
+                            user: {
+                                "id": user.id,
+                                "name": user.name,
+                                "email": user.email,
+                                "roleid": user.roleid,
+                                "image": user.image
+                            },
                             sessionToken: token 
                         })
                     }else{

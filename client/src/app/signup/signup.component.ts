@@ -3,18 +3,18 @@ import { DatabaseService } from '../database.service';
 
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class AuthComponent implements OnInit {
+export class SignupComponent implements OnInit {
   loginUserData = {}
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {
   }
 
-  onLogin() {
+  onSignup() {
     // console.log(this.loginUserData)
     this.dbService.SignupUser(this.loginUserData)
       .subscribe(

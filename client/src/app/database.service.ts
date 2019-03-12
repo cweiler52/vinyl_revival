@@ -16,8 +16,8 @@ const httpOptions = {
 })
 export class DatabaseService {
   private dbProductsUrl = 'https://efa-gardenapp-backend.herokuapp.com/api/product';
-  private dbLogUrl = 'https://efa-gardenapp-backend.herokuapp.com/api/auth/login';
-  private dbSignUrl = 'https://efa-gardenapp-backend.herokuapp.com/api/auth/signup';
+  private dbLogUrl = 'http://localhost:3005/api/login';
+  private dbSignUrl = 'http://localhost:3005/api/signup';
   
   constructor(private http: HttpClient) { }
 
@@ -34,8 +34,8 @@ export class DatabaseService {
   loginUser(user) {
     return this.http.post<any>(this.dbLogUrl, user)
       .pipe(map(user => {
-         if (user && user.token) {
-             localStorage.setItem('token', user.token);
+         if (user && user.sessionToken) {
+             localStorage.setItem('token', user.sessionToken);
          }
          return user;
       }));
@@ -43,6 +43,12 @@ export class DatabaseService {
   
   SignupUser(user) {
     return this.http.post<any>(this.dbSignUrl, user)
+      .pipe(map(user => { console.log(user)
+         if (user && user.sessionToken) {
+             localStorage.setItem('token', user.sessionToken);
+         }
+         return user;
+      }));
   }
 
   logoutUser() {

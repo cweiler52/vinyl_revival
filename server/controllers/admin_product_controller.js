@@ -5,8 +5,9 @@ const Product = require('../db').import('../models/products');
 /* ALLOWS ADMIN TO CREATE A PRODUCT ... */
 router.post('/products/add', (req, res) => { 
     Product.create({
-        name:   req.body.name,
-        image:  req.body.image,
+        artist: req.body.artist,
+        album:  req.body.album,
+        cover:  req.body.cover,
         price:  req.body.price,
         desc:   req.body.desc
     })
@@ -15,7 +16,7 @@ router.post('/products/add', (req, res) => {
             res.status(200).json({
                 outcome: 1,
                 data: data,
-                message: 'Products was created.'
+                message: 'product was created.'
             })
         },
         createError = err => res.status(500).send(err.message)
@@ -26,7 +27,7 @@ router.post('/products/add', (req, res) => {
 router.get('/products', (req, res) => {
     Product.findAll({
         order: [
-            ['name', 'ASC']
+            ['album', 'ASC']
         ]
     }).then( 
         findAllSuccess = (data) => {
@@ -38,10 +39,24 @@ router.get('/products', (req, res) => {
     );
 })
 
-/* ALLOWS USER TO VIEW DETAILS OF ONE PRODUCT BY ID */
+/* GETS ONE PRODUCT TO DISPLAY IN ADMIN EDIT VIEW */
+router.get('/products/:id', (req, res) => {
+    Product.findOne({
+        where: { id: req.params.id }
+    }).then( 
+        findAllSuccess = (data) => {
+            res.status(200).json(data);
+        },
+        findAllError = (err) => {
+            res.status(500).send(err.message);
+        }
+    );
+})
+
+/* ALLOWS ADMIN TO VIEW DETAILS OF ONE PRODUCT BY ID */
 router.delete('/products/:id', (req, res) => {
     Product.destroy({
-        where: { id: req.params.id}
+        where: { id: req.params.id }
     }).then(
         deleteShowSuccess = (productid) => {
             res.status(200).send("product was removed");
@@ -52,24 +67,26 @@ router.delete('/products/:id', (req, res) => {
     );
 });
 
-/* ALLOWS ADMIN TO UPDATE DETIALS OF ONE PRODUCT BY ID */ 
+/* ALLOWS ADMIN TO UPDATE DETAILS OF ONE PRODUCT BY ID */ 
 router.put('/products/:id', (req, res) => {
     let prod_id     = req.params.id,
-        prod_name   = req.body.name,
-        prod_image  = req.body.image,
+        prod_artist = req.body.artist,
+        prod_album  = req.body.album,
+        prod_cover  = req.body.cover,
         prod_price  = req.body.price,
         prod_desc   = req.body.desc;
 
     Product.update({
-        name: prod_name,
-        image: prod_image,
+        artist: prod_artist,
+        album: prod_album,
+        cover: prod_cover,
         price: prod_price,
         desc: prod_desc
     },
     {where: {id: prod_id}}
     ).then(
-        function updateSuccess(updatedProd) {
-            res.status(200).json(updatedProd);
+        function updateSuccess() {
+            res.status(200).send("product was updated");;
         },
         function updateError(err) {
             res.status(500).send(err.message);

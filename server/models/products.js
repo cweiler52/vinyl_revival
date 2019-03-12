@@ -1,15 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('products', {
-        name: {
-          type: DataTypes.STRING,
-          allowNull: false
+        artist: {
+          type: DataTypes.STRING
         },
-        image: {
+        album: {
+          type: DataTypes.STRING
+        },
+        cover: {
           type: DataTypes.STRING
         },
         price: {
-          type: DataTypes.INTEGER,
-          allowNull: false
+          type: DataTypes.INTEGER
         },
         desc: {
             type: DataTypes.TEXT

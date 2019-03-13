@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 import { APIURL } from '../environments/environment.prod';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-//import { Plant } from '../models/plant.model'; ---> ADD PRODUCT IMPORT
+import { Products } from './models/products.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,9 +22,9 @@ export class DatabaseService {
   
   constructor(private http: HttpClient) { }
 
-  // getPlants() : Observable<Plant[]> {
-  //   return this.http.get<Plant[]>(this.dbProductsUrl);
-  // }
+  getProducts() : Observable<Products[]> {
+    return this.http.get<Products[]>(this.dbProductsUrl, httpOptions);
+  }
   
   // deletePlant(id: any) : Observable<Plant> {
   //   const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;

@@ -1,0 +1,24 @@
+<form>
+
+  <label for="email"> Enter Your Email </label>
+  <input
+  [(ngModel)]="loginUserData.email"
+  type="email"
+  name="email"
+  required>
+  
+  <label for="password"> Enter Your Password </label>
+  <input
+  [(ngModel)]="loginUserData.password"
+  type="password"
+  name="password"
+  required>
+  
+  <button
+  type="button" (click)="onLogin()">
+  Login</button>
+  
+  <button
+  type="button" (click)="onLogout()">
+  Logout</button>
+  </form>

@@ -1,0 +1,41 @@
+<form>
+
+  <label for="artist"> Artist </label>
+  <input
+  [(ngModel)]="createData.artist"
+  type="text"
+  name="artist"
+  required>
+
+  <label for="album"> Album </label>
+  <input
+  [(ngModel)]="createData.album"
+  type="text"
+  name="album"
+  required>
+
+  <label for="cover"> Cover Art </label>
+  <input
+  [(ngModel)]="createData.cover"
+  type="text"
+  name="cover"
+  required>
+
+  <label for="price"> Price </label>
+  <input
+  [(ngModel)]="createData.price"
+  type="text"
+  name="price"
+  required>
+  
+  <label for="desc"> Description </label>
+  <input
+  [(ngModel)]="createData.desc"
+  type="text"
+  name="desc"
+  required>
+
+  <button
+  type="button" (click)="onCreate()">
+   Submit </button>
+</form>

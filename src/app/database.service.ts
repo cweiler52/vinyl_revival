@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//import { Plant } from '../models/plant.model'; ---> ADD PRODUCT IMPORT
+import { APIURL } from '../environments/environment.prod';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+//import { Plant } from '../models/plant.model'; ---> ADD PRODUCT IMPORT
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,9 +16,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class DatabaseService {
-  private dbProductsUrl = 'https://efa-gardenapp-backend.herokuapp.com/api/product';
-  private dbLogUrl = 'http://localhost:3005/api/login';
-  private dbSignUrl = 'http://localhost:3005/api/signup';
+  private dbLogUrl = `${APIURL}/api/login`;
+  private dbSignUrl = `${APIURL}/api/signup`;
+  private dbProductsUrl = `${APIURL}/api/products`;
   
   constructor(private http: HttpClient) { }
 

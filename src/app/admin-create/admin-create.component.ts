@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DatabaseService } from '../database.service';
 
 
@@ -8,30 +8,33 @@ import { DatabaseService } from '../database.service';
   styleUrls: ['./admin-create.component.css']
 })
 export class AdminCreateComponent implements OnInit {
-  createData = {}
-  constructor(private dbService: DatabaseService) { }
+  @Input() product: any;
+  constructor() { }
+  
+  // createData = {}
+  // constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {
   }
 
-  onCreate() {
-    this.dbService.createVinyl(this.createData)
-      .subscribe(
-        res => console.log(res),
-        err => console.log(err)
-      )
-  }
+  // onCreate() {
+  //   this.dbService.createVinyl(this.createData)
+  //     .subscribe(
+  //       res => console.log(res),
+  //       err => console.log(err)
+  //     )
+  // }
 
-  onEdit(id: any) {
-    this.dbService.editVinyl(id)
-      .subscribe(
-        res => console.log(res),
-        err => console.log(err)
-      )
-  }
+  // onEdit(id: any) {
+  //   this.dbService.editVinyl(id)
+  //     .subscribe(
+  //       res => console.log(res),
+  //       err => console.log(err)
+  //     )
+  // }
 
-  onDelete() {
+  // onDelete() {
 
-  }
+  // }
 
 }

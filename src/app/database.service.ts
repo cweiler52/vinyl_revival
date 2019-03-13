@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Products } from '../app/models/product.model';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
+import { APIURL } from '../environments/environment.prod';
+import { Products } from './models/products.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,15 +16,16 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class DatabaseService {
-  private dbProductsUrl = 'http://localhost:3005/api/products';
-  private dbLogUrl = 'http://localhost:3005/api/login';
-  private dbSignUrl = 'http://localhost:3005/api/signup';
+
+  private dbLogUrl = `${APIURL}/api/login`;
+  private dbSignUrl = `${APIURL}/api/signup`;
+  private dbProductsUrl = `${APIURL}/api/products`;
   
   constructor(private http: HttpClient) { }
 
-  // getPlants() : Observable<Plant[]> {
-  //   return this.http.get<Plant[]>(this.dbProductsUrl);
-  // }
+  getProducts() : Observable<Products[]> {
+    return this.http.get<Products[]>(this.dbProductsUrl, httpOptions);
+  }
   
   // deletePlant(id: any) : Observable<Plant> {
   //   const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
@@ -38,8 +40,6 @@ export class DatabaseService {
   editVinyl(product, id: any) : Observable<Products> {
     return this.http.put<any>( `${this.dbProductsUrl}/${id}`, product, httpOptions )
   }
-
-
 
   loginUser(user) {
     return this.http.post<any>(this.dbLogUrl, user)

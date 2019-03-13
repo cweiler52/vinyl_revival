@@ -1,0 +1,12 @@
+<table width="50%" style="margin: 10px auto; border:1px solid black" collapse >
+  <tr>
+    <td width="80%" style="border-bottom: 1px solid black">Album Name</td>
+    <td width="20%" colspan="2" style="text-align: center; border-bottom: 1px solid black"><input type="button" value="create" (click)=createItem() /></td>
+  </tr>
+  <tr *ngIf="!products.length">No Products To Display</tr>
+  <tr *ngFor="let item of products" >
+    <td width="80%">{{ item.album }}</td>
+    <td width="10%" style="text-align: center"><input type="button" value="edit" (click)=editItem(item.id) /></td>
+    <td width="10%" style="text-align: center"><input type="button" value="delete" (click)=deleteItem(item.id) /></td>
+  </tr>
+</table>

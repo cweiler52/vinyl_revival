@@ -4,12 +4,18 @@ import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminCreateComponent } from './admin-create/admin-create.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminProdviewComponent } from './admin-prodview/admin-prodview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminCreateComponent
+    AdminCreateComponent,
+    LoginComponent,
+    SignupComponent,
+    AdminProdviewComponent
   ],
   imports: [
     BrowserModule,
@@ -20,4 +26,5 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {}

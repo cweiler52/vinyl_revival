@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HomepageComponent } from './homepage/homepage.component';
+import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +14,8 @@ import { AdminProdviewComponent } from './admin-prodview/admin-prodview.componen
 @NgModule({
   declarations: [
     AppComponent,
+    HomepageComponent,
+    ProductListComponent,
     AdminCreateComponent,
     LoginComponent,
     SignupComponent,
@@ -27,4 +31,4 @@ import { AdminProdviewComponent } from './admin-prodview/admin-prodview.componen
   bootstrap: [AppComponent]
 })
 
-export class AppModule {}
+export class AppModule { }

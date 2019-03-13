@@ -16,6 +16,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class DatabaseService {
+
   private dbLogUrl = `${APIURL}/api/login`;
   private dbSignUrl = `${APIURL}/api/signup`;
   private dbProductsUrl = `${APIURL}/api/products`;
@@ -31,6 +32,14 @@ export class DatabaseService {
   //   // console.log(deleteProductsUrl);
   //   return this.http.delete<Plant>(deleteProductsUrl, httpOptions);
   // }
+
+  createVinyl(product) : Observable<Products> {
+    return this.http.post<any>( `${this.dbProductsUrl}/add`, product, httpOptions )
+  }
+
+  editVinyl(product, id: any) : Observable<Products> {
+    return this.http.put<any>( `${this.dbProductsUrl}/${id}`, product, httpOptions )
+  }
 
   loginUser(user) {
     return this.http.post<any>(this.dbLogUrl, user)

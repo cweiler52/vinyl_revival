@@ -8,6 +8,7 @@ import { DatabaseService } from '../database.service';
 })
 export class AdminProdviewComponent implements OnInit {
   products = [];
+  createData = {}
 
   constructor(private dbService: DatabaseService) { }
 
@@ -22,6 +23,26 @@ export class AdminProdviewComponent implements OnInit {
         this.products = data;
       }
     )
+  }
+
+  onCreate() {
+    this.dbService.createVinyl(this.createData)
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      )
+  }
+
+  onEdit(id: any) {
+    this.dbService.editVinyl(id)
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      )
+  }
+
+  onDelete() {
+
   }
 
 }

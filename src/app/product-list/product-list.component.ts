@@ -15,7 +15,7 @@ products = [];
   }
 
   getAllProducts() {
-    this.dbService.getProducts().subscribe(
+    this.dbService.getProductsHome().subscribe(
       data => { 
         console.log(data);
         this.products = data;

@@ -27,6 +27,9 @@ export class DatabaseService {
     return this.http.get<Products[]>(this.dbProductsUrl, httpOptions);
   }
   
+  getProductsHome() : Observable<Products[]> {
+    return this.http.get<Products[]>(this.dbProductsUrl);
+  }
   // deletePlant(id: any) : Observable<Plant> {
   //   const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
   //   // console.log(deleteProductsUrl);

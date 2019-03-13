@@ -15,7 +15,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class DatabaseService {
-  private dbProductsUrl = 'https://localhost:3005/api/products';
+  private dbProductsUrl = 'http://localhost:3005/api/products';
   private dbLogUrl = 'http://localhost:3005/api/login';
   private dbSignUrl = 'http://localhost:3005/api/signup';
   
@@ -32,8 +32,14 @@ export class DatabaseService {
   // }
 
   createVinyl(product) : Observable<Products> {
-    return this.http.post<any>( `${this.dbProductsUrl}/add`, product )
+    return this.http.post<any>( `${this.dbProductsUrl}/add`, product, httpOptions )
   }
+
+  editVinyl(product, id: any) : Observable<Products> {
+    return this.http.put<any>( `${this.dbProductsUrl}/${id}`, product, httpOptions )
+  }
+
+
 
   loginUser(user) {
     return this.http.post<any>(this.dbLogUrl, user)

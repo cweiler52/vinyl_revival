@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../database.service';
+
 
 @Component({
   selector: 'app-admin-create',
@@ -13,7 +15,11 @@ export class AdminCreateComponent implements OnInit {
   }
 
   onCreate() {
-    
+    this.dbService.createVinyl(this.createData)
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      )
   }
 
 }

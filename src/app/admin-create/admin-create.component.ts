@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-create.component.css']
 })
 export class AdminCreateComponent implements OnInit {
-
-  constructor() { }
+  createData = {}
+  constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {
+  }
+
+  onCreate() {
+    
   }
 
 }

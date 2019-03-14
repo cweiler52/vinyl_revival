@@ -12,7 +12,11 @@
   },
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@angular/animations": "^7.2.9",
+=======
+    "@angular/animations": "~7.2.0",
+>>>>>>> e63fa197283c113482969450f641b63ab7c3c37b
     "@angular/cdk": "^7.3.4",
     "@angular/cli": "~7.3.5",
     "@angular/common": "~7.2.0",
@@ -20,6 +24,7 @@
     "@angular/compiler-cli": "~7.2.0",
     "@angular/core": "~7.2.0",
     "@angular/forms": "~7.2.0",
+    "@angular/material": "^7.3.4",
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",

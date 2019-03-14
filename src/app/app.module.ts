@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminProdviewComponent } from './admin-prodview/admin-prodview.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -19,15 +21,17 @@ import { AdminProdviewComponent } from './admin-prodview/admin-prodview.componen
     AdminCreateComponent,
     LoginComponent,
     SignupComponent,
-    AdminProdviewComponent
+    AdminProdviewComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
   bootstrap: [AppComponent]
 })
 

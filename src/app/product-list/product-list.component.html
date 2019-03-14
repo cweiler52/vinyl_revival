@@ -3,6 +3,7 @@
 
 <ul>
   <li *ngFor="let item of products">
+    Likes: {{ item.favs.length }}<br>
     Artist: {{ item.artist }}<br>
     Album: {{ item.album }}<br>
     <img src="{{ item.cover }}" width="200px" /><br>

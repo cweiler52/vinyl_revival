@@ -33,8 +33,8 @@ export class AdminProdviewComponent implements OnInit {
       )
   }
 
-  onEdit(id: any) {
-    this.dbService.editVinyl(id)
+  onEdit(id) {
+    this.dbService.editVinyl(this.createData, id)
       .subscribe(
         res => console.log(res),
         err => console.log(err)

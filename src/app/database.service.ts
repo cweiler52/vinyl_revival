@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { APIURL } from '../environments/environment.prod';
 import { Products } from './models/products.model';
+import { Favs } from './models/favs.model';
+import { Comments } from './models/comments.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,7 +22,9 @@ export class DatabaseService {
   private dbLogUrl = `${APIURL}/api/login`;
   private dbSignUrl = `${APIURL}/api/signup`;
   private dbProductsUrl = `${APIURL}/api/products`;
-  
+  private dbFavsUrl = `${APIURL}/api/favs`;
+  private dbCommentsUrl = `${APIURL}/api/comments`;
+
   constructor(private http: HttpClient) { }
 
   getProducts() : Observable<Products[]> {
@@ -30,6 +34,14 @@ export class DatabaseService {
   getProductsHome() : Observable<Products[]> {
     return this.http.get<Products[]>(this.dbProductsUrl);
   }
+
+  getFavsHome() : Observable<Favs[]> {
+    return this.http.get<Favs[]>(this.dbFavsUrl);
+  }
+
+  getCommentsHome() : Observable<Comments[]> {
+    return this.http.get<Comments[]>(this.dbCommentsUrl);
+  } 
   // deletePlant(id: any) : Observable<Plant> {
   //   const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
   //   // console.log(deleteProductsUrl);

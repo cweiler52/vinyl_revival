@@ -12,6 +12,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     this.getAllProducts();
+  
   }
 
   getAllProducts() {

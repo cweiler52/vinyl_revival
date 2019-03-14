@@ -1,10 +1,14 @@
 <br><br><section id="back-color">
 <h1>PRODUCTS</h1>
+
 <ul>
   <li *ngFor="let item of products">
-    {{item.artist}}
-    {{item.album}}
+    Artist: {{ item.artist }}<br>
+    Album: {{ item.album }}<br>
+    <img src="{{ item.cover }}" width="200px" /><br>
+    ${{ item.price }}<br>
+    {{ item.desc }}
   </li>
 </ul>
 
-</section>
+

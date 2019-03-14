@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DatabaseService} from '../database.service';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,8 +7,8 @@ import {DatabaseService} from '../database.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-products = [];
-  constructor(private dbService : DatabaseService) { }
+  products = [];
+  constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {
     this.getAllProducts();

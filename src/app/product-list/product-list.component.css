@@ -1,3 +1,29 @@
+/* PRODUCTS HEADER STYLE */
+.prod-header{
+    float: left;
+    color: #14181B;
+}
+
+/* PRODUCT SECTION STYLE */
 #back-color {
     background-color: #f2f2f1;
+    margin-top: -3rem;
+}
+
+#cover{
+    list-style-type: none;
+    margin: 0;
+}
+
+#img-effects:hover{
+    box-shadow: 2px 5px 5px;
+}
+
+#page-btn{
+   float: right;
+}
+
+#text-lay {
+    margin-left: 1rem;
+    word-wrap: break-word;
 }

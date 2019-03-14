@@ -1,35 +1,3 @@
-#navbar-ts {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    z-index: 3;
-    color: white;
-}
-
-#pos-01{
-    float: left;
-    text-align: center;
-    position: relative;
-}
-#pos-mid{
-    float: left;
-    margin-left: 20rem;
-    position: relative;
-}
-#pos-right{
-    float: right;
-    position: relative;
-    margin-right: 140rem;
-    margin-top: -2rem;
-}
-
-
-.jumbotron{
-    background-image: url('../../assets/homepage.gif');
-    position: relative;
-    background-repeat: no-repeat;
+#header{
     background-size: cover;
-    width: 100vw;
-    height: 90vh;
 }

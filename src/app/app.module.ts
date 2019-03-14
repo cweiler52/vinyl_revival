@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminProdviewComponent } from './admin-prodview/admin-prodview.component';
+import { MaterialModule } from './material.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AdminProdviewComponent } from './admin-prodview/admin-prodview.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MaterialModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

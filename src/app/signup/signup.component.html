@@ -1,3 +1,6 @@
+<h2 mat-dialog-title> Sign Up </h2>
+
+<div mat-dialog-content>
 <form>
 
   <label for="email"> Enter Your Email </label>
@@ -17,7 +20,7 @@
   <label for="password"> Enter Your Password </label>
   <input
   [(ngModel)]="loginUserData.password"
-  type="text"
+  type="password"
   name="password"
   required>
   
@@ -25,4 +28,4 @@
   type="button" (click)="onSignup()">
   Sign Up</button>
   
-
+</div>

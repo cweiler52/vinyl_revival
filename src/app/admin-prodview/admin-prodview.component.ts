@@ -33,13 +33,13 @@ export class AdminProdviewComponent implements OnInit {
       )
   }
 
-  onEdit(id: any) {
-    this.dbService.editVinyl(id)
-      .subscribe(
-        res => console.log(res),
-        err => console.log(err)
-      )
-  }
+  // onEdit(id: any) {
+  //   this.dbService.editVinyl(id)
+  //     .subscribe(
+  //       res => console.log(res),
+  //       err => console.log(err)
+  //     )
+  // }
 
   onDelete() {
 

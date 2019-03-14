@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminProdviewComponent } from './admin-prodview/admin-prodview.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -21,15 +22,16 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     SignupComponent,
     AdminProdviewComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
   bootstrap: [AppComponent]
 })
 

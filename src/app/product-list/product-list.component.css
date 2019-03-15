@@ -1,6 +1,7 @@
 /* PRODUCTS HEADER STYLE */
 .prod-header{
     float: left;
+    margin-top: -.01rem;
     color: #14181B;
 }
 
@@ -8,6 +9,8 @@
 #back-color {
     background-color: #f2f2f1;
     margin-top: -3rem;
+    height: 100%;
+    width: 100%;
 }
 
 #cover{
@@ -24,10 +27,19 @@
 }
 
 #text-lay {
-    margin-left: 22rem;
+    margin-left: 17.5rem;
     word-wrap: break-word;
     z-index: 3;
 }
+
+#fav{
+  margin-top: -6.5rem;
+  margin-left: -13rem;
+  z-index: 4;
+  position: absolute;
+}
+
+
 
 
 
@@ -36,9 +48,9 @@
     cursor: pointer;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 45%;
     transform: translate(-50%, -50%);
-    width: 200px;
+    width: 206px;
     height: 200px; 
   }
 
@@ -59,7 +71,7 @@
         width: 100%;
         height: 100%;
         background-size: cover;
-        margin-left: -11rem;
+        margin-left: -10.5rem;
         border-radius: 2px;
         overflow: hidden;
         z-index: 10;
@@ -76,9 +88,9 @@
 
 .disco--vinyl{
         position: absolute;
-        width: 100%;
-        height: 100%;
-        margin-left: -5.11rem;
+        width: 95%;
+        height: 99%;
+        margin-left: -4.11rem;
   transform: translate3d(5px, 0px, 0px) rotateZ(0deg);
   transition: transform 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
       }
@@ -90,7 +102,7 @@
         border-radius: 100%;
         position: absolute;
         top: 5px;
-        left: 5px;
+        left: 4px;
         width: 190px;
         height: 190px;
       }

@@ -3,19 +3,22 @@ import { NgModule } from '@angular/core';
 import {
 MatGridListModule,
 MatPaginatorModule,
-MatToolbarModule
+MatToolbarModule,
+MatTabsModule
 } from '@angular/material';
 
 @NgModule({
     imports: [
         MatGridListModule,
         MatPaginatorModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatTabsModule
     ],
     exports: [
         MatGridListModule,
         MatPaginatorModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatTabsModule
     ]
 })
 export class MaterialModule {}

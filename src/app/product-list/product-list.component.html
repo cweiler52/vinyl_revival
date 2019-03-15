@@ -5,8 +5,9 @@
 <br>
 <mat-grid-list cols="3" rowHeight="2:1" id="cover">
     <mat-grid-tile *ngFor="let item of products |  paginate: { itemsPerPage: 6, currentPage: p }">
-    <img src="{{ item.cover }}" width="44%" id="img-effects"/>
-    <div id="text-lay"> Artist: {{item.artist}}<br>
+    <div class="disco"><img src="{{ item.cover }}" width="44%" id="img-effects" class="disc-cover"/>
+    <div class="disco--vinyl"><img class="rotating" src="../../assets/vinyl.png" height="100%"/></div></div>
+    <div id="text-lay"> {{item.artist}}<br>
      Album: {{ item.album }}<br>
      ${{ item.price }}<br> </div>
     </mat-grid-tile>

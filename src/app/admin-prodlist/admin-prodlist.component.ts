@@ -25,6 +25,17 @@ export class AdminProdList implements OnInit {
     )
   }
 
+  getProduct(id) {
+    this.dbService.getOneProduct(id).subscribe(
+      data => {
+        console.log(data);
+        this.createData = data;
+      }
+    )
+
+    }
+  }
+
   onCreate() {
     this.dbService.createVinyl(this.createData)
       .subscribe(

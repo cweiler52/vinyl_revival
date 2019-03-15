@@ -31,6 +31,10 @@ export class DatabaseService {
     return this.http.get<Products[]>(this.dbProductsUrl, httpOptions);
   }
   
+  getOneProduct(id) : Observable<Products[]> {
+    return this.http.get<Products[]>(`${this.dbProductsUrl}/${id}`, httpOptions);
+  }
+
   getProductsHome() : Observable<Products[]> {
     return this.http.get<Products[]>(this.dbProductsUrl);
   }

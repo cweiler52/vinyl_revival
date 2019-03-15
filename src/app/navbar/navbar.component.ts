@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
-
 import { LoginComponent } from '../login/login.component';
 import { SignupComponent } from '../signup/signup.component';
 
@@ -10,7 +9,6 @@ import { SignupComponent } from '../signup/signup.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-@Input() login: any;
 
   constructor(public dialog: MatDialog) { }
   

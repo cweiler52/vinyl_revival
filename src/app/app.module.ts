@@ -13,6 +13,7 @@ import { AdminProdviewComponent } from './admin-prodview/admin-prodview.componen
 import { MaterialModule } from './material/material.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AboutComponent } from './about/about.component';
+import { ProductViewComponent } from './product-view/product-view.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AboutComponent } from './about/about.component';
     LoginComponent,
     SignupComponent,
     AdminProdviewComponent,
-    AboutComponent
+    AboutComponent,
+    ProductViewComponent
   ],
   imports: [
     BrowserModule,

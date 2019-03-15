@@ -20,6 +20,7 @@ export class DatabaseService {
   private dbLogUrl = `${APIURL}/api/login`;
   private dbSignUrl = `${APIURL}/api/signup`;
   private dbProductsUrl = `${APIURL}/api/products`;
+
   
   constructor(private http: HttpClient) { }
 
@@ -30,6 +31,11 @@ export class DatabaseService {
   getProductsHome() : Observable<Products[]> {
     return this.http.get<Products[]>(this.dbProductsUrl);
   }
+
+getProdView(id: any) : Observable<Products> {
+  return this.http.get<any>(`${this.dbProductsUrl}/${id}`);
+}
+
   // deletePlant(id: any) : Observable<Plant> {
   //   const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
   //   // console.log(deleteProductsUrl);

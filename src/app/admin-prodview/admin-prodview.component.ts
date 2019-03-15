@@ -25,14 +25,7 @@ export class AdminProdviewComponent implements OnInit {
     )
   }
 
-  onCreate() {
-    this.dbService.createVinyl(this.createData)
-      .subscribe(
-        res => console.log(res),
-        err => console.log(err)
-      )
-  }
-
+  
   onEdit(id) {
     this.dbService.editVinyl(this.createData, id)
       .subscribe(

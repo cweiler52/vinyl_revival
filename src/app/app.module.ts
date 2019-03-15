@@ -38,7 +38,7 @@ import { RoutingComponents } from './app-routing.module';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ LoginComponent ]
+  entryComponents: [ LoginComponent, SignupComponent ]
 })
 
 export class AppModule { }

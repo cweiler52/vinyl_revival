@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-//import { Popup } from 'ng2-opd-popup';
+import { DatabaseService } from '../database.service';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   loginUserData = {}
-
-  constructor() { }
+  title;
+  constructor(
+    private dbService: DatabaseService,
+    public modalRef: BsModalRef) { }
 
   ngOnInit() {
   }
   
+  onLogin() {
+    // console.log(this.loginUserData)
+    this.dbService.loginUser(this.loginUserData)
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      )
+  }
+
+
+  onLogout() {
+    this.dbService.logoutUser()
+  }
+
 }

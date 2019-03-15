@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import {
 MatGridListModule,
 MatPaginatorModule,
 MatToolbarModule,
-MatTabsModule
+MatTabsModule,
+MatSidenavModule
 } from '@angular/material';
 
 
@@ -14,13 +17,17 @@ MatTabsModule
         MatGridListModule,
         MatPaginatorModule,
         MatToolbarModule,
-        MatTabsModule
+        MatTabsModule,
+        MatSidenavModule,
+        BrowserAnimationsModule
     ],
     exports: [
         MatGridListModule,
         MatPaginatorModule,
         MatToolbarModule,
-        MatTabsModule
+        MatTabsModule,
+        MatSidenavModule,
+        BrowserAnimationsModule
     ]
 })
 export class MaterialModule {}

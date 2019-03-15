@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DatabaseService } from '../database.service';
+
 
 
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.component.html',
-  styleUrls: ['./product-view.component.css']
+  styleUrls: ['./product-view.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductViewComponent implements OnInit {
   product = {};
-  products = [];
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {
@@ -20,7 +21,7 @@ export class ProductViewComponent implements OnInit {
     this.dbService.getProductsHome().subscribe(
       data => { 
         console.log(data);
-        this.products = data;
+        this.product = data;
       }
       )
     }

@@ -1,5 +1,11 @@
-<div>
-<button mat-button (click)="openLogin()">Login</button>
-
-<button mat-button (click)="openSignup()">Sign Up</button>
+<div style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+    <ul>
+        <li><a routerLink="/"routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/about"routerLinkActive="active">About</a></li>
+        <li><a routerLink="/contact"routerLinkActive="active">Contact</a></li>
+    </ul>
+    <ul>
+        <li><button (click)="openLogin()">Login</button></li>
+        <li><button (click)="openSignup()">Sign Up</button></li>
+    </ul>
 </div>

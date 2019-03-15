@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from '../database.service';
-
+//import { Popup } from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-login',
@@ -9,21 +8,10 @@ import { DatabaseService } from '../database.service';
 })
 export class LoginComponent implements OnInit {
   loginUserData = {}
-  constructor(private dbService: DatabaseService) { }
+
+  constructor() { }
 
   ngOnInit() {
   }
-
-  onLogin() {
-    // console.log(this.loginUserData)
-    this.dbService.loginUser(this.loginUserData)
-      .subscribe(
-        res => console.log(res),
-        err => console.log(err)
-      )
-  }
-
-  onLogout() {
-    this.dbService.logoutUser()
-  }
+  
 }

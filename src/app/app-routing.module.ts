@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { About } from './about/about.component'
-// import { ProductView } from './product-view/prouduct-view.component'
+import { HomepageComponent } from './homepage/homepage.component';
+import { AboutComponent } from './about/about.component'
 
-// import { AdminDashboard } from './admin-dashboard/admin-dashboard.component';
-// import { AdminProducts } from './admin-prodview/admin-prodview.component';
-// import { AdminUsers } from './admin-userlist/admin-userlist.component';
+import { AdminProdList } from './admin-prodlist/admin-prodlist.component';
+import { AdminUserlist } from './admin-userlist/admin-userlist.component';
 
 const routes: Routes = [
-  // { path: 'about', component: About },
-  // { path: 'productview', component: ProductView },
-  
-  // { path: 'admin/dashboard', component: AdminDashboard },
-  // { path: 'admin/products', component: AdminProducts },
-  // { path: 'admin/users', component: AdminUsers }
+  { path: '', component: HomepageComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: AboutComponent },
+
+  { path: 'admin/products', component: AdminProdList },
+  { path: 'admin/users', component: AdminUserlist }
 ];
 
 @NgModule({
@@ -21,4 +20,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-//export const RoutingComponents = [ AdminDashboard, AdminProducts, AdminUsers ];
+export const RoutingComponents = [ HomepageComponent, AboutComponent, AdminProdList, AdminUserlist ];

@@ -1,7 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog } from '@angular/material';
-//import { LoginComponent } from '../login/login.component';
-//import { SignupComponent } from '../signup/signup.component';
 
 @Component({
   selector: 'app-homepage',
@@ -9,8 +6,6 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  login = []
-  // signup = []
 
   constructor( ) { }
 

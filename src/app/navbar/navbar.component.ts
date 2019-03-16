@@ -13,10 +13,7 @@ import { SignupComponent } from '../signup/signup.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  auth = {
-    is_loggedin: sessionStorage.getItem('token') ? true : false,
-    is_admin: sessionStorage.getItem('admin') ? true : false
-  }
+  auth = {}
   modalRef: BsModalRef;
 
   constructor(
@@ -24,6 +21,7 @@ export class NavbarComponent implements OnInit {
     private modalService: BsModalService) { }
 
   ngOnInit() {
+    this.auth = this.dbService.getCookies();
   }
 
   openLogin() {

@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <!-- COMMENT COMPONENT  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" id="side-nav">
-    <h3>COMMENTS:</h3>
+    <h3>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h3>
   <div *ngFor="let text of product.comments">
     {{text.user.name}}:
       {{text.comment}}
@@ -10,7 +10,7 @@
 
 <mat-sidenav-content>
 <div class="grid-container">
-    <!-- <div id="fav">{{product.favs.length}}</div> -->
+  <div (click)="fav()" id="fav">{{ favCnt }}</div>
   <div class="vinyl">
     <img src="{{ product.cover }}" class="prod-cover"/>
   </div>
@@ -25,3 +25,4 @@
 
 
 </mat-sidenav-container>
+<button (click)="goBack()">go back</button>

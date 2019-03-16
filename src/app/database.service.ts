@@ -10,7 +10,7 @@ import { Comments } from './models/comments.model';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': localStorage.getItem('token')
+    'Authorization': sessionStorage.getItem('token')
   })
 }
 
@@ -31,6 +31,10 @@ export class DatabaseService {
     return this.http.get<Products[]>(this.dbProductsUrl, httpOptions);
   }
   
+  getOneProduct(id) : Observable<Products[]> {
+    return this.http.get<Products[]>(`${this.dbProductsUrl}/${id}`, httpOptions);
+  }
+
   getProductsHome() : Observable<Products[]> {
     return this.http.get<Products[]>(this.dbProductsUrl);
   }
@@ -48,6 +52,7 @@ export class DatabaseService {
   //   return this.http.delete<Plant>(deleteProductsUrl, httpOptions);
   // }
 
+
   createVinyl(product) : Observable<Products> {
     return this.http.post<any>( `${this.dbProductsUrl}/add`, product, httpOptions )
   }
@@ -60,7 +65,12 @@ export class DatabaseService {
     return this.http.post<any>(this.dbLogUrl, user)
       .pipe(map(user => {
          if (user && user.sessionToken) {
-             localStorage.setItem('token', user.sessionToken);
+             sessionStorage.setItem('token', user.sessionToken);
+             if(user.user.roleid) { 
+               sessionStorage.setItem('admin', 'true');
+               sessionStorage.setItem('adminName', user.user.name);
+               sessionStorage.setItem('adminImg', user.user.image);
+             }
          }
          return user;
       }));
@@ -69,14 +79,17 @@ export class DatabaseService {
   SignupUser(user) {
     return this.http.post<any>(this.dbSignUrl, user)
       .pipe(map(user => { console.log(user)
-         if (user && user.sessionToken) {
-             localStorage.setItem('token', user.sessionToken);
-         }
-         return user;
+        if (user && user.sessionToken) {
+          sessionStorage.setItem('token', user.sessionToken);
+        }
+        return user;
       }));
   }
 
   logoutUser() {
-      localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('admin');
+    sessionStorage.removeItem('adminName');
+    sessionStorage.removeItem('adminImg');
   }
 }

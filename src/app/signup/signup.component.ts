@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../database.service';
-
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +9,10 @@ import { DatabaseService } from '../database.service';
 })
 export class SignupComponent implements OnInit {
   loginUserData = {}
-  constructor(private dbService: DatabaseService) { }
+  title;
+  constructor(
+    private dbService: DatabaseService,
+    public modalRef: BsModalRef) { }
 
   ngOnInit() {
   }

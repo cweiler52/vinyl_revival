@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../database.service';
 
 @Component({
-  selector: 'app-admin-prodview',
-  templateUrl: './admin-prodview.component.html',
-  styleUrls: ['./admin-prodview.component.css']
+  selector: 'app-admin-prodlist',
+  templateUrl: './admin-prodlist.component.html',
+  styleUrls: ['./admin-prodlist.component.css']
 })
-export class AdminProdviewComponent implements OnInit {
+export class AdminProdList implements OnInit {
   products = [];
   createData = {}
 
@@ -25,7 +25,23 @@ export class AdminProdviewComponent implements OnInit {
     )
   }
 
-  
+  getProduct(id) {
+    this.dbService.getOneProduct(id).subscribe(
+      data => {
+        console.log(data);
+        this.createData = data;
+      }
+    )
+  }
+
+  onCreate() {
+    this.dbService.createVinyl(this.createData)
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      )
+  }
+
   onEdit(id) {
     this.dbService.editVinyl(this.createData, id)
       .subscribe(

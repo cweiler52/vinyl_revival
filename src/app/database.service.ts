@@ -67,8 +67,8 @@ export class DatabaseService {
     return this.http.put<any>( `${this.dbProductsUrl}/${id}`, product, httpOptions )
   }
 
-  favVinyl(id) {
-    return this.http.post<any>( `${this.dbProductsUrl}/${id}`, id, httpOptions)
+  favVinyl(uid, pid) {
+    return this.http.post<any>( `${this.dbFavsUrl}/save`, { user_id: uid, product_id: pid }, httpOptions)
   }
 
   loginUser(user) {

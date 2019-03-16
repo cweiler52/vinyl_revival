@@ -32,8 +32,6 @@ export class AdminProdList implements OnInit {
         this.createData = data;
       }
     )
-
-    }
   }
 
   onCreate() {

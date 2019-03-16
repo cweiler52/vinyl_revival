@@ -13,7 +13,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminProdviewComponent } from './admin-prodview/admin-prodview.component';
-//import { AboutComponent } from './about/about.component';
+import { MaterialModule } from './material/material.module';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AboutComponent } from './about/about.component';
+import { ProductViewComponent } from './product-view/product-view.component';
 import { RoutingComponents } from './app-routing.module';
 
 @NgModule({
@@ -24,16 +27,19 @@ import { RoutingComponents } from './app-routing.module';
     AdminCreateComponent,
     LoginComponent,
     SignupComponent,
-    NavbarComponent,
     AdminProdviewComponent,
-    //AboutComponent,
+    AboutComponent,
+    ProductViewComponent
+    NavbarComponent,
     RoutingComponents
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
+    MaterialModule,
+    NgxPaginationModule, 
     ModalModule.forRoot()
   ],
   providers: [],

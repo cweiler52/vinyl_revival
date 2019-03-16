@@ -24,7 +24,6 @@ export class AdminProdviewComponent implements OnInit {
       }
     )
   }
-
   
   onEdit(id) {
     this.dbService.editVinyl(this.createData, id)

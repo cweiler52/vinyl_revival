@@ -1,15 +1,16 @@
-<br><br><section id="back-color">
-<h1>PRODUCTS</h1>
 
-<ul>
-  <li *ngFor="let item of products">
-    Likes: {{ item.favs.length }}<br>
-    Artist: {{ item.artist }}<br>
-    Album: {{ item.album }}<br>
-    <img src="{{ item.cover }}" width="200px" /><br>
-    ${{ item.price }}<br>
-    {{ item.desc }}
-  </li>
-</ul>
+<section id="back-color">
+<h1 class="prod-header">PRODUCTS</h1><br>
+<br>
+<mat-grid-list cols="3" rowHeight="2:1" id="cover">
+    <mat-grid-tile *ngFor="let item of products |  paginate: { itemsPerPage: 6, currentPage: p }">
+      <div id="fav">{{item.favs.length}}</div>
+    <div class="disco"><img src="{{ item.cover }}" width="64%" id="img-effects" class="disc-cover"/>
+    <div class="disco--vinyl"><img class="rotating" src="../../assets/vinyl.png" height="100%"/></div></div>
+    <div id="text-lay"> {{item.artist | uppercase }}<br>
+     {{ item.album }}<br>
+     ${{ item.price }}<br> </div>
+    </mat-grid-tile>
 
-</section>
+  </mat-grid-list>
+  <div id="page-btn"><pagination-controls (pageChange)="p=$event"></pagination-controls></div>

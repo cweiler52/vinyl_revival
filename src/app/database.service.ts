@@ -40,6 +40,10 @@ export class DatabaseService {
     return this.http.get<Products[]>(this.dbProductsUrl);
   }
 
+  getProdView(id: any) : Observable<Products> {
+    return this.http.get<any>(`${this.dbProductsUrl}/${id}`);
+  }
+  
   getFavsHome() : Observable<Favs[]> {
     return this.http.get<Favs[]>(this.dbFavsUrl);
   }
@@ -47,6 +51,7 @@ export class DatabaseService {
   getCommentsHome() : Observable<Comments[]> {
     return this.http.get<Comments[]>(this.dbCommentsUrl);
   } 
+
   // deletePlant(id: any) : Observable<Plant> {
   //   const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
   //   // console.log(deleteProductsUrl);

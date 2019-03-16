@@ -14,7 +14,7 @@
   "dependencies": {
     "@angular/animations": "^7.2.9",
     "@angular/cdk": "^7.3.4",
-    "@angular/cli": "^7.3.5",
+    "@angular/cli": "~7.3.5",
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
     "@angular/compiler-cli": "~7.2.0",
@@ -28,6 +28,8 @@
     "ngx-pagination": "^3.2.1",
     "rxjs": "~6.3.3",
     "serve": "^10.1.2",
+    "bootstrap": "4.1.1",
+    "ngx-bootstrap": "3.0.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },

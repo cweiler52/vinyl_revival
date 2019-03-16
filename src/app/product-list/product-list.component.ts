@@ -8,11 +8,14 @@ import { DatabaseService } from '../database.service';
 })
 export class ProductListComponent implements OnInit {
   products = [];
+  favs = [];
+  comments = [];
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {
     this.getAllProducts();
-  
+    // this.getAllFavs();
+    // this.getAllComments();
   }
 
   getAllProducts() {
@@ -23,4 +26,23 @@ export class ProductListComponent implements OnInit {
       }
     )
   }
+
+  getAllFavs() {
+    this.dbService.getFavsHome().subscribe(
+      data => { 
+        console.log(data);
+        this.products = data;
+      }
+    )
+  }
+
+  getAllComments() {
+    this.dbService.getCommentsHome().subscribe(
+      data => { 
+        console.log(data);
+        this.products = data;
+      }
+    )
+  }  
+
 }

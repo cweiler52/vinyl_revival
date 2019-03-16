@@ -1,24 +1,17 @@
-<form>
+<div class="modal-header">
+  <h4 class="modal-title pull-left"> {{ title }} </h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+  <form>
+    <label for="email"> Enter Your Email </label>
+    <input [(ngModel)]="loginUserData.email" type="email" name="email" required>
 
-  <label for="email"> Enter Your Email </label>
-  <input
-  [(ngModel)]="loginUserData.email"
-  type="email"
-  name="email"
-  required>
-  
-  <label for="password"> Enter Your Password </label>
-  <input
-  [(ngModel)]="loginUserData.password"
-  type="password"
-  name="password"
-  required>
-  
-  <button
-  type="button" (click)="onLogin()">
-  Login</button>
-  
-  <button
-  type="button" (click)="onLogout()">
-  Logout</button>
+    <label for="password"> Enter Your Password </label>
+    <input [(ngModel)]="loginUserData.password" type="password" name="password" required>
+
+    <button type="button" (click)="onLogin()">Submit</button>
   </form>
+</div>

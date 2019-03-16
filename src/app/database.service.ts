@@ -70,7 +70,7 @@ export class DatabaseService {
             sessionStorage.setItem('uid', user.user.id);
             sessionStorage.setItem('name', user.user.name);
             sessionStorage.setItem('img', user.user.image);
-            if(user.user.roleid) { sessionStorage.setItem('role', 'true') }else{ sessionStorage.setItem('role', 'false') };
+            if(user.user.roleid) { sessionStorage.setItem('role', 'admin') }else{ sessionStorage.setItem('role', 'user') };
          }
          return user;
       }));
@@ -98,7 +98,7 @@ export class DatabaseService {
   getCookies() {
     this.auth = {
       is_loggedin: sessionStorage.getItem('token') ? true : false,
-      is_admin: sessionStorage.getItem('role')     ? true : false,
+      is_admin: sessionStorage.getItem('role') === 'admin' ? true : false,
       user_name: sessionStorage.getItem('name'),
       user_img: sessionStorage.getItem('img'),
       user_id: sessionStorage.getItem('uid')

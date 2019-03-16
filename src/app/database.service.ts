@@ -24,6 +24,7 @@ export class DatabaseService {
   private dbProductsUrl = `${APIURL}/api/products`;
   private dbFavsUrl = `${APIURL}/api/favs`;
   private dbCommentsUrl = `${APIURL}/api/comments`;
+  private auth = {};
 
   constructor(private http: HttpClient) { }
 
@@ -65,12 +66,11 @@ export class DatabaseService {
     return this.http.post<any>(this.dbLogUrl, user)
       .pipe(map(user => {
          if (user && user.sessionToken) {
-             sessionStorage.setItem('token', user.sessionToken);
-             if(user.user.roleid) { 
-               sessionStorage.setItem('admin', 'true');
-               sessionStorage.setItem('adminName', user.user.name);
-               sessionStorage.setItem('adminImg', user.user.image);
-             }
+            sessionStorage.setItem('token', user.sessionToken);
+            sessionStorage.setItem('uid', user.user.id);
+            sessionStorage.setItem('name', user.user.name);
+            sessionStorage.setItem('img', user.user.image);
+            if(user.user.roleid) { sessionStorage.setItem('role', 'admin') }else{ sessionStorage.setItem('role', 'user') };
          }
          return user;
       }));
@@ -87,9 +87,23 @@ export class DatabaseService {
   }
 
   logoutUser() {
+    sessionStorage.removeItem('img');
+    sessionStorage.removeItem('name');
+    sessionStorage.removeItem('role');
     sessionStorage.removeItem('token');
-    sessionStorage.removeItem('admin');
-    sessionStorage.removeItem('adminName');
-    sessionStorage.removeItem('adminImg');
+    sessionStorage.removeItem('uid');
+    
+  }
+
+  getCookies() {
+    this.auth = {
+      is_loggedin: sessionStorage.getItem('token') ? true : false,
+      is_admin: sessionStorage.getItem('role') === 'admin' ? true : false,
+      user_name: sessionStorage.getItem('name'),
+      user_img: sessionStorage.getItem('img'),
+      user_id: sessionStorage.getItem('uid')
+    }
+
+    return this.auth;
   }
 }

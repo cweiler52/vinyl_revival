@@ -42,11 +42,12 @@ export class ProductViewComponent implements OnInit {
   }
 
   fav(): void {
+    console.log('auth.is_loggedin: '+this.auth.is_loggedin);
     if(this.auth.is_loggedin){
       const pid = +this.route.snapshot.paramMap.get('id');
       /* trigger sideview popout to show user's fav list */
-      console.log('user_id: '+this.auth.uid+' | product_id: '+pid);
-      this.dbService.favVinyl(this.auth.uid, pid).subscribe(data => { console.log(data); } );
+      console.log('user_id: '+this.auth.user_id+' | product_id: '+pid);
+      this.dbService.favVinyl(this.auth.user_id, pid).subscribe(data => { console.log(data); } );
     }else{
       // pull up the login modal
       console.log('pull up the login modal');

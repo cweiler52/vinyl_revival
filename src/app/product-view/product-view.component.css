@@ -14,7 +14,11 @@
  #side-nav{
     background: white;
     width: 25vw;
- }
+
+.prod-cover{
+    width: 30vw;
+}
+
  #ep-size{
  height: 10%;
  overflow: scroll;
@@ -24,4 +28,3 @@
     position: absolute;
     left: 15px;
   }
- 

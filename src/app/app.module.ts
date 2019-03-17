@@ -29,7 +29,7 @@ import { RoutingComponents } from './app-routing.module';
     SignupComponent,
     AdminProdviewComponent,
     AboutComponent,
-    ProductViewComponent
+    ProductViewComponent,
     NavbarComponent,
     RoutingComponents
   ],

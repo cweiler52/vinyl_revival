@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { DatabaseService } from '../database.service';
+import { ProductsFC } from '../models/products_favs_comments.model';
+import { Auth } from '../models/auth.model';
 
 @Component({
   selector: 'app-product-view',
@@ -10,10 +12,12 @@ import { DatabaseService } from '../database.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ProductViewComponent implements OnInit {
-  product = {};
+  product: ProductsFC;
   favCnt: number;
   commentCnt: number;
-  auth = {};
+  commentsArr: [];
+  auth: Auth;
+
 
   constructor(
     private dbService: DatabaseService,
@@ -28,12 +32,14 @@ export class ProductViewComponent implements OnInit {
   getOneProduct(){
     const id = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProdView(id).subscribe(
-      data => {
-        console.log(data);
-        this.favCnt = data.favs.length;
-        this.commentCnt = data.comments.length;
-        this.product = data;
-      }
+      data => this.product = data
+      // data => {
+      //   console.log(data);
+      //   this.favCnt = data.favs.length;
+      //   this.commentCnt = data.comments.length;
+      //   this.commentsArr = data.comments;
+      //   this.product = data;
+      // }
     )
   }
 

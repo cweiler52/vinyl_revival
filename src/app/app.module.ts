@@ -40,7 +40,7 @@ import { RoutingComponents } from './app-routing.module';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ LoginComponent, SignupComponent ] // THESE COMPONENT POPULATE A MODAL
+  entryComponents: [ LoginComponent, SignupComponent ] // THESE COMPONENTS POPULATE A MODAL
 })
 
 export class AppModule { }

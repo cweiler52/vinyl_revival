@@ -6,11 +6,18 @@ import { APIURL } from '../environments/environment.prod';
 import { Products } from './models/products.model';
 import { Favs } from './models/favs.model';
 import { Comments } from './models/comments.model';
+import { ProductsFC } from './models/products_favs_comments.model';
+import { Auth } from './models/auth.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Authorization': sessionStorage.getItem('token')
+  })
+}
+const httpNoAuthOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
   })
 }
 
@@ -24,9 +31,10 @@ export class DatabaseService {
   private dbProductsUrl = `${APIURL}/api/products`;
   private dbFavsUrl = `${APIURL}/api/favs`;
   private dbCommentsUrl = `${APIURL}/api/comments`;
-  private auth = {};
+  private auth: Auth;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient) { }
 
   getProducts() : Observable<Products[]> {
     return this.http.get<Products[]>(this.dbProductsUrl, httpOptions);
@@ -40,8 +48,8 @@ export class DatabaseService {
     return this.http.get<Products[]>(this.dbProductsUrl);
   }
 
-  getProdView(id: any) : Observable<Products> {
-    return this.http.get<any>(`${this.dbProductsUrl}/${id}`);
+  getProdView(id: number) : Observable<ProductsFC> {
+    return this.http.get<ProductsFC>(`${this.dbProductsUrl}/${id}`, httpNoAuthOptions);
   }
   
   getFavsHome() : Observable<Favs[]> {
@@ -105,14 +113,12 @@ export class DatabaseService {
   }
 
   getCookies() {
-    this.auth = {
-      is_loggedin: sessionStorage.getItem('token') ? true : false,
+    return this.auth = {
       is_admin: sessionStorage.getItem('role') === 'admin' ? true : false,
-      user_name: sessionStorage.getItem('name'),
+      is_loggedin: sessionStorage.getItem('token') ? true : false,
+      user_id: sessionStorage.getItem('uid'),
       user_img: sessionStorage.getItem('img'),
-      user_id: sessionStorage.getItem('uid')
+      user_name: sessionStorage.getItem('name')
     }
-
-    return this.auth;
   }
 }

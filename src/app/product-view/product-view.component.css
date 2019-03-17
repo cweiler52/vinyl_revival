@@ -14,17 +14,18 @@
  #side-nav{
     background: white;
     width: 25vw;
-
-.prod-cover{
-    width: 30vw;
-}
-
- #ep-size{
- height: 10%;
- overflow: scroll;
  }
+
+#ep-size{
+   height: 10%;
+   overflow: scroll;
+}
  
  .mat-expansion-indicator {
     position: absolute;
     left: 15px;
-  }
+}
+
+.prod-cover{
+   width: 30vw;
+}

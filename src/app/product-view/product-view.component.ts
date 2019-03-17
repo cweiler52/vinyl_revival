@@ -13,7 +13,8 @@ export class ProductViewComponent implements OnInit {
   product = {};
   favCnt: number;
   commentCnt: number;
-  
+  auth = {};
+
   constructor(
     private dbService: DatabaseService,
     private route: ActivatedRoute,
@@ -21,6 +22,7 @@ export class ProductViewComponent implements OnInit {
 
   ngOnInit() {
     this.getOneProduct();
+    this.auth = this.dbService.getCookies();
   }
 
   getOneProduct(){
@@ -39,9 +41,16 @@ export class ProductViewComponent implements OnInit {
     this.location.back();
   }
 
-  fav(id): void {
-    /* trigger sideview popout to show user's fav list */
-    this.dbService.favVinyl(id)
-      .subscribe();
+  fav(): void {
+    console.log('auth.is_loggedin: '+this.auth.is_loggedin);
+    if(this.auth.is_loggedin){
+      const pid = +this.route.snapshot.paramMap.get('id');
+      /* trigger sideview popout to show user's fav list */
+      console.log('user_id: '+this.auth.user_id+' | product_id: '+pid);
+      this.dbService.favVinyl(this.auth.user_id, pid).subscribe(data => { console.log(data); } );
+    }else{
+      // pull up the login modal
+      console.log('pull up the login modal');
+    }
   }
 }

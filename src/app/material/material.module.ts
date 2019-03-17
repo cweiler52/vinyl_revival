@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 import {
 MatGridListModule,
@@ -19,7 +21,8 @@ MatSidenavModule
         MatToolbarModule,
         MatTabsModule,
         MatSidenavModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MatExpansionModule
     ],
     exports: [
         MatGridListModule,
@@ -27,7 +30,8 @@ MatSidenavModule
         MatToolbarModule,
         MatTabsModule,
         MatSidenavModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MatExpansionModule
     ]
 })
 export class MaterialModule {}

@@ -7,4 +7,9 @@ ul {
 li {
     display: inline;
     padding: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    color: inherit;
 }

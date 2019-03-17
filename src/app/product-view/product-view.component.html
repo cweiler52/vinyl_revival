@@ -1,27 +1,39 @@
 <mat-sidenav-container>
-  <!-- COMMENT COMPONENT  -->
-  <mat-sidenav #sidenav mode="over" [(opened)]="opened" id="side-nav">
-    <h3>COMMENTS:</h3>
-  <div *ngFor="let text of product.comments">
-    {{text.user.name}}:
-      {{text.comment}}
-  </div>
-  </mat-sidenav>
+ <!-- USER FAV Collection  -->
+ <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
+USER FAVORITE COLLECTION EXAMPLE <br><br>
+<img src="{{ product.cover }}" width="60%"/>
+ </mat-sidenav>
 
 <mat-sidenav-content>
 <div class="grid-container">
-    <!-- <div id="fav">{{product.favs.length}}</div> -->
-  <div class="vinyl">
-    <img src="{{ product.cover }}" class="prod-cover"/>
-  </div>
-  <div id="text-layout"> {{product.artist | uppercase }}<br>
-    {{ product.album }}<br>
-    {{product.desc}}<br>
-    ${{ product.price }}<br>
-   <button mat-button (click)="sidenav.open()">View</button>
-  </div>
+   <!-- <div id="fav">{{product.favs.length}}</div> -->
+ <div class="vinyl">
+   <img src="{{ product.cover }}" class="prod-cover"/>
+ </div>
+ <div id="text-layout"> {{product.artist | uppercase }}<br>
+   {{ product.album }}<br>
+   {{product.desc}}<br>
+   ${{ product.price }}<br>
+  <button mat-button (click)="sidenav.open()">View</button>
+ </div>
 </div>
 </mat-sidenav-content>
-
-
 </mat-sidenav-container>
+
+
+<mat-expansion-panel (opened)="panelOpenState = true"
+                      (closed)="panelOpenState = false" id="ep-size">
+                    
+   <mat-expansion-panel-header>
+     <mat-panel-description>
+       <button id="cmt-btn">View Comments</button>
+     </mat-panel-description>
+   </mat-expansion-panel-header>
+   <h3>COMMENTS:</h3>
+   <div *ngFor="let text of product.comments">
+     {{text.user.name}}:
+       {{text.comment}}
+   </div>
+
+

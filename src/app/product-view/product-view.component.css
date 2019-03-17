@@ -1,17 +1,27 @@
 .grid-container {
     display: grid;
     grid-column-gap: 5px;
-}
-
-.vinyl {
+ }
+ 
+ .vinyl {
     grid-column: 2fr;
-}
-
-#text-layout{
+ }
+ 
+ #text-layout{
     grid-column: 3;
-}
-
-#side-nav{
+ }
+ 
+ #side-nav{
     background: white;
     width: 25vw;
-}
+ }
+ #ep-size{
+ height: 10%;
+ overflow: scroll;
+ }
+ 
+ .mat-expansion-indicator {
+    position: absolute;
+    left: 15px;
+  }
+ 

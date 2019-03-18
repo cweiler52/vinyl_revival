@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminProdviewComponent } from './admin-prodview/admin-prodview.component';
+import { AdminEditComponent } from './admin-edit/admin-edit.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AdminProdviewComponent } from './admin-prodview/admin-prodview.componen
     AdminCreateComponent,
     LoginComponent,
     SignupComponent,
-    AdminProdviewComponent
+    AdminProdviewComponent,
+    AdminEditComponent
   ],
   imports: [
     BrowserModule,

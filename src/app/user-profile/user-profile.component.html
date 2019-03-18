@@ -1,14 +1,19 @@
-
-  <h2>Hello, {{ profile.user.name }} </h2>
+<div class="grid-container">
+  <h2>Hello, {{ profile.user.name }}! </h2>
 
   
   <div>
-    <img [src]="profile.user.image"/>
+    <img [src]="profile.user.image" id="pro-avatar" width="30rem" height="20rem"/><br>
+    <div id="pro-list">
     Name: {{ profile.user.name }}<br>
     Email: {{ profile.user.email }}<br>
-
+    <br>
+  </div>
+<hr>
+<h2>COLLECTION</h2>
     <div *ngFor="let fav of profile.favs">
-    <img [src]="fav.cover" /><br>
+    <img [src]="fav.cover"/><br>
     </div>
    </div>
 
+  </div>

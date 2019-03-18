@@ -1,0 +1,20 @@
+.grid-container {
+    display: grid;
+    grid-column-gap: 5px;
+    grid-column: 5;
+    grid-row: 2;
+}
+
+#pro-avatar{
+    vertical-align: middle;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    grid-column: 6;
+    
+}
+
+
+#pro-list{
+    width: 30%;
+}

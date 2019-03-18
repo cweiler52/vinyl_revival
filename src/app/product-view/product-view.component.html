@@ -9,14 +9,13 @@
   <div class="grid-container">
     <div id="fav" (click)="fav()">{{ favCnt }}</div>
     <div class="vinyl">
-      <img src="{{ product.cover }}" class="prod-cover"/>
+      <img [src]="product.cover" class="prod-cover"/>
     </div>
     <div id="text-layout"> {{product.artist | uppercase }}<br>
-      <hr id="stripe">
       {{ product.album }}<br>
-      <div id="desc-st">{{product.desc}}</div><br>
-      <div id="price-st">${{ product.price }}</div><br>
-      <button mat-button (click)="sidenav.open()">Collection</button>
+      {{product.desc}}<br>
+      ${{ product.price }}<br>
+      <button mat-button (click)="sidenav.open()">View</button>
     </div>
   </div>
 </mat-sidenav-content>

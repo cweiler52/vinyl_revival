@@ -5,7 +5,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { DatabaseService } from '../database.service';
 import { LoginComponent } from '../login/login.component';
 import { SignupComponent } from '../signup/signup.component';
-
+import { Auth } from '../models/auth.model';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +13,7 @@ import { SignupComponent } from '../signup/signup.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  auth = {}
+  auth: Auth;
   modalRef: BsModalRef;
 
   constructor(
@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     this.dbService.logoutUser();
-    location.href = '/';
+    location.href = window.location.href;
   }
 
 }

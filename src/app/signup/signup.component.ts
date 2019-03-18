@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
     // console.log(this.loginUserData)
     this.dbService.SignupUser(this.loginUserData)
       .subscribe(
-        res => { location.href = '/' },
+        res => { location.href = window.location.href },
         err => console.log(err)
       )
   }

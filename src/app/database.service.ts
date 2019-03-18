@@ -6,11 +6,19 @@ import { APIURL } from '../environments/environment.prod';
 import { Products } from './models/products.model';
 import { Favs } from './models/favs.model';
 import { Comments } from './models/comments.model';
+import { ProductsFC } from './models/products_favs_comments.model';
+import { Profile } from './models/profile.model';
+import { Auth } from './models/auth.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Authorization': sessionStorage.getItem('token')
+  })
+}
+const httpNoAuthOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
   })
 }
 
@@ -21,12 +29,14 @@ export class DatabaseService {
 
   private dbLogUrl = `${APIURL}/api/login`;
   private dbSignUrl = `${APIURL}/api/signup`;
+  private dbUserUrl = `${APIURL}/api/user`;
   private dbProductsUrl = `${APIURL}/api/products`;
   private dbFavsUrl = `${APIURL}/api/favs`;
   private dbCommentsUrl = `${APIURL}/api/comments`;
-  private auth = {};
+  private auth: Auth;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient) { }
 
   getProducts() : Observable<Products[]> {
     return this.http.get<Products[]>(this.dbProductsUrl, httpOptions);
@@ -40,8 +50,8 @@ export class DatabaseService {
     return this.http.get<Products[]>(this.dbProductsUrl);
   }
 
-  getProdView(id: any) : Observable<Products> {
-    return this.http.get<any>(`${this.dbProductsUrl}/${id}`);
+  getProdView(id: number) : Observable<ProductsFC> {
+    return this.http.get<ProductsFC>(`${this.dbProductsUrl}/${id}`, httpNoAuthOptions);
   }
   
   getFavsHome() : Observable<Favs[]> {
@@ -90,7 +100,11 @@ export class DatabaseService {
       .pipe(map(user => { console.log(user)
         if (user && user.sessionToken) {
           sessionStorage.setItem('token', user.sessionToken);
-        }
+          sessionStorage.setItem('uid', user.user.id);
+          sessionStorage.setItem('name', user.user.name);
+          sessionStorage.setItem('img', user.user.image);
+          if(user.user.roleid) { sessionStorage.setItem('role', 'admin') }else{ sessionStorage.setItem('role', 'user') };
+       }
         return user;
       }));
   }
@@ -104,15 +118,17 @@ export class DatabaseService {
     
   }
 
-  getCookies() {
-    this.auth = {
-      is_loggedin: sessionStorage.getItem('token') ? true : false,
-      is_admin: sessionStorage.getItem('role') === 'admin' ? true : false,
-      user_name: sessionStorage.getItem('name'),
-      user_img: sessionStorage.getItem('img'),
-      user_id: sessionStorage.getItem('uid')
-    }
+  getUserProfile(id) : Observable<Profile> {
+    return this.http.get<any>( `${this.dbUserUrl}/${id}`, httpOptions);
+  }
 
-    return this.auth;
+  getCookies() {
+    return this.auth = {
+      is_admin: sessionStorage.getItem('role') === 'admin' ? true : false,
+      is_loggedin: sessionStorage.getItem('token') ? true : false,
+      user_id: sessionStorage.getItem('uid'),
+      user_img: sessionStorage.getItem('img'),
+      user_name: sessionStorage.getItem('name')
+    }
   }
 }

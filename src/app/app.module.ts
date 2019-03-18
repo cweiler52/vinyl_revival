@@ -17,7 +17,7 @@ import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminProdviewComponent } from './admin-prodview/admin-prodview.component';
 import { RoutingComponents } from './app-routing.module';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+// import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     SignupComponent,
     AdminProdviewComponent,
     NavbarComponent,
-    RoutingComponents,
-    UserProfileComponent
+    RoutingComponents//,
+    //UserProfileComponent
   ],
   imports: [
     BrowserModule,

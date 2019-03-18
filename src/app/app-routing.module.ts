@@ -30,4 +30,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 // CONST RoutingComponents IS AN ARRAY OF IMPORTED COMPONENTS THAT WE CAN THEN ...
 // IMPORT INTO app.module.ts AS ONE IMPORT & SET IN THE declarations OBJECT OF @NgModule
-export const RoutingComponents = [ HomepageComponent, AboutComponent, ProductViewComponent, AdminProdList, AdminUserlist, UserProfileComponent ];
+export const RoutingComponents = [ HomepageComponent, AboutComponent, ProductViewComponent, UserProfileComponent, AdminProdList, AdminUserlist ];

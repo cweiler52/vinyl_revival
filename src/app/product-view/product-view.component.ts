@@ -1,7 +1,13 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core'; // ViewChild, ElementRef, , ViewEncapsulation
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { Location, DOCUMENT } from '@angular/common';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 import { DatabaseService } from '../database.service';
+import { ProductsFC } from '../models/products_favs_comments.model';
+import { SignupComponent } from '../signup/signup.component';
+import { Auth } from '../models/auth.model';
 
 @Component({
   selector: 'app-product-view',
@@ -10,19 +16,23 @@ import { DatabaseService } from '../database.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ProductViewComponent implements OnInit {
-  product = {};
+  product: ProductsFC;
   favCnt: number;
+  //newFavCnt: number;
   commentCnt: number;
-  auth = {};
+  commentsArr: [];
+  modalRef: BsModalRef;
+  auth = this.dbService.getCookies();
 
   constructor(
     private dbService: DatabaseService,
     private route: ActivatedRoute,
-    private location: Location) { }
+    private location: Location,
+    private modalService: BsModalService,
+    @Inject(DOCUMENT) document) { }
 
   ngOnInit() {
     this.getOneProduct();
-    this.auth = this.dbService.getCookies();
   }
 
   getOneProduct(){
@@ -30,8 +40,9 @@ export class ProductViewComponent implements OnInit {
     this.dbService.getProdView(id).subscribe(
       data => {
         console.log(data);
-        // this.favCnt = data.favs.length;
-        // this.commentCnt = data.comments.length;
+        this.favCnt = data.favs.length;
+        this.commentCnt = data.comments.length;
+        this.commentsArr = data.comments;
         this.product = data;
       }
     )
@@ -42,15 +53,36 @@ export class ProductViewComponent implements OnInit {
   }
 
   fav(): void {
-    // console.log('auth.is_loggedin: '+this.auth.is_loggedin);
-    // if(this.auth.is_loggedin){
-    //   const pid = +this.route.snapshot.paramMap.get('id');
-    //   /* trigger sideview popout to show user's fav list */
-    //   console.log('user_id: '+this.auth.user_id+' | product_id: '+pid);
-    //   this.dbService.favVinyl(this.auth.user_id, pid).subscribe(data => { console.log(data); } );
-    // }else{
-    //   // pull up the login modal
-    //   console.log('pull up the login modal');
-    // }
+    if(this.auth.is_loggedin){
+      const pid = +this.route.snapshot.paramMap.get('id');
+      /* trigger sideview popout to show user's fav list */
+      this.dbService.favVinyl(this.auth.user_id, pid)
+        .subscribe(
+          data => { 
+            console.log(data);
+            //this.newFavCnt = this.favCnt++;
+            document.getElementById('fav').innerHTML = `${this.favCnt++}`;
+          },
+          (err) => {
+            if (err.error.message === "SequelizeUniqueConstraintError") { 
+              alert('Nice! This album is already in your favs list!');
+            }else{
+              console.log(err);
+            }
+          }
+        );
+    }else{
+      // pull up the login modal
+      this.openSignup();
+    }
+  }
+
+  openSignup(): void {
+    this.modalRef = this.modalService.show(SignupComponent,  {
+      initialState: {
+        title: 'Sign Up',
+        loginUserData: {}
+      }
+    });
   }
 }

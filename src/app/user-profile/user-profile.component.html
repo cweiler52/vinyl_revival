@@ -3,10 +3,12 @@
 
   
   <div>
+    <img [src]="profile.user.image"/>
     Name: {{ profile.user.name }}<br>
     Email: {{ profile.user.email }}<br>
+
     <div *ngFor="let fav of profile.favs">
-     {{ fav.cover }}<br>
+    <img [src]="fav.cover" /><br>
     </div>
    </div>
 

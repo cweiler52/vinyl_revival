@@ -15,8 +15,6 @@ import { AdminCreateComponent } from './admin-create/admin-create.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {AboutComponent} from './about/about.component';
-import {ProductViewComponent} from './product-view/product-view.component';
 import { AdminProdviewComponent } from './admin-prodview/admin-prodview.component';
 import { RoutingComponents } from './app-routing.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -29,8 +27,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     LoginComponent,
     SignupComponent,
     AdminProdviewComponent,
-    AboutComponent,
-    ProductViewComponent,
     NavbarComponent,
     RoutingComponents,
     UserProfileComponent
@@ -46,7 +42,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ LoginComponent, SignupComponent ] // THESE COMPONENT POPULATE A MODAL
+  entryComponents: [ LoginComponent, SignupComponent ] // THESE COMPONENTS POPULATE A MODAL
 })
 
 export class AppModule { }

@@ -1,0 +1,56 @@
+<div class="modal-header">
+  <h4 class="modal-title pull left"> Edit Product </h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+<form>
+
+  <label for="artist"> Artist </label>
+  <input
+  [(ngModel)]="editData.artist"
+  type="text"
+  name="artist"
+  value="{{createData.artist}}"
+  required>
+
+  <label for="album"> Album </label>
+  <input
+  [(ngModel)]="editData.album"
+  type="text"
+  name="album"
+  value="{{createData.album}}"
+  required>
+
+  <label for="cover"> Cover Art </label>
+  <input
+  [(ngModel)]="editData.cover"
+  type="text"
+  name="cover"
+  value="{{createData.cover}}"
+  required>
+
+  <label for="price"> Price </label>
+  <input
+  [(ngModel)]="editData.price"
+  type="text"
+  name="price"
+  value="{{createData.price}}"
+  required>
+  
+  <label for="desc"> Description </label>
+  <input
+  [(ngModel)]="editData.desc"
+  type="text"
+  name="desc"
+  value="{{createData.desc}}"
+  required>
+
+  <button
+  type="button" (click)="onEdit()">
+   Submit </button>
+</form>
+
+</div>

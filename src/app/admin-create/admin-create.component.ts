@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DatabaseService } from '../database.service';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 
 @Component({
@@ -8,8 +9,13 @@ import { DatabaseService } from '../database.service';
   styleUrls: ['./admin-create.component.css']
 })
 export class AdminCreateComponent implements OnInit {
+//  @Input() product: any;
+//  constructor() { }
+  
   createData = {}
-  constructor(private dbService: DatabaseService) { }
+  constructor(
+    private dbService: DatabaseService,
+    private modalRef: BsModalRef) { }
 
   ngOnInit() {
   }
@@ -22,16 +28,20 @@ export class AdminCreateComponent implements OnInit {
       )
   }
 
-  // onEdit(id: any) {
-  //   this.dbService.editVinyl(id)
-  //     .subscribe(
-  //       res => console.log(res),
-  //       err => console.log(err)
-  //     )
-  // }
-
-  onDelete() {
-
+  onEdit(id: any) {
+    this.dbService.editVinyl(this.createData, id)
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      )
   }
+
+  closeModal(){
+    this.modalRef.hide();
+  }
+
+  // onDelete() {
+
+  // }
 
 }

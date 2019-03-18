@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../database.service';
-
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-login',
@@ -9,21 +9,24 @@ import { DatabaseService } from '../database.service';
 })
 export class LoginComponent implements OnInit {
   loginUserData = {}
-  constructor(private dbService: DatabaseService) { }
+  title;
+  constructor(
+    private dbService: DatabaseService,
+    public modalRef: BsModalRef) { }
 
   ngOnInit() {
   }
-
+  
   onLogin() {
     // console.log(this.loginUserData)
     this.dbService.loginUser(this.loginUserData)
       .subscribe(
-        res => console.log(res),
+        data => { location.href = data.user.roleid ? '/admin/products' : '/' },
         err => console.log(err)
       )
   }
 
-  onLogout() {
-    this.dbService.logoutUser()
+  closeModal(){
+    this.modalRef.hide();
   }
 }

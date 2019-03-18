@@ -43,6 +43,13 @@
   name="desc"
   required>
 
+  <label for="genre"> Genre </label>
+  <input
+  [(ngModel)]="createData.genre"
+  type="text"
+  name="genre"
+  required>
+
   <button *ngIf="!createData.id"
   type="button" (click)="onCreate()">
    Submit </button>

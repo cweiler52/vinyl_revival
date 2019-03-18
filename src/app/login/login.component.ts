@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     // console.log(this.loginUserData)
     this.dbService.loginUser(this.loginUserData)
       .subscribe(
-        data => { location.href = data.user.roleid ? '/admin/products' : '/' },
+        data => { location.href = data.user.roleid ? '/admin/products' : window.location.href },
         err => console.log(err)
       )
   }

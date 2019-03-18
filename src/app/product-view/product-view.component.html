@@ -9,7 +9,7 @@
   <div class="grid-container">
     <div id="fav" (click)="fav()">{{ favCnt }}</div>
     <div class="vinyl">
-      <img src="{{ product.cover }}" class="prod-cover"/>
+      <img [src]="product.cover" class="prod-cover"/>
     </div>
     <div id="text-layout"> {{product.artist | uppercase }}<br>
       {{ product.album }}<br>

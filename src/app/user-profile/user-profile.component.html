@@ -1,6 +1,12 @@
 
-  <h2>Hello, </h2>
+  <h2>Hello, {{ profile.user.name }} </h2>
 
   
-
+  <div>
+    Name: {{ profile.user.name }}<br>
+    Email: {{ profile.user.email }}<br>
+    <div *ngFor="let fav of profile.favs">
+     {{ fav.cover }}<br>
+    </div>
+   </div>
 

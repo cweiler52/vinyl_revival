@@ -28,6 +28,14 @@ export class AdminCreateComponent implements OnInit {
       )
   }
 
+  onEdit(id: any) {
+    this.dbService.editVinyl(this.createData, id)
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      )
+  }
+
   closeModal(){
     this.modalRef.hide();
   }

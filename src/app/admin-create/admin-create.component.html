@@ -43,9 +43,13 @@
   name="desc"
   required>
 
-  <button
+  <button *ngIf="!createData.id"
   type="button" (click)="onCreate()">
    Submit </button>
+
+  <button *ngIf="createData.id"
+  type="button" (click)="onEdit(createData.id)">
+   Update </button>
 </form>
 
 </div>

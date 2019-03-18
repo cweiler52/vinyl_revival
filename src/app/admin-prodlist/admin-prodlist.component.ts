@@ -57,6 +57,7 @@ export class AdminProdList implements OnInit {
           price: null,
           desc: null,
         }
+        this.openModal()
       }
       else {
        this.title = 'Edit Product'
@@ -64,10 +65,13 @@ export class AdminProdList implements OnInit {
         data => {
                 console.log(data);
                 this.createData = data;
+                this.openModal()
               }
       )
     }
-    if (this.createData !== null) {
+  }
+  
+  openModal() {
     this.modalRef = this.modalService.show(AdminCreateComponent,  {
       initialState: {
         title: this.title,
@@ -75,8 +79,7 @@ export class AdminProdList implements OnInit {
       }
     });
   }
-  }
-  
+
   // openEdit() {
   //   this.modalRef = this.modalService.show(AdminEditComponent,  {
   //     initialState: {

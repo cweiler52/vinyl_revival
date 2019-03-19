@@ -5,5 +5,6 @@ export class ProductsFC {
     cover: string; 
     desc: string;
     favs: [];
+    genre: string;
     price: number;
 }

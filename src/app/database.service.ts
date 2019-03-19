@@ -62,11 +62,11 @@ export class DatabaseService {
     return this.http.get<Comments[]>(this.dbCommentsUrl);
   } 
 
-  // deletePlant(id: any) : Observable<Plant> {
-  //   const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
-  //   // console.log(deleteProductsUrl);
-  //   return this.http.delete<Plant>(deleteProductsUrl, httpOptions);
-  // }
+  deleteVinyl(id: any) : Observable<Products> {
+    const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
+    // console.log(deleteProductsUrl);
+    return this.http.delete<Products>(deleteProductsUrl, httpOptions);
+  }
 
 
   createVinyl(product) : Observable<Products> {

@@ -8,55 +8,57 @@
 <div class="modal-body">
 <form>
 
-  <label for="artist"> Artist </label>
-  <input
+  <label for="artist">Artist:</label>
+  <input class="full"
   [(ngModel)]="createData.artist"
   type="text"
   name="artist"
-  required>
+  required><br>
 
-  <label for="album"> Album </label>
-  <input
+  <label for="album">Album:</label>
+  <input class="full"
   [(ngModel)]="createData.album"
   type="text"
   name="album"
-  required>
+  required><br>
 
-  <label for="cover"> Cover Art </label>
-  <input
+  <label for="cover">Cover Art:</label>
+  <input class="full"
   [(ngModel)]="createData.cover"
   type="text"
   name="cover"
-  required>
+  required><br>
 
-  <label for="price"> Price </label>
-  <input
+  <label for="cover_art"></label>
+  <img *ngIf="createData.id" [src]="createData.cover" /><br><br>
+
+  <label for="price">Price:</label>
+  <input class="smallest"
   [(ngModel)]="createData.price"
   type="text"
   name="price"
-  required>
+  required><br>
   
-  <label for="desc"> Description </label>
-  <input
+  <div style="vertical-align: top; width: 20%; float: left;" for="desc">Description:</div>
+  <textarea
   [(ngModel)]="createData.desc"
-  type="text"
   name="desc"
-  required>
+  cols="43"
+  rows="8"
+  required>{{createData.desc}}</textarea><br>
 
-  <label for="genre"> Genre </label>
-  <input
+  <label for="genre">Genre:</label>
+  <input class="small"
   [(ngModel)]="createData.genre"
   type="text"
   name="genre"
-  required>
+  required><br>
 
-  <button *ngIf="!createData.id"
-  type="button" (click)="onCreate()">
-   Submit </button>
+  <br>
+  <div class="btns">
+    <button *ngIf="!createData.id" type="button" (click)="onCreate()"> Submit </button>
+    <button *ngIf="createData.id" type="button" (click)="onEdit(createData.id)"> Update </button>
+  </div>
 
-  <button *ngIf="createData.id"
-  type="button" (click)="onEdit(createData.id)">
-   Update </button>
 </form>
-
 </div>

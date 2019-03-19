@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="profile">
   Name: {{ profile.user.name }}<br>
   Email: {{ profile.user.email }}<br>
   <div *ngFor="let fav of profile.favs">

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DatabaseService } from '../database.service';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 
 @Component({
@@ -12,7 +13,9 @@ export class AdminCreateComponent implements OnInit {
 //  constructor() { }
   
   createData = {}
-  constructor(private dbService: DatabaseService) { }
+  constructor(
+    private dbService: DatabaseService,
+    private modalRef: BsModalRef) { }
 
   ngOnInit() {
   }
@@ -31,6 +34,10 @@ export class AdminCreateComponent implements OnInit {
         res => console.log(res),
         err => console.log(err)
       )
+  }
+
+  closeModal(){
+    this.modalRef.hide();
   }
 
   // onDelete() {

@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title pull left"> {{title}} </h4>
+  <h4 class="modal-title pull left"> Edit Product </h4>
   <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -10,53 +10,47 @@
 
   <label for="artist"> Artist </label>
   <input
-  [(ngModel)]="createData.artist"
+  [(ngModel)]="editData.artist"
   type="text"
   name="artist"
+  value="{{createData.artist}}"
   required>
 
   <label for="album"> Album </label>
   <input
-  [(ngModel)]="createData.album"
+  [(ngModel)]="editData.album"
   type="text"
   name="album"
+  value="{{createData.album}}"
   required>
 
   <label for="cover"> Cover Art </label>
   <input
-  [(ngModel)]="createData.cover"
+  [(ngModel)]="editData.cover"
   type="text"
   name="cover"
+  value="{{createData.cover}}"
   required>
 
   <label for="price"> Price </label>
   <input
-  [(ngModel)]="createData.price"
+  [(ngModel)]="editData.price"
   type="text"
   name="price"
+  value="{{createData.price}}"
   required>
   
   <label for="desc"> Description </label>
   <input
-  [(ngModel)]="createData.desc"
+  [(ngModel)]="editData.desc"
   type="text"
   name="desc"
+  value="{{createData.desc}}"
   required>
 
-  <label for="genre"> Genre </label>
-  <input
-  [(ngModel)]="createData.genre"
-  type="text"
-  name="genre"
-  required>
-
-  <button *ngIf="!createData.id"
-  type="button" (click)="onCreate()">
+  <button
+  type="button" (click)="onEdit()">
    Submit </button>
-
-  <button *ngIf="createData.id"
-  type="button" (click)="onEdit(createData.id)">
-   Update </button>
 </form>
 
 </div>

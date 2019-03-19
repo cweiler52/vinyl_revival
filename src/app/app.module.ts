@@ -17,7 +17,7 @@ import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminProdviewComponent } from './admin-prodview/admin-prodview.component';
 import { RoutingComponents } from './app-routing.module';
-//import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AdminEditComponent } from './admin-edit/admin-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,8 @@ import { RoutingComponents } from './app-routing.module';
     SignupComponent,
     AdminProdviewComponent,
     NavbarComponent,
-    RoutingComponents//,
-    //UserProfileComponent
+    RoutingComponents,
+    AdminEditComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +42,7 @@ import { RoutingComponents } from './app-routing.module';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ LoginComponent, SignupComponent ] // THESE COMPONENTS POPULATE A MODAL
+  entryComponents: [ LoginComponent, SignupComponent, AdminCreateComponent, AdminEditComponent ] // THESE COMPONENTS POPULATE A MODAL
 })
 
 export class AppModule { }

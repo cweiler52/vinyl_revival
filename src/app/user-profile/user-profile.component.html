@@ -1,0 +1,7 @@
+<div>
+  Name: {{ profile.user.name }}<br>
+  Email: {{ profile.user.email }}<br>
+  <div *ngFor="let fav of profile.favs">
+    {{ fav.album }}<br>
+  </div>
+</div>

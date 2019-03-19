@@ -38,7 +38,7 @@ export class ProductViewComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProdView(id).subscribe(
       data => {
-        // console.log(data);
+        console.log(data);
         this.favCnt = data.favs.length;
         this.commentCnt = data.comments.length;
         this.commentsArr = data.comments;
@@ -57,8 +57,9 @@ export class ProductViewComponent implements OnInit {
       this.dbService.favVinyl(this.auth.user_id, pid)
         .subscribe(
           data => { 
-            // console.log(data);
-            this.newFavCnt = this.favCnt++;
+            console.log(data);
+            this.newFavCnt = this.favCnt+1;
+            console.log('newFavCnt: '+this.newFavCnt);
             document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
           },
           (err) => {

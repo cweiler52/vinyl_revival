@@ -43,6 +43,9 @@ export class AdminCreateComponent implements OnInit {
             setTimeout(() => {
               document.getElementById(`crud-action_${id}`).innerHTML = '';
             }, 4000);
+            setTimeout(() => {
+              location.href = window.location.href
+            }, 5000);
           }
         },
         err => console.log(err)

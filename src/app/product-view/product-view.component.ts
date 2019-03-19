@@ -54,7 +54,6 @@ export class ProductViewComponent implements OnInit {
   fav(): void {
     if(this.auth.is_loggedin){
       const pid = +this.route.snapshot.paramMap.get('id');
-      /* trigger sideview popout to show user's fav list */
       this.dbService.favVinyl(this.auth.user_id, pid)
         .subscribe(
           data => { 

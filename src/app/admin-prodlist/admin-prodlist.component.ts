@@ -4,9 +4,12 @@ import { DatabaseService } from '../database.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AdminCreateComponent } from '../admin-create/admin-create.component';
+<<<<<<< HEAD
 import { AdminDeleteComponent } from '../admin-delete/admin-delete.component';
 //import { AdminEditComponent } from '../admin-edit/admin-edit.component';
 //import { ActivatedRoute } from '@angular/router';
+=======
+>>>>>>> 3627e35122a3a1e28b2c3c68b353b0d913406210
 
 
 @Component({
@@ -17,7 +20,6 @@ import { AdminDeleteComponent } from '../admin-delete/admin-delete.component';
 export class AdminProdList implements OnInit {
   products = [];
   createData = {};
-  //editData= {};
   modalRef: BsModalRef;
   title: string;
 
@@ -32,44 +34,35 @@ export class AdminProdList implements OnInit {
   getAllProducts() {
     this.dbService.getProducts().subscribe(
       data => { 
-        console.log(data);
+        // console.log(data);
         this.products = data;
       }
     )
   }
-
-  // getProduct(id: number) {
-  //   this.dbService.getOneProduct(id).subscribe(
-  //     data => {
-  //       console.log(data);
-  //       this.createData = data;
-  //     }
-  //   )
-  // }
 
   openCreate(id: any) {
     
       if (id === undefined){
         this.title = 'Add Product'
         this.createData = {
-          artist: null,
           album: null,
+          artist: null,
           cover: null,
-          price: null,
           desc: null,
-          genre: null
+          genre: null,
+          price: null
         }
-        this.openModal()
-      }
-      else {
-       this.title = 'Edit Product'
+        this.openModal();
+
+      } else {
+        this.title = 'Edit Product'
         this.dbService.getOneProduct(id).subscribe(
         data => {
-                console.log(data);
+                // console.log(data);
                 this.createData = data;
-                this.openModal()
+                this.openModal();
               }
-      )
+        )
     }
   }
   
@@ -100,14 +93,5 @@ export class AdminProdList implements OnInit {
       }
     });
   }
-
-  // openEdit() {
-  //   this.modalRef = this.modalService.show(AdminEditComponent,  {
-  //     initialState: {
-  //       title: 'Edit Product',
-  //       editData: {}
-  //     }
-  //   });
-  // }
 
 }

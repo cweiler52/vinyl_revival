@@ -1,0 +1,27 @@
+label {
+    width: 20%;
+}
+
+img {
+    width: 60px;
+}
+
+input.full {
+    width: 80%;
+}
+input.small {
+    width: 25%;
+}
+input.smallest {
+    width: 10%;
+    text-align: center;
+}
+
+textarea {
+    border: 1px solid #DDD;
+}
+
+.btns {
+    width: 100%; 
+    text-align: center;
+}

@@ -7,6 +7,7 @@ import { Products } from './models/products.model';
 import { Favs } from './models/favs.model';
 import { Comments } from './models/comments.model';
 import { ProductsFC } from './models/products_favs_comments.model';
+import { Profile } from './models/profile.model';
 import { Auth } from './models/auth.model';
 
 const httpOptions = {
@@ -28,6 +29,7 @@ export class DatabaseService {
 
   private dbLogUrl = `${APIURL}/api/login`;
   private dbSignUrl = `${APIURL}/api/signup`;
+  private dbUserUrl = `${APIURL}/api/user`;
   private dbProductsUrl = `${APIURL}/api/products`;
   private dbFavsUrl = `${APIURL}/api/favs`;
   private dbCommentsUrl = `${APIURL}/api/comments`;
@@ -60,11 +62,11 @@ export class DatabaseService {
     return this.http.get<Comments[]>(this.dbCommentsUrl);
   } 
 
-  // deletePlant(id: any) : Observable<Plant> {
-  //   const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
-  //   // console.log(deleteProductsUrl);
-  //   return this.http.delete<Plant>(deleteProductsUrl, httpOptions);
-  // }
+  deleteVinyl(id: any) : Observable<Products> {
+    const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
+    // console.log(deleteProductsUrl);
+    return this.http.delete<Products>(deleteProductsUrl, httpOptions);
+  }
 
   deleteVinyl( id: any) : Observable<Products[]> {
     return this.http.delete<Products[]>(`${this.dbProductsUrl}/${id}`, httpOptions);
@@ -102,7 +104,11 @@ export class DatabaseService {
       .pipe(map(user => { console.log(user)
         if (user && user.sessionToken) {
           sessionStorage.setItem('token', user.sessionToken);
-        }
+          sessionStorage.setItem('uid', user.user.id);
+          sessionStorage.setItem('name', user.user.name);
+          sessionStorage.setItem('img', user.user.image);
+          if(user.user.roleid) { sessionStorage.setItem('role', 'admin') }else{ sessionStorage.setItem('role', 'user') };
+       }
         return user;
       }));
   }
@@ -114,6 +120,10 @@ export class DatabaseService {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('uid');
     
+  }
+
+  getUserProfile(id) : Observable<Profile> {
+    return this.http.get<any>( `${this.dbUserUrl}/${id}`, httpOptions);
   }
 
   getCookies() {

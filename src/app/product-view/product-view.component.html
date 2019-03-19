@@ -6,11 +6,11 @@
   </mat-sidenav>
 
 <mat-sidenav-content>
-  <div class="grid-container">
-    <div id="fav" (click)="fav()">{{ favCnt }}</div>
+  <div class="grid-container" *ngIf="product">
     <div class="vinyl">
-      <img src="{{ product.cover }}" class="prod-cover"/>
+      <img [src]="product.cover" class="prod-cover"/>
     </div>
+    <div id="fav" (click)="fav()">{{ favCnt }}</div>
     <div id="text-layout"> {{product.artist | uppercase }}<br>
       {{ product.album }}<br>
       {{product.desc}}<br>
@@ -38,4 +38,7 @@
     </div>
   </div>
 
-<button (click)="goBack()">go back</button>
+<!-- <div *ngFor="let item of suggestions">
+  {{ item.artist | uppercase }}<br>
+  {{ item.album }}<br>
+</div> -->

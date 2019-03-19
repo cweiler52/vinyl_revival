@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <h4 class="modal-title pull left"> Delete this product? </h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+<form>
+
+  <label for="artist"> Artist </label>
+  <div>{{createData.artist}}</div>
+
+  <label for="album"> Album </label>
+  <div>{{createData.album}}</div>
+
+  <label for="cover"> Cover Art </label>
+  <div>{{createData.cover}}</div>
+
+  <label for="price"> Price </label>
+  <div>{{createData.price}}</div>
+  
+  <label for="desc"> Description </label>
+  <div>{{createData.desc}}</div>
+
+  <label for="genre"> Genre </label>
+  <div>{{createData.genre}}</div>
+
+  
+
+    <h5>Are you sure you want to delete this product?</h5>
+
+  <button
+  type="button" (click)="onDelete()">
+   Delete </button>
+
+  
+
+</form>
+
+</div>

@@ -66,6 +66,10 @@ export class DatabaseService {
   //   return this.http.delete<Plant>(deleteProductsUrl, httpOptions);
   // }
 
+  deleteVinyl( id: any) : Observable<Products[]> {
+    return this.http.delete<Products[]>(`${this.dbProductsUrl}/${id}`, httpOptions);
+  }
+
 
   createVinyl(product) : Observable<Products> {
     return this.http.post<any>( `${this.dbProductsUrl}/add`, product, httpOptions )

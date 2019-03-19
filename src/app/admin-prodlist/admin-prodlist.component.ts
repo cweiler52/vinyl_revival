@@ -4,6 +4,7 @@ import { DatabaseService } from '../database.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AdminCreateComponent } from '../admin-create/admin-create.component';
+import { AdminDeleteComponent } from '../admin-delete/admin-delete.component';
 //import { AdminEditComponent } from '../admin-edit/admin-edit.component';
 //import { ActivatedRoute } from '@angular/router';
 
@@ -56,6 +57,7 @@ export class AdminProdList implements OnInit {
           cover: null,
           price: null,
           desc: null,
+          genre: null
         }
         this.openModal()
       }
@@ -71,6 +73,25 @@ export class AdminProdList implements OnInit {
     }
   }
   
+  openDelete(id: any) {
+    this.dbService.getOneProduct(id).subscribe(
+      data => {
+              console.log(data);
+              this.createData = data;
+              this.openDeleteModal()
+            }
+    )
+  }
+
+  openDeleteModal() {
+    this.modalRef = this.modalService.show(AdminDeleteComponent,  {
+      initialState: {
+        title: 'Delete this product?',
+        createData: this.createData
+      }
+    });
+  }
+
   openModal() {
     this.modalRef = this.modalService.show(AdminCreateComponent,  {
       initialState: {
@@ -88,11 +109,5 @@ export class AdminProdList implements OnInit {
   //     }
   //   });
   // }
-
-  
-
-  onDelete() {
-
-  }
 
 }

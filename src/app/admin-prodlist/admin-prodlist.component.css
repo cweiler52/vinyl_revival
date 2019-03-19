@@ -1,0 +1,35 @@
+tr.k-alt:nth-child(odd) {
+    background: #EEE;
+}
+
+.border_bottom {
+    border-bottom: 1px solid #999;
+}
+.border_right {
+    border-right: 1px solid #999;
+}
+
+.align_center {
+    text-align: center;
+}
+
+.float_left {
+    float: left;
+}
+.bkg_color_EEE {
+    background-color: #EEE;
+}
+
+.padding_2 {
+    padding: 2px 0;
+}
+.padding_4 {
+    padding: 4px 0;
+}
+.padding_left_30 {
+    padding-left: 30px;
+}
+
+.text_red {
+    color: red;
+}

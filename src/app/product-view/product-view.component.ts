@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core'; // ViewChild, ElementRef, , ViewEncapsulation
+import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location, DOCUMENT } from '@angular/common';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -7,7 +7,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { DatabaseService } from '../database.service';
 import { ProductsFC } from '../models/products_favs_comments.model';
 import { SignupComponent } from '../signup/signup.component';
-import { Auth } from '../models/auth.model';
 
 @Component({
   selector: 'app-product-view',
@@ -18,7 +17,7 @@ import { Auth } from '../models/auth.model';
 export class ProductViewComponent implements OnInit {
   product: ProductsFC;
   favCnt: number;
-  //newFavCnt: number;
+  newFavCnt: number;
   commentCnt: number;
   commentsArr: [];
   modalRef: BsModalRef;
@@ -55,13 +54,13 @@ export class ProductViewComponent implements OnInit {
   fav(): void {
     if(this.auth.is_loggedin){
       const pid = +this.route.snapshot.paramMap.get('id');
-      /* trigger sideview popout to show user's fav list */
       this.dbService.favVinyl(this.auth.user_id, pid)
         .subscribe(
           data => { 
             console.log(data);
-            //this.newFavCnt = this.favCnt++;
-            document.getElementById('fav').innerHTML = `${this.favCnt++}`;
+            this.newFavCnt = this.favCnt+1;
+            console.log('newFavCnt: '+this.newFavCnt);
+            document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
           },
           (err) => {
             if (err.error.message === "SequelizeUniqueConstraintError") { 

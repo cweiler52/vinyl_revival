@@ -1,14 +1,13 @@
 <table width="70%" style="margin: 10px auto" collapse >
     <tr>
-      <td width="30%" style="border-bottom: 1px solid black;">Artist</td>
-      <td width="50%" style="border-bottom: 1px solid black; background-color: #EEE;">Album Name</td>
-      <td width="20%" colspan="2" style="text-align: center; border-bottom: 1px solid black; padding:4px 0;"><input type="button" value="create" (click)=openCreate() /></td>
+      <td width="30%" class="border_bottom">Artist</td>
+      <td width="50%" class="border_bottom bkg_color_EEE">Album Name</td>
+      <td width="20%" colspan="2" class="align_center border_bottom padding_4"><input type="button" value="create" (click)=openCreate() /></td>
     </tr>
-    <!-- <tr *ngIf="!products.length"><td colspan="3">No Products To Display</td></tr> -->
-    <tr *ngFor="let item of products">
-      <td width="30%" style="border-right: 1px solid black;">{{ item.artist }}</td>
-      <td width="50%" style="border-right: 1px solid black; background-color: #EEE;"><div style="float:left">{{ item.album }}</div><div id="crud-action_{{item.id}}" style="float: left; padding-left: 30px; color: red;"></div></td>
-      <td width="10%" style="text-align: center"><input type="button" value="edit" (click)=openCreate(item.id) /></td>
-      <td width="10%" style="text-align: center"><input type="button" value="delete" (click)=getProduct(item.id) /></td>
+    <tr class="k-alt" *ngFor="let item of products">
+      <td width="30%" class="border_right">{{ item.artist }}</td>
+      <td width="50%" class="border_right"><div class="float_left">{{ item.album }}</div><div id="crud-action_{{item.id}}" class="float_left padding_left_30 text_red"></div></td>
+      <td width="10%" class="align_center padding_2"><input type="button" value="edit" (click)=openCreate(item.id) /></td>
+      <td width="10%" class="align_center padding_2"><input type="button" value="delete" (click)=getProduct(item.id) /></td>
     </tr>
   </table>

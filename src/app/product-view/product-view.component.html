@@ -1,12 +1,15 @@
 <mat-sidenav-container>
-  <!-- USER FAV Collection  -->
+  <!-- USER Comments  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
-    USER FAVORITE COLLECTION EXAMPLE <br><br>
-    <img src="{{ product.cover }}" width="60%"/>
+      <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
+      <div *ngFor="let text of product.comments" id="cmt-st">
+        <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
+        {{text.comment}}
+       </div>
   </mat-sidenav>
 
 <mat-sidenav-content>
-  <div class="grid-container">
+  <div class="grid-container" *ngIf="product">
     <div id="fav" (click)="fav()">{{ favCnt }}</div>
     <div class="vinyl">
       <img [src]="product.cover" class="prod-cover"/>
@@ -15,24 +18,10 @@
       {{ product.album }}<br>
       {{product.desc}}<br>
       ${{ product.price }}<br>
-      <button mat-button (click)="sidenav.open()">View</button>
+      <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
     </div>
   </div>
 </mat-sidenav-content>
 </mat-sidenav-container>
 
 <br>
-<mat-expansion-panel (opened)="panelOpenState = true"
-                      (closed)="panelOpenState = false" id="ep-size">
-                    
-   <mat-expansion-panel-header>
- 
-    </mat-expansion-panel-header>
-     <!-- <mat-panel-description> -->
-       <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
-       <div *ngFor="let text of product.comments" id="cmt-st">
-         <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
-         {{text.comment}}
-        </div>
-      <!-- </mat-panel-description> -->
-</mat-expansion-panel>

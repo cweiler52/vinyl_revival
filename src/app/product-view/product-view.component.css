@@ -39,12 +39,15 @@
    transform: scale(1.1);
 }
 
-#stripe{
-  border: 10px solid teal;
-  opacity: .6;
-  transform: rotate(-45deg);
-  width: 30%;
+#header-art{
+   transform: rotate(-90deg);
+   position: relative;
+   margin: 0;
+   margin-left: 9rem;
+   
 }
+
+
 
 /* #price-st{
  width: 22%;
@@ -61,4 +64,5 @@
 #cmt-name-st{
 color: #114181;
 }
+
 

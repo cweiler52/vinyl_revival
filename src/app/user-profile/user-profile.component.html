@@ -1,19 +1,35 @@
-<div class="grid-container">
-  <h2>Hello, {{ profile.user.name }}! </h2>
+<main *ngIf="profile">
+  <section class="left">
+    <img [src]="profile.user.image" id="avatar" height="60%"/>
+    
+  </section>
+  
+  <section>
+      <h1 class="title"><span>{{ profile.user.name }}</span></h1><br>
+      <div class="color2"></div>
+    <div class="text">
+        <h2>USER PROFILE</h2>
+        <hr>
+    Name: {{profile.user.name}}<br>
+    Email: {{profile.user.email}}<br>
+    
+    <button class="edit"><span>Edit Profile</span></button>
+    <br>
+      </div>
+
+        <div class="color">
+          <h3 class="coll">COLLECTION</h3>
+          <div *ngFor="let fav of profile.favs">
+            <img [src]="fav.cover" width="20%" id="cover"/>
+          </div>
+          
+        </div>
+</section>
+
+
+
+
+
+</main>
 
   
-  <div>
-    <img [src]="profile.user.image" id="pro-avatar" width="30rem" height="20rem"/><br>
-    <div id="pro-list">
-    Name: {{ profile.user.name }}<br>
-    Email: {{ profile.user.email }}<br>
-    <br>
-  </div>
-<hr>
-<h2>COLLECTION</h2>
-    <div *ngFor="let fav of profile.favs">
-    <img [src]="fav.cover"/><br>
-    </div>
-   </div>
-
-  </div>

@@ -37,8 +37,11 @@
       {{text.comment}}
     </div>
   </div>
-
-<!-- <div *ngFor="let item of suggestions">
+</mat-expansion-panel>
+<div *ngFor="let item of suggestions" style="width: 33%; float: left;">
+  <div class="vinyl">
+    <img [src]="item.cover" class="prod-cover"/>
+  </div>
   {{ item.artist | uppercase }}<br>
   {{ item.album }}<br>
-</div> -->
+</div>

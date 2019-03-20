@@ -1,36 +1,38 @@
 <mat-sidenav-container>
   <!-- USER Comments  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
-    <div *ngIf="product">
-      <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4> <button>CREATE</button>
-      <div *ngFor="let text of product.comments" id="cmt-st">
-        <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
-        {{text.comment}} <button class="trans">🚫</button>
-        <button class="trans">🖊</button>
+      <h4 class="cmt-head">COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
+       <button>CREATE</button>
+      <div *ngIf="product">  
+        <div *ngFor="let text of product.comments" id="cmt-st">
+          <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
+            {{text.comment}} 
+        </div>
       </div>
-    </div>
   </mat-sidenav>
 
-<mat-sidenav-content *ngIf="product">
-  <div id="fav" (click)="fav()">{{ favCnt }}</div>
-      <mat-grid-list cols="8">
+  
+  <mat-sidenav-content *ngIf="product">
+    <mat-grid-list cols="8">
+      <div id="fav" (click)="fav()">{{ favCnt }}
+      </div>
       <mat-grid-tile rowspan="4" colspan="4">
       <img [src]="product.cover" class="prod-cover"/>
-      ${{ product.price }}
+      <div id="pricetag">${{ product.price }}</div>
       </mat-grid-tile>
-      <mat-grid-tile id="text-layout" colspan="3" rowspan="1">
+      <mat-grid-tile id="text-layout" colspan="3" rowspan="2">
       {{product.artist | uppercase }}
     </mat-grid-tile>
       <br>
-    <mat-grid-tile colspan="3" rowspan="2">
+    <mat-grid-tile colspan="3" rowspan="1">
       {{ product.album }}<br>
       {{product.desc}}
     </mat-grid-tile>
 
   </mat-grid-list>
-         <div id="btn">
-           <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
-         </div>
+
+ <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
+  
 </mat-sidenav-content>
 </mat-sidenav-container>
 

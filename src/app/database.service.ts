@@ -53,8 +53,8 @@ export class DatabaseService {
   getProdView(id: number) : Observable<ProductsFC> {
     return this.http.get<ProductsFC>(`${this.dbProductsUrl}/${id}`, httpNoAuthOptions);
   }
-  getProdSuggestions(id: number, g: string) : Observable<any> {
-    return this.http.get<Products[]>(`${this.dbProductsUrl}/suggestions/${id}/${g}`, httpNoAuthOptions);
+  getProdSuggestions(id: number, genre: string) : Observable<any> {
+    return this.http.get<Products[]>(`${this.dbProductsUrl}/suggestions/${id}/${genre}`, httpNoAuthOptions);
   }
   
   getFavsHome() : Observable<Favs[]> {
@@ -63,6 +63,10 @@ export class DatabaseService {
 
   getCommentsHome() : Observable<Comments[]> {
     return this.http.get<Comments[]>(this.dbCommentsUrl);
+  } 
+
+  getCommentsAdmin(id: number) : Observable<Comments[]> {
+    return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
   } 
 
   deleteVinyl(id: any) : Observable<Products> {

@@ -8,23 +8,23 @@
        </div>
   </mat-sidenav>
 
-<mat-sidenav-content>
-  <div class="grid-container" *ngIf="product">
-    <div class="vinyl">
-      <img [src]="product.cover" class="prod-cover"/>
+  <mat-sidenav-content>
+    <div class="grid-container" *ngIf="product">
+      <div class="vinyl">
+        <img [src]="product.cover" class="prod-cover"/>
+      </div>
+      <div id="fav" (click)="fav()">{{ favCnt }}</div>
+      <div id="text-layout"> {{product.artist | uppercase }}<br>
+        {{ product.album }}<br>
+        {{product.desc}}<br>
+        ${{ product.price }}<br>
+        <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
+      </div>
     </div>
-    <div id="fav" (click)="fav()">{{ favCnt }}</div>
-    <div id="text-layout"> {{product.artist | uppercase }}<br>
-      {{ product.album }}<br>
-      {{product.desc}}<br>
-      ${{ product.price }}<br>
-      <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
-    </div>
-  </div>
-</mat-sidenav-content>
+  </mat-sidenav-content>
 </mat-sidenav-container>
 
-<mat-expansion-panel (opened)="panelOpenState = true"
+<!-- <mat-expansion-panel (opened)="panelOpenState = true"
                       (closed)="panelOpenState = false" id="ep-size">
                     
   <mat-expansion-panel-header>
@@ -39,7 +39,8 @@
       {{text.comment}}
     </div>
   </div>
-</mat-expansion-panel>
+</mat-expansion-panel> -->
+
 <div *ngFor="let item of suggestions" style="width: 33%; float: left;">
   <div class="vinyl">
     <img [src]="item.cover" class="prod-cover"/>

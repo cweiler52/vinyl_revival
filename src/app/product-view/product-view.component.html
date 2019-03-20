@@ -1,8 +1,11 @@
 <mat-sidenav-container>
-  <!-- USER FAV Collection  -->
+  <!-- USER Comments  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
-    USER FAVORITE COLLECTION EXAMPLE <br><br>
-    <img src="" width="60%"/>
+      <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
+      <div *ngFor="let text of product.comments" id="cmt-st">
+        <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
+        {{text.comment}}
+       </div>
   </mat-sidenav>
 
 <mat-sidenav-content>
@@ -15,12 +18,11 @@
       {{ product.album }}<br>
       {{product.desc}}<br>
       ${{ product.price }}<br>
-      <button mat-button (click)="sidenav.open()">View</button>
+      <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
     </div>
   </div>
 </mat-sidenav-content>
 </mat-sidenav-container>
-
 
 <mat-expansion-panel (opened)="panelOpenState = true"
                       (closed)="panelOpenState = false" id="ep-size">

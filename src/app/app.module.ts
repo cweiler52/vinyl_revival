@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AuthGuard } from './guards/auth.guard';
 
 // OUR COMPONENTS //////////////////////////////////////////////////////////////////////
 import { ProductListComponent } from './product-list/product-list.component';
@@ -40,7 +41,7 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
     NgxPaginationModule, 
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [ LoginComponent, SignupComponent, AdminCreateComponent, AdminEditComponent ] // THESE COMPONENTS POPULATE A MODAL
 })

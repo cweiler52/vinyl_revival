@@ -1,49 +1,43 @@
 <mat-sidenav-container>
   <!-- USER Comments  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
-      <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
+    <div *ngIf="product">
+      <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4> <button>CREATE</button>
       <div *ngFor="let text of product.comments" id="cmt-st">
         <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
-        {{text.comment}}
-       </div>
+        {{text.comment}} <button class="trans">🚫</button>
+        <button class="trans">🖊</button>
+      </div>
+    </div>
   </mat-sidenav>
 
-<mat-sidenav-content>
-  <div class="grid-container" *ngIf="product">
-    <div class="vinyl">
+<mat-sidenav-content *ngIf="product">
+  <div id="fav" (click)="fav()">{{ favCnt }}</div>
+      <mat-grid-list cols="8">
+      <mat-grid-tile rowspan="4" colspan="4">
       <img [src]="product.cover" class="prod-cover"/>
-    </div>
-    <div id="fav" (click)="fav()">{{ favCnt }}</div>
-    <div id="text-layout"> {{product.artist | uppercase }}<br>
+      ${{ product.price }}
+      </mat-grid-tile>
+      <mat-grid-tile id="text-layout" colspan="3" rowspan="1">
+      {{product.artist | uppercase }}
+    </mat-grid-tile>
+      <br>
+    <mat-grid-tile colspan="3" rowspan="2">
       {{ product.album }}<br>
-      {{product.desc}}<br>
-      ${{ product.price }}<br>
-      <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
-    </div>
-  </div>
+      {{product.desc}}
+    </mat-grid-tile>
+
+  </mat-grid-list>
+         <div id="btn">
+           <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
+         </div>
 </mat-sidenav-content>
 </mat-sidenav-container>
 
-<mat-expansion-panel (opened)="panelOpenState = true"
-                      (closed)="panelOpenState = false" id="ep-size">
-                    
-  <mat-expansion-panel-header>
-    <mat-panel-description>
-      <button id="cmt-btn">View Comments</button>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-  <h3>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h3>
-  <div *ngIf="commentCnt !== 0">
-    <div *ngFor="let text of commentsArr">
-      {{text.user.name}}:
-      {{text.comment}}
-    </div>
-  </div>
-</mat-expansion-panel>
 <div *ngFor="let item of suggestions" style="width: 33%; float: left;">
-  <div class="vinyl">
-    <img [src]="item.cover" class="prod-cover"/>
-  </div>
+    <div class="vinyl">
+      <img [src]="item.cover" class="prod-cover" (click)="onClick(item.id)"/>
+    </div>
   {{ item.artist | uppercase }}<br>
-  {{ item.album }}<br>
+  {{ item.album }}
 </div>

@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     this.dbService.logoutUser();
-    location.href = window.location.href;
+    location.href = '/';
   }
 
 }

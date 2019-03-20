@@ -1,4 +1,5 @@
 
+
 /* STYLE 1 */
 html, body {
     height: 100%;
@@ -50,7 +51,7 @@ section{
 
 .color2{
     background-color:rgba(219, 243, 109, 0.685);
-    margin-top: 5rem;
+    margin-top: 6rem;
     margin-left: -1rem;
     height: 30%;
     width: 40%;
@@ -96,10 +97,12 @@ hr{
      width: 30%;
  }
  
-  #cover{
-      display: flex;
-      float: left;
-      margin-left: 15rem;
-      padding: 2px;
-  }
-  
+
+ mat-grid-list{
+    display: block;
+    position: relative;
+    width: 40%;
+    float: left;
+    top: 5rem;
+    margin-left: 10rem;
+ }

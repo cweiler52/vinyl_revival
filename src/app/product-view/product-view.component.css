@@ -1,32 +1,26 @@
 
 html{
-   margin: 0;
-   padding: 0;
    height: 100%;
    width: 100%;
 }
 
  mat-sidenav-content{
     width: 100%;
- }
-
- mat-grid-list{
-    width: 100%;
     height: 100%;
  }
- 
+
  
  #text-layout{
     height: 25%;
-    width: 50%;
-    font-size: calc(0.08 * (100vh - 140px));
+    width: 45%;
+    font-size: calc(0.06 * (100vh - 140px));
     letter-spacing: calc(0.03 * (100vh - 140px));
  }
 
  
  #side-nav{
     background: white;
-    width: 25vw;
+    width: 35vw;
  }
 
   
@@ -51,8 +45,25 @@ html{
    margin-left: 9rem;
 }
 
+#pricetag{
+   background-color: teal;
+   width: 20%;
+   position: relative;
+   text-align: center;
+   margin-left: -8rem;
+   margin-top: 30rem;
+   z-index: 4;
+}
+
 
 /* COMMENT STYLES */
+
+.cmt-head{
+   text-align: left;
+   margin-left: 2rem;
+}
+
+
 
 #cmt-name-st{
 color: #114181;
@@ -67,14 +78,9 @@ color: #114181;
    width: 20px;
    height: 20px;
    text-align: center;
-   margin-left: 3rem;
-   border: 1px solid red;
-   background-color: rgba(139, 29, 29, 0.918);
+   margin-top: -2rem;
+   margin-left: 4rem;
    cursor: pointer;
+   z-index: 4;
 }
 
-#btn{
-   margin-top: -5%;
-   margin-left: 58rem;
-   width: 20%;
-}

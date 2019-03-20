@@ -62,16 +62,20 @@ export class DatabaseService {
     return this.http.get<Comments[]>(this.dbCommentsUrl);
   } 
 
+  getCommentsAdmin(id: number) : Observable<Comments[]> {
+    return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
+  } 
+
+  deleteComment(id: any) : Observable<any> {
+    const deleteCommentsUrl = `${this.dbCommentsUrl}/${id}`
+    return this.http.delete<any>(deleteCommentsUrl, httpOptions)
+  }
+
   deleteVinyl(id: any) : Observable<Products> {
     const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
     // console.log(deleteProductsUrl);
     return this.http.delete<Products>(deleteProductsUrl, httpOptions);
   }
-
-  deleteVinyl( id: any) : Observable<Products[]> {
-    return this.http.delete<Products[]>(`${this.dbProductsUrl}/${id}`, httpOptions);
-  }
-
 
   createVinyl(product) : Observable<Products> {
     return this.http.post<any>( `${this.dbProductsUrl}/add`, product, httpOptions )

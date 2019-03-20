@@ -17,12 +17,18 @@ createData = {}
   ngOnInit() {
   }
 
-  onDelete() {
-    this.dbService.deleteVinyl(this.createData)
+  onDelete(id) {
+    this.dbService.deleteVinyl(id)
       .subscribe(
-        res => console.log(res),
+        res => {
+          this.closeModal();
+          location.href = window.location.href},
         err => console.log(err)
       )
+  }
+
+  closeModal(){
+    this.modalRef.hide();
   }
 
 }

@@ -8,30 +8,38 @@
 <div class="modal-body">
 <form>
 
-  <label for="artist"> Artist </label>
-  <div>{{createData.artist}}</div>
+  <div class="label" > Artist: </div>
+  <div class="full">{{createData.artist}}</div>
+  <br>
 
-  <label for="album"> Album </label>
-  <div>{{createData.album}}</div>
+  <div class="label"> Album: </div>
+  <div class="full">{{createData.album}}</div>
+  <br>
 
-  <label for="cover"> Cover Art </label>
-  <div>{{createData.cover}}</div>
+  <div class="label"> Genre: </div>
+  <div class="small">{{createData.genre}}</div>
+  <br>
 
-  <label for="price"> Price </label>
-  <div>{{createData.price}}</div>
-  
-  <label for="desc"> Description </label>
-  <div>{{createData.desc}}</div>
+  <div class="label"> Cover Art: </div>
+  <img [src]="createData.cover">
+  <br><br>
 
-  <label for="genre"> Genre </label>
-  <div>{{createData.genre}}</div>
+  <div class="label"> Price: </div>
+  <div class="full">${{createData.price}}</div>
+  <br>
+
+  <label for="desc"> Description: </label>
+  <div 
+  cols="43"
+  rows="8">{{createData.desc}}</div>
+  <br>
 
   
 
     <h5>Are you sure you want to delete this product?</h5>
 
-  <button
-  type="button" (click)="onDelete()">
+  <button class="btns"
+  type="button" (click)="onDelete(createData.id)">
    Delete </button>
 
   

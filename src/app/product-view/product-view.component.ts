@@ -55,6 +55,10 @@ export class ProductViewComponent implements OnInit {
     )
   }
 
+  onClick(id){
+    location.href = `/record/${id}`;
+  }
+
   goBack(): void {
     this.location.back();
   }

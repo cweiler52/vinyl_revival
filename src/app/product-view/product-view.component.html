@@ -36,9 +36,7 @@
 
 <div *ngFor="let item of suggestions" style="width: 33%; float: left;">
     <div class="vinyl">
-      <a routerLink="/record/{{item.id}}" routerLinkActive="active">
-        <img [src]="item.cover" class="prod-cover"/>
-      </a>
+      <img [src]="item.cover" class="prod-cover" (click)="onClick(item.id)"/>
     </div>
   {{ item.artist | uppercase }}<br>
   {{ item.album }}

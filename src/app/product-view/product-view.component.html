@@ -35,9 +35,11 @@
 </mat-sidenav-container>
 
 <div *ngFor="let item of suggestions" style="width: 33%; float: left;">
-  <div class="vinyl">
-    <img [src]="item.cover" class="prod-cover"/>
-  </div>
+    <div class="vinyl">
+      <a routerLink="/record/{{item.id}}" routerLinkActive="active">
+        <img [src]="item.cover" class="prod-cover"/>
+      </a>
+    </div>
   {{ item.artist | uppercase }}<br>
-  {{ item.album }}<br>
+  {{ item.album }}
 </div>

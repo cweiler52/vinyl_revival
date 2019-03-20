@@ -1,0 +1,29 @@
+.label {
+    width: 20%;
+    float: left;
+}
+
+img {
+    width: 60px;
+}
+
+div.full {
+    width: 80%;
+    float: left;
+}
+div.small {
+    width: 25%;
+}
+div.smallest {
+    width: 10%;
+    text-align: center;
+}
+
+textarea {
+    border: 1px solid #DDD;
+}
+
+.btns {
+    width: 100%; 
+    text-align: center;
+}

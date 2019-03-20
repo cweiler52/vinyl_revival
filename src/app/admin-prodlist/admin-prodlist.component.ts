@@ -4,6 +4,10 @@ import { DatabaseService } from '../database.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AdminCreateComponent } from '../admin-create/admin-create.component';
+import { AdminDeleteComponent } from '../admin-delete/admin-delete.component';
+import { AdminCommentsComponent } from '../admin-comments/admin-comments.component';
+//import { AdminEditComponent } from '../admin-edit/admin-edit.component';
+//import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -16,6 +20,8 @@ export class AdminProdList implements OnInit {
   createData = {};
   modalRef: BsModalRef;
   title: string;
+  // comments: [];
+  showComments = [];
 
   constructor(
     private dbService: DatabaseService,
@@ -59,7 +65,27 @@ export class AdminProdList implements OnInit {
         )
     }
   }
+
+
   
+  openDelete(id: any) {
+    this.dbService.getOneProduct(id).subscribe(
+      data => {
+              console.log(data);
+              this.openDeleteModal(id)
+            }
+    )
+  }
+
+  openDeleteModal(id) {
+    this.modalRef = this.modalService.show(AdminDeleteComponent,  {
+      initialState: {
+        title: 'Delete this product?',
+        createData: this.createData,
+      }
+    });
+  }
+
   openModal() {
     this.modalRef = this.modalService.show(AdminCreateComponent,  {
       initialState: {
@@ -69,8 +95,25 @@ export class AdminProdList implements OnInit {
     });
   }
 
-  onDelete() {
 
+  getComments(id: any) {
+    this.dbService.getCommentsAdmin(id).subscribe(
+      data => {
+              console.log(data);
+              //this.commentCnt = data.comments.length;
+              this.showComments = data;
+              this.openComments()
+            }
+    )
+  }
+
+  openComments() {
+    this.modalRef = this.modalService.show(AdminCommentsComponent,  {
+      initialState: {
+        title: 'View Comments',
+        showComments: this.showComments
+      }
+    });
   }
 
 }

@@ -19,6 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AdminProdviewComponent } from './admin-prodview/admin-prodview.component';
 import { RoutingComponents } from './app-routing.module';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
+import { AdminDeleteComponent } from './admin-delete/admin-delete.component';
+import { AdminCommentsComponent } from './admin-comments/admin-comments.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
     AdminProdviewComponent,
     NavbarComponent,
     RoutingComponents,
-    AdminEditComponent
+    AdminEditComponent,
+    AdminDeleteComponent,
+    AdminCommentsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,7 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [ LoginComponent, SignupComponent, AdminCreateComponent, AdminEditComponent ] // THESE COMPONENTS POPULATE A MODAL
+  entryComponents: [ LoginComponent, SignupComponent, AdminCreateComponent, AdminEditComponent, AdminDeleteComponent, AdminCommentsComponent ] // THESE COMPONENTS POPULATE A MODAL
 })
 
 export class AppModule { }

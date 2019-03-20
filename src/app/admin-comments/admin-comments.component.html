@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4>COMMENTS</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+  <div class="modal-body">
+<div *ngFor="let i of showComments" >
+  <div id="comment_{{i.id}}">
+    {{i.comment}}
+  <button (click)="onDelete(i.id, i.productid)">X</button>
+  </div>
+ </div>
+</div>

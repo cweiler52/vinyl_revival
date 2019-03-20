@@ -20,6 +20,7 @@ export class ProductViewComponent implements OnInit {
   newFavCnt: number;
   commentCnt: number;
   commentsArr: [];
+  suggestions: [];
   modalRef: BsModalRef;
   auth = this.dbService.getCookies();
 
@@ -38,11 +39,18 @@ export class ProductViewComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProdView(id).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.favCnt = data.favs.length;
         this.commentCnt = data.comments.length;
         this.commentsArr = data.comments;
         this.product = data;
+        // GET SUGGESTED ALBUMS
+        this.dbService.getProdSuggestions(id, data.genre).subscribe(
+          suggs => {
+            // ORDER RESULTS BY FAVS COUNT & PAR DOWN TO 3
+            this.suggestions = suggs.sort((a: any, b: any) => (a.favCount - b.favCount)).reverse().slice(0,3);
+            // console.log(this.suggestions);
+          })
       }
     )
   }

@@ -24,9 +24,26 @@
 </mat-sidenav-content>
 </mat-sidenav-container>
 
-<br>
-
-<!-- <div *ngFor="let item of suggestions">
+<mat-expansion-panel (opened)="panelOpenState = true"
+                      (closed)="panelOpenState = false" id="ep-size">
+                    
+  <mat-expansion-panel-header>
+    <mat-panel-description>
+      <button id="cmt-btn">View Comments</button>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <h3>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h3>
+  <div *ngIf="commentCnt !== 0">
+    <div *ngFor="let text of commentsArr">
+      {{text.user.name}}:
+      {{text.comment}}
+    </div>
+  </div>
+</mat-expansion-panel>
+<div *ngFor="let item of suggestions" style="width: 33%; float: left;">
+  <div class="vinyl">
+    <img [src]="item.cover" class="prod-cover"/>
+  </div>
   {{ item.artist | uppercase }}<br>
   {{ item.album }}<br>
-</div> -->
+</div>

@@ -53,6 +53,9 @@ export class DatabaseService {
   getProdView(id: number) : Observable<ProductsFC> {
     return this.http.get<ProductsFC>(`${this.dbProductsUrl}/${id}`, httpNoAuthOptions);
   }
+  getProdSuggestions(id: number, g: string) : Observable<any> {
+    return this.http.get<Products[]>(`${this.dbProductsUrl}/suggestions/${id}/${g}`, httpNoAuthOptions);
+  }
   
   getFavsHome() : Observable<Favs[]> {
     return this.http.get<Favs[]>(this.dbFavsUrl);

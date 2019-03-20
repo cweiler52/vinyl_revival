@@ -78,8 +78,7 @@ color: #114181;
    width: 20px;
    height: 20px;
    text-align: center;
-   margin-top: -2rem;
-   margin-left: 4rem;
+  margin-left: 4rem;
    cursor: pointer;
    z-index: 4;
 }

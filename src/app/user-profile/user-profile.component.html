@@ -16,7 +16,8 @@
     <button class="edit"><span>Edit Profile</span></button>
     <br>
       </div>
-<mat-grid-list cols="3" rowHeight="3:3">
+<mat-grid-list cols="3" rowHeight="4:4">
+  <h4>COLLECTION</h4>
   <mat-grid-tile *ngFor="let fav of profile.favs">
       <img [src]="fav.cover" width="90%" id="cover"/>
   </mat-grid-tile>

@@ -31,12 +31,8 @@ html{
 .prod-cover{
     width: 40vw;
     height: 65vh;
-    transition: all .2s ease-in-out;
 }
 
-.prod-cover:hover{
-   transform: scale(1.1);
-}
 
 #header-art{
    transform: rotate(-90deg);
@@ -82,4 +78,5 @@ color: #114181;
    cursor: pointer;
    z-index: 4;
 }
+
 

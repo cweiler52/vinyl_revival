@@ -1,7 +1,33 @@
-<div *ngIf="profile">
-  Name: {{ profile.user.name }}<br>
-  Email: {{ profile.user.email }}<br>
-  <div *ngFor="let fav of profile.favs">
-    {{ fav.album }}<br>
-  </div>
-</div>
+<main *ngIf="profile">
+  <section class="left">
+    <img [src]="profile.user.image" id="avatar" height="60%"/>
+    
+  </section>
+  
+  <section>
+      <h1 class="title"><span>{{ profile.user.name }}</span></h1><br>
+      <div class="color2"></div>
+    <div class="text">
+        <h2>USER PROFILE</h2>
+        <hr>
+    Name: {{profile.user.name}}<br>
+    Email: {{profile.user.email}}<br>
+    
+    <button class="edit"><span>Edit Profile</span></button>
+    <br>
+      </div>
+
+        <div class="color">
+          <h3 class="coll">COLLECTION</h3>
+          <div *ngFor="let fav of profile.favs">
+            <img [src]="fav.cover" width="20%" id="cover"/>
+          </div>
+          
+        </div>
+</section>
+
+
+
+
+
+</main>

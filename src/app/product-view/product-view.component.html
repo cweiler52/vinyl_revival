@@ -3,10 +3,12 @@
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
       <h4 class="cmt-head">COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
        <button>CREATE</button>
-      <div *ngFor="let text of product.comments" id="cmt-st">
-        <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
-        {{text.comment}} 
-       </div>
+      <div *ngIf="product">  
+        <div *ngFor="let text of product.comments" id="cmt-st">
+          <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
+            {{text.comment}} 
+        </div>
+      </div>
   </mat-sidenav>
 
   
@@ -28,14 +30,16 @@
     </mat-grid-tile>
 
   </mat-grid-list>
+
  <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
   
 </mat-sidenav-content>
 </mat-sidenav-container>
 
-
-
-<!-- <div *ngFor="let item of suggestions">
+<div *ngFor="let item of suggestions" style="width: 33%; float: left;">
+    <div class="vinyl">
+      <img [src]="item.cover" class="prod-cover" (click)="onClick(item.id)"/>
+    </div>
   {{ item.artist | uppercase }}<br>
-  {{ item.album }}<br>
-</div> -->
+  {{ item.album }}
+</div>

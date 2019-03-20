@@ -1,12 +1,15 @@
 // ANGULAR HELPERS //////////////////////////////////////////////////////////////////////
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+
 // MAIN STOREFRONT COMPONENTS //////////////////////////////////////////////////////////////////////
 import { HomepageComponent } from './homepage/homepage.component';
 import { AboutComponent } from './about/about.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 // ADMIN COMPONENTS //////////////////////////////////////////////////////////////////////
+
 import { AdminProdList } from './admin-prodlist/admin-prodlist.component';
 import { AdminUserlist } from './admin-userlist/admin-userlist.component';
 
@@ -19,7 +22,7 @@ const routes: Routes = [
   // USER PROFILE PAGE
   { path: 'user/profile', component: UserProfileComponent },
   // ADMIN PAGES
-  { path: 'admin/products', component: AdminProdList },
+  { path: 'admin/products', component: AdminProdList, canActivate: [AuthGuard] },
   { path: 'admin/users', component: AdminUserlist }
 ];
 

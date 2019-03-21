@@ -17,7 +17,7 @@
       <div id="fav" (click)="fav()">{{ favCnt }}
       </div>
       <mat-grid-tile rowspan="4" colspan="4">
-      <img [src]="product.cover" class="prod-cover"/>
+      <img [src]="product.cover" class="product-cover"/>
       <div id="pricetag">${{ product.price }}</div>
       </mat-grid-tile>
       <mat-grid-tile id="text-layout" colspan="3" rowspan="2">
@@ -35,11 +35,12 @@
   
 </mat-sidenav-content>
 </mat-sidenav-container>
-
 <div *ngFor="let item of suggestions" style="width: 33%; float: left;">
     <div class="vinyl">
       <img [src]="item.cover" class="prod-cover" (click)="onClick(item.id)"/>
     </div>
+    <div class="text-st">
   {{ item.artist | uppercase }}<br>
   {{ item.album }}
+</div>
 </div>

@@ -1,20 +1,12 @@
-/* PRODUCTS HEADER STYLE */
-.prod-header{
-    float: left;
-    margin-top: -.01rem;
-    color: #14181B;
-}
-
-/* PRODUCT SECTION STYLE */
-#back-color {
-    background-color: #f2f2f1;
-    height: 100%;
-    width: 100%;
+body{
+  height: 100%;
+  width: 100%;
 }
 
 #cover{
     list-style-type: none;
     margin: 0;
+    margin-top: 6rem;
 }
 
 #img-effects:hover{
@@ -23,19 +15,33 @@
 
 #page-btn{
    float: right;
+   margin-top: 15%;
 }
 
-#text-lay {
+.mat-raised-button{
+  background-color: rgb(17, 66, 97);
+  color: white;
+}
+
+div#text-lay {
+  width: 30%;
     margin-left: 17.5rem;
-    word-wrap: break-word;
     z-index: 3;
+    text-align: center;
 }
 
 #fav{
   margin-top: -6.5rem;
-  margin-left: -13rem;
+  margin-left: -11.8rem;
+  text-align: center;
   z-index: 4;
   position: absolute;
+  color: white;
+  border: 3px solid rgb(17, 66, 97);
+  background-color: rgb(17, 66, 97);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
 }
 
 
@@ -58,7 +64,7 @@
     left: 0;
     bottom: 0px;
     height: 12px;
-    width: 90%;
+    width: 95%;
     transform: perspective(800px) rotateX(70deg) scaleX(1.2) scaleY(0.9);
     transition: width 1s ease;
     z-index: -20;

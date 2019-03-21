@@ -1,27 +1,29 @@
 <mat-sidenav-container>
   <!-- USER Comments  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
-      <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
-      <div *ngFor="let text of product.comments" id="cmt-st">
-        <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
-        {{text.comment}}
-       </div>
+    <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
+    <mat-expansion-panel id="cmt-st">
+      <mat-expansion-panel-header *ngFor="let text of product.comments">
+        <mat-panel-title id="cmt-name-st"><b>{{text.user.name}}:</b></mat-panel-title>
+        <mat-panel-description>{{text.comment}}</mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
   </mat-sidenav>
 
-<mat-sidenav-content>
-  <div class="grid-container" *ngIf="product">
-    <div class="vinyl">
-      <img [src]="product.cover" class="prod-cover"/>
+  <mat-sidenav-content>
+    <div class="grid-container" *ngIf="product">
+      <div class="vinyl">
+        <img [src]="product.cover" class="prod-cover" />
+      </div>
+      <div id="fav" (click)="fav()">{{ favCnt }}</div>
+      <div id="text-layout"> {{product.artist | uppercase }}<br>
+        {{ product.album }}<br>
+        {{product.desc}}<br>
+        ${{ product.price }}<br>
+        <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
+      </div>
     </div>
-    <div id="fav" (click)="fav()">{{ favCnt }}</div>
-    <div id="text-layout"> {{product.artist | uppercase }}<br>
-      {{ product.album }}<br>
-      {{product.desc}}<br>
-      ${{ product.price }}<br>
-      <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
-    </div>
-  </div>
-</mat-sidenav-content>
+  </mat-sidenav-content>
 </mat-sidenav-container>
 
 <br>

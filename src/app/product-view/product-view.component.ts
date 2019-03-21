@@ -65,21 +65,23 @@ export class ProductViewComponent implements OnInit {
 
   fav(): void {
     if(this.auth.is_loggedin){
-      const pid = +this.route.snapshot.paramMap.get('id');
-
+      const pid: number = +this.route.snapshot.paramMap.get('id');
+      // console.log(parseInt(this.auth.user_id), pid);
       this.dbService.favVinyl(parseInt(this.auth.user_id), pid)
         .subscribe(
           data => { 
+            // console.log('add');
             // console.log(data);
             let fCnt = document.getElementById('fav').innerHTML;
             this.newFavCnt = parseInt(fCnt)+1;
             document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
           },
           (err) => {
-            if (err.error.message === "SequelizeUniqueConstraintError") { 
+            if (err.error.name === "SequelizeUniqueConstraintError") { 
               this.dbService.favRemove(parseInt(this.auth.user_id), pid)
                 .subscribe(
                   data => { 
+                    // console.log('remove');
                     // console.log(data);
                     let fCnt = document.getElementById('fav').innerHTML;
                     this.newFavCnt = parseInt(fCnt)-1;

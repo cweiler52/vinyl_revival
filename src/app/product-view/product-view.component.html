@@ -37,7 +37,7 @@
 </mat-sidenav-container>
 <div *ngFor="let item of suggestions" style="width: 33%; float: left;">
     <div class="vinyl">
-      <img [src]="item.cover" class="prod-cover" (click)="onClick(item.id)"/>
+      <img [src]="item.cover" class="prod-cover" (click)="onSuggestedClick(item.id)"/>
     </div>
     <div class="text-st">
   {{ item.artist | uppercase }}<br>

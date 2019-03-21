@@ -27,6 +27,7 @@
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
     "material-design-icons": "^3.0.1",
+    "ng-simple-slideshow": "^1.2.8",
     "ngx-bootstrap": "^3.0.0",
     "ngx-pagination": "^3.2.1",
     "rxjs": "~6.3.3",

@@ -1,5 +1,18 @@
 
- <mat-grid-list cols="2" rowHeight="3:1" gutterSize="1px">
+ 
+ 
+ <div>
+    <slideshow [height]="height"
+    [minHeight]="'525px'"
+    [autoPlay]="true"
+    [showArrows]="false"
+    [imageUrls]="imageSources"  
+    [lazyLoad]="imageSources?.length > 1"
+    [autoPlayWaitForLazyLoad]="true">
+</slideshow>
+ </div>
+ 
+ <!-- <mat-grid-list cols="2" rowHeight="3:1" gutterSize="1px">
    <mat-grid-tile colspan="2" rowspan="2">
      <img src="../../assets/vinylstore.jpg"/>
    </mat-grid-tile>
@@ -9,7 +22,7 @@
    <mat-grid-tile rowspan="4">
      <img src="../../assets/vinyl.jpeg"/>
    </mat-grid-tile>
- </mat-grid-list>
+ </mat-grid-list> -->
 
 
 <!-- PRODUCT LIST ROUTE -->

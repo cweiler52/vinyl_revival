@@ -8,7 +8,7 @@
      {{ item.album }}<br>
      {{item.genre}}<br>
      <br>
-      <button mat-raised-button>View Vinyl</button>
+     <a routerLink="/record/{{item.id}}" routerLinkActive="active"><button mat-raised-button>View Vinyl</button></a>
     </div>
     </mat-grid-tile>
 

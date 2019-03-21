@@ -39,7 +39,7 @@ export class ProductViewComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProdView(id).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.favCnt = data.favs.length;
         this.commentCnt = data.comments.length;
         this.commentsArr = data.comments;
@@ -49,7 +49,7 @@ export class ProductViewComponent implements OnInit {
           suggs => {
             // ORDER RESULTS BY FAVS COUNT & PAR DOWN TO 3
             this.suggestions = suggs.sort((a: any, b: any) => (a.favCount - b.favCount)).reverse().slice(0,3);
-            console.log(this.suggestions);
+            // console.log(this.suggestions);
           })
       }
     )
@@ -66,18 +66,26 @@ export class ProductViewComponent implements OnInit {
   fav(): void {
     if(this.auth.is_loggedin){
       const pid = +this.route.snapshot.paramMap.get('id');
-      //console.log(parseInt(this.auth.user_id), pid);
+
       this.dbService.favVinyl(parseInt(this.auth.user_id), pid)
         .subscribe(
           data => { 
-            console.log(data);
-            this.newFavCnt = this.favCnt+1;
-            console.log('newFavCnt: '+this.newFavCnt);
+            // console.log(data);
+            let fCnt = document.getElementById('fav').innerHTML;
+            this.newFavCnt = parseInt(fCnt)+1;
             document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
           },
           (err) => {
             if (err.error.message === "SequelizeUniqueConstraintError") { 
-              alert('Nice! This album is already in your favs list!');
+              this.dbService.favRemove(parseInt(this.auth.user_id), pid)
+                .subscribe(
+                  data => { 
+                    // console.log(data);
+                    let fCnt = document.getElementById('fav').innerHTML;
+                    this.newFavCnt = parseInt(fCnt)-1;
+                    document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
+                  }
+                )
             }else{
               console.log(err);
             }

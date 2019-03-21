@@ -91,6 +91,9 @@ export class DatabaseService {
   favVinyl(uid, pid) {
     return this.http.post<any>( `${this.dbFavsUrl}/save`, { user_id: uid, product_id: pid }, httpOptions)
   }
+  favRemove(uid, pid) {
+    return this.http.post<any>( `${this.dbFavsUrl}/remove`, { user_id: uid, product_id: pid }, httpOptions)
+  }
 
   loginUser(user) {
     return this.http.post<any>(this.dbLogUrl, user)

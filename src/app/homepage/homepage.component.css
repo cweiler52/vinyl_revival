@@ -2,6 +2,22 @@
     background-size: cover;
 }
 
+#color{
+    background-color: rgba(27, 109, 177, 0.692);
+    margin-top: 5rem;
+    height: 90vh;
+    width: 100vw;
+    z-index: 5;
+    opacity: .80;
+}
+
+#header{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    z-index: 40;
+}
+
 /* mat-grid-list{
     background-color:teal;
 } */

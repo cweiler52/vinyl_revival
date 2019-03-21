@@ -6,9 +6,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AdminCreateComponent } from '../admin-create/admin-create.component';
 import { AdminDeleteComponent } from '../admin-delete/admin-delete.component';
 import { AdminCommentsComponent } from '../admin-comments/admin-comments.component';
-//import { AdminEditComponent } from '../admin-edit/admin-edit.component';
-//import { ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-admin-prodlist',

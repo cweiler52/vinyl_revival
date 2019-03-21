@@ -1,6 +1,10 @@
 {
   "name": "vinylrevival",
   "version": "0.0.0",
+  "engines": {
+    "node": "10.15.0",
+    "npm": "6.8.0"
+  },
   "scripts": {
     "ng": "ng",
     "build": "ng build",

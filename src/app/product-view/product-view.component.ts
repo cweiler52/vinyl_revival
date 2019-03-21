@@ -55,7 +55,7 @@ export class ProductViewComponent implements OnInit {
     )
   }
 
-  onClick(id){
+  onSuggestedClick(id){
     location.href = `/record/${id}`;
   }
 

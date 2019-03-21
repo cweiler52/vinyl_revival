@@ -1,0 +1,83 @@
+
+html{
+   height: 100%;
+   width: 100%;
+}
+
+ mat-sidenav-content{
+    width: 100%;
+    height: 100%;
+ }
+
+ 
+ #text-layout{
+    height: 25%;
+    width: 45%;
+    font-size: calc(0.06 * (100vh - 140px));
+    letter-spacing: calc(0.03 * (100vh - 140px));
+ }
+
+ 
+ #side-nav{
+    background: white;
+    width: 35vw;
+ }
+
+  
+
+
+/* PRODUCT STYLE */
+
+.prod-cover{
+    width: 40vw;
+    height: 65vh;
+    cursor: pointer;
+}
+
+
+#header-art{
+   transform: rotate(-90deg);
+   position: relative;
+   margin: 0;
+   margin-left: 9rem;
+}
+
+#pricetag{
+   background-color: teal;
+   width: 20%;
+   position: relative;
+   text-align: center;
+   margin-left: -8rem;
+   margin-top: 30rem;
+   z-index: 4;
+}
+
+
+/* COMMENT STYLES */
+
+.cmt-head{
+   text-align: left;
+   margin-left: 2rem;
+}
+
+
+
+#cmt-name-st{
+color: #114181;
+}
+
+.trans {
+   border: transparent;
+   background-color: transparent;
+}
+
+#fav {
+   width: 20px;
+   height: 20px;
+   text-align: center;
+  margin-left: 4rem;
+   cursor: pointer;
+   z-index: 4;
+}
+
+

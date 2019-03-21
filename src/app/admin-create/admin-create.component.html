@@ -1,0 +1,64 @@
+<div class="modal-header">
+  <h4 class="modal-title pull left"> {{title}} </h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+<form>
+
+  <label for="artist">Artist:</label>
+  <input class="full"
+  [(ngModel)]="createData.artist"
+  type="text"
+  name="artist"
+  required><br>
+
+  <label for="album">Album:</label>
+  <input class="full"
+  [(ngModel)]="createData.album"
+  type="text"
+  name="album"
+  required><br>
+
+  <label for="cover">Cover Art:</label>
+  <input class="full"
+  [(ngModel)]="createData.cover"
+  type="text"
+  name="cover"
+  required><br>
+
+  <label for="cover_art"></label>
+  <img *ngIf="createData.id" [src]="createData.cover" /><br><br>
+
+  <label for="price">Price:</label>
+  <input class="smallest"
+  [(ngModel)]="createData.price"
+  type="text"
+  name="price"
+  required><br>
+  
+  <div style="vertical-align: top; width: 20%; float: left;" for="desc">Description:</div>
+  <textarea
+  [(ngModel)]="createData.desc"
+  name="desc"
+  cols="43"
+  rows="8"
+  required>{{createData.desc}}</textarea><br>
+
+  <label for="genre">Genre:</label>
+  <input class="small"
+  [(ngModel)]="createData.genre"
+  type="text"
+  name="genre"
+  required><br>
+
+  <br>
+  <div class="btns">
+    <button *ngIf="!createData.id" type="button" (click)="onCreate()"> Submit </button>
+    <button *ngIf="createData.id" type="button" (click)="onEdit(createData.id)"> Update </button>
+  </div>
+
+</form>
+</div>

@@ -88,11 +88,11 @@ export class DatabaseService {
     return this.http.put<any>( `${this.dbProductsUrl}/${id}`, product, httpOptions )
   }
 
-  favVinyl(uid, pid) {
+  favVinyl(uid: number, pid: number) {
     return this.http.post<any>( `${this.dbFavsUrl}/save`, { user_id: uid, product_id: pid }, httpOptions)
   }
-  favRemove(uid, pid) {
-    return this.http.post<any>( `${this.dbFavsUrl}/remove`, { user_id: uid, product_id: pid }, httpOptions)
+  favRemove(uid: number, pid: number) {
+    return this.http.delete<any>( `${this.dbFavsUrl}/${uid}/${pid}`, httpOptions)
   }
 
   loginUser(user) {

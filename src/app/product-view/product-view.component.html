@@ -44,9 +44,10 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<br>
-
-<!-- <div *ngFor="let item of suggestions">
+<div *ngFor="let item of suggestions" style="width: 33%; float: left;">
+    <div class="vinyl">
+      <img [src]="item.cover" class="prod-cover" (click)="onClick(item.id)"/>
+    </div>
   {{ item.artist | uppercase }}<br>
-  {{ item.album }}<br>
-</div> -->
+  {{ item.album }}
+</div>

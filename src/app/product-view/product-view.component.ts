@@ -48,8 +48,19 @@ export class ProductViewComponent implements OnInit {
         this.commentCnt = data.comments.length;
         this.commentsArr = data.comments;
         this.product = data;
+        // GET SUGGESTED ALBUMS
+        this.dbService.getProdSuggestions(id, data.genre).subscribe(
+          suggs => {
+            // ORDER RESULTS BY FAVS COUNT & PAR DOWN TO 3
+            this.suggestions = suggs.sort((a: any, b: any) => (a.favCount - b.favCount)).reverse().slice(0,3);
+            console.log(this.suggestions);
+          })
       }
     )
+  }
+
+  onClick(id){
+    location.href = `/record/${id}`;
   }
 
   goBack(): void {
@@ -59,7 +70,8 @@ export class ProductViewComponent implements OnInit {
   fav(): void {
     if(this.auth.is_loggedin){
       const pid = +this.route.snapshot.paramMap.get('id');
-      this.dbService.favVinyl(this.auth.user_id, pid)
+      //console.log(parseInt(this.auth.user_id), pid);
+      this.dbService.favVinyl(parseInt(this.auth.user_id), pid)
         .subscribe(
           data => { 
             console.log(data);

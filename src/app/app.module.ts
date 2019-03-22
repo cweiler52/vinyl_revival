@@ -19,6 +19,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RoutingComponents } from './app-routing.module';
 import { AdminDeleteComponent } from './admin-delete/admin-delete.component';
 import { AdminCommentsComponent } from './admin-comments/admin-comments.component';
+import { SlideshowModule } from "ng-simple-slideshow";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { AdminCommentsComponent } from './admin-comments/admin-comments.componen
     MaterialModule,
     NgxPaginationModule, 
     ModalModule.forRoot(),
-    MatExpansionModule,
+    SlideshowModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

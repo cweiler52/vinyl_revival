@@ -1,54 +1,46 @@
 <mat-sidenav-container>
   <!-- USER Comments  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
-    <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
-    <button (click)="viewToggle()">Add a Comment</button>
-    <div *ngIf="commentView === true">
-      <form>
-        <input type="text" [(ngModel)]="commentData" name="comment">
-        <button type="submit" (click)="onCreate()">Post</button>
-      </form>
-    </div>
-    <div *ngIf="product.comments">
-      <div *ngFor="let text of product.comments"  id="cmt-st">
-        <div id="comment_{{text.id}}">
+      <h4 class="cmt-head">COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
+       <button>CREATE</button>
+      <div *ngIf="product">  
+        <div *ngFor="let text of product.comments" id="cmt-st">
           <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
-          {{text.comment}}
-          <button *ngIf="text.userid == editCheck()" (click)="editToggle(text.id)">Edit</button>
-          <button *ngIf="text.userid == editCheck()" (click)="onDelete(text.id)">X</button>
+            {{text.comment}} 
         </div>
-        <div class="hidden" id="comment_edit_{{text.id}}">
-          
-              <input type="text" [(ngModel)]="commentData" name="comment" ng-value="text.comment">
-              <button type="submit" (click)="onEdit(text.id)">Post</button>
-          
-        </div>  
       </div>
-      
-    </div>
   </mat-sidenav>
 
-  <mat-sidenav-content>
-    <div class="grid-container" *ngIf="product">
-      <div class="vinyl">
-        <img [src]="product.cover" class="prod-cover" />
+  
+  <mat-sidenav-content *ngIf="product">
+    <mat-grid-list cols="8">
+      <div id="fav" (click)="fav()">{{ favCnt }}
       </div>
-      <div id="fav" (click)="fav()">{{ favCnt }}</div>
-      <div id="text-layout"> {{product.artist | uppercase }}<br>
-        {{ product.album }}<br>
-        {{product.desc}}<br>
-        ${{ product.price }}<br>
-        <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
-      </div>
-    </div>
-  </mat-sidenav-content>
+      <mat-grid-tile rowspan="4" colspan="4">
+      <img [src]="product.cover" class="product-cover"/>
+      <div id="pricetag">${{ product.price }}</div>
+      </mat-grid-tile>
+      <mat-grid-tile id="text-layout" colspan="3" rowspan="2">
+      {{product.artist | uppercase }}
+    </mat-grid-tile>
+      <br>
+    <mat-grid-tile colspan="3" rowspan="1">
+      {{ product.album }}<br>
+      {{product.desc}}
+    </mat-grid-tile>
 
+  </mat-grid-list>
+
+ <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
+  
+</mat-sidenav-content>
 </mat-sidenav-container>
-
 <div *ngFor="let item of suggestions" style="width: 33%; float: left;">
     <div class="vinyl">
       <img [src]="item.cover" class="prod-cover" (click)="onSuggestedClick(item.id)"/>
     </div>
+    <div class="text-st">
   {{ item.artist | uppercase }}<br>
   {{ item.album }}
+</div>
 </div>

@@ -28,7 +28,7 @@ html{
 
 /* PRODUCT STYLE */
 
-.prod-cover{
+.product-cover{
     width: 40vw;
     height: 65vh;
     cursor: pointer;
@@ -70,7 +70,7 @@ color: #114181;
    display: none;
 }
 
-#fav {
+div #fav {
    width: 20px;
    height: 20px;
    text-align: center;
@@ -79,4 +79,15 @@ color: #114181;
    z-index: 4;
 }
 
+
+/* SUGGESTED COVER */
+.prod-cover{
+   width: 23vw;
+   height: 35vh;
+   margin-left: 4rem;
+}
+
+.text-st{
+   margin-left: 4rem;
+}
 

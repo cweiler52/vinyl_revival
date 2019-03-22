@@ -11,6 +11,7 @@ import { DOCUMENT } from '@angular/common'
 })
 export class AdminCommentsComponent implements OnInit {
   comments: Comments;
+  showComments: any;
 
   constructor(
     private dbService: DatabaseService,

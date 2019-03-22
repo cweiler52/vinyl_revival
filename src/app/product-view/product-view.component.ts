@@ -19,8 +19,9 @@ export class ProductViewComponent implements OnInit {
   favCnt: number;
   newFavCnt: number;
   commentCnt: number;
-  commentsArr: [];
-  suggestions: [];
+  commentsArr: any;
+  suggestions: any;
+  opened: any;
   modalRef: BsModalRef;
   auth = this.dbService.getCookies();
 

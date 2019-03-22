@@ -8,7 +8,8 @@ import { DatabaseService } from '../database.service';
   styleUrls: ['./admin-delete.component.css']
 })
 export class AdminDeleteComponent implements OnInit {
-createData = {}
+  createData: any;
+
   constructor(
     private dbService: DatabaseService,
     public modalRef: BsModalRef

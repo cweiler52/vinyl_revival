@@ -9,8 +9,8 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./admin-create.component.css']
 })
 export class AdminCreateComponent implements OnInit {
-  products = [];
-  createData = {}
+  products: any;
+  createData: any;
 
   constructor(
     private dbService: DatabaseService,

@@ -13,12 +13,12 @@ import { AdminCommentsComponent } from '../admin-comments/admin-comments.compone
   styleUrls: ['./admin-prodlist.component.css']
 })
 export class AdminProdList implements OnInit {
-  products = [];
+  products: any;
   createData = {};
   modalRef: BsModalRef;
   title: string;
   // comments: [];
-  showComments = [];
+  showComments: any;
 
   constructor(
     private dbService: DatabaseService,

@@ -2,12 +2,30 @@
   <!-- USER Comments  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
     <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
-    <mat-expansion-panel id="cmt-st">
-      <mat-expansion-panel-header *ngFor="let text of product.comments">
-        <mat-panel-title id="cmt-name-st"><b>{{text.user.name}}:</b></mat-panel-title>
-        <mat-panel-description>{{text.comment}}</mat-panel-description>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
+    <button (click)="viewToggle()">Add a Comment</button>
+    <div *ngIf="commentView === true">
+      <form>
+        <input type="text" [(ngModel)]="commentData" name="comment">
+        <button type="submit" (click)="onCreate()">Post</button>
+      </form>
+    </div>
+    <div *ngIf="product.comments">
+      <div *ngFor="let text of product.comments"  id="cmt-st">
+        <div id="comment_{{text.id}}">
+          <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
+          {{text.comment}}
+          <button *ngIf="text.userid == editCheck()" (click)="editToggle(text.id)">Edit</button>
+          <button *ngIf="text.userid == editCheck()" (click)="onDelete(text.id)">X</button>
+        </div>
+        <div class="hidden" id="comment_edit_{{text.id}}">
+          
+              <input type="text" [(ngModel)]="commentData" name="comment" ng-value="text.comment">
+              <button type="submit" (click)="onEdit(text.id)">Post</button>
+          
+        </div>  
+      </div>
+      
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content>

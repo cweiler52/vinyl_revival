@@ -20,6 +20,7 @@ import { RoutingComponents } from './app-routing.module';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { AdminDeleteComponent } from './admin-delete/admin-delete.component';
 import { AdminCommentsComponent } from './admin-comments/admin-comments.component';
+import { MatExpansionPanel, MatExpansionPanelTitle, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanelContent, MatExpansionModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AdminCommentsComponent } from './admin-comments/admin-comments.componen
     FormsModule,
     MaterialModule,
     NgxPaginationModule, 
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

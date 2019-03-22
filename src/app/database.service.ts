@@ -33,6 +33,7 @@ export class DatabaseService {
   private dbProductsUrl = `${APIURL}/api/products`;
   private dbFavsUrl = `${APIURL}/api/favs`;
   private dbCommentsUrl = `${APIURL}/api/comments`;
+  private dbCommentUrl = `${APIURL}/api/comment`;
   private auth: Auth;
 
   constructor(
@@ -66,9 +67,16 @@ export class DatabaseService {
     return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
   } 
 
+  createComment(uid: number, pid: number, comment: string) : Observable<any> {
+    return this.http.post<any>(`${this.dbCommentUrl}/add`, {user_id: uid, product_id: pid, comment:comment}, httpOptions)
+  }
+
+  editComment(id: any, comment: string) : Observable<any> {
+    return this.http.put<any>(`${this.dbCommentUrl}/${id}`, {comment: comment}, httpOptions)
+  }
+
   deleteComment(id: any) : Observable<any> {
-    const deleteCommentsUrl = `${this.dbCommentsUrl}/${id}`
-    return this.http.delete<any>(deleteCommentsUrl, httpOptions)
+    return this.http.delete<any>(`${this.dbCommentUrl}/${id}`, httpOptions)
   }
 
   deleteVinyl(id: any) : Observable<Products> {

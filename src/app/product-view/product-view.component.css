@@ -65,6 +65,9 @@
 color: #114181;
 }
 
+.hidden{
+   display: none;
+}
 
 #fav {
    width: 20px;

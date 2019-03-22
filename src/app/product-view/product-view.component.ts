@@ -24,6 +24,11 @@ export class ProductViewComponent implements OnInit {
   opened: any;
   modalRef: BsModalRef;
   auth = this.dbService.getCookies();
+  addOpen: boolean = false;
+  commentView: boolean = false;
+  editView: boolean = false;
+  commentData: string;
+  style: string;
 
   constructor(
     private dbService: DatabaseService,
@@ -108,4 +113,52 @@ export class ProductViewComponent implements OnInit {
       }
     });
   }
+
+  editCheck(){
+      return this.auth.user_id
+    }
+    
+    editToggle(id){
+      document.getElementById(`comment_edit_${id}`).style.display = "block";
+    }
+    
+    viewToggle(){
+      const _commentView = !this.commentView;
+      this.commentView = _commentView
+    }
+
+    onCreate() {
+      const uid = this.auth.user_id;
+      const pid = +this.route.snapshot.paramMap.get('id');
+      this.dbService.createComment(parseInt(uid), pid, this.commentData)
+        .subscribe(
+          res => console.log(res),
+          err => console.log(err)
+        )
+    }
+
+    onEdit(id: number) {
+      this.dbService.editComment(id, this.commentData)
+        .subscribe(
+          res => console.log(res),
+          err => console.log(err)
+        )
+    }
+
+    onDelete(id: number) {
+    this.dbService.deleteComment(id)
+      .subscribe(
+        res => {
+          document.getElementById(`comment_${id}`).style.display = "none";
+          console.log(res)
+          //this.dbService.getOneProduct(pid).subscribe(
+            //data => {
+                    //console.log(data);
+             //     }
+          //)
+        },
+        err => console.log(err),
+      )
+  }
+  
 }

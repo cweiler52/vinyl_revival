@@ -66,6 +66,9 @@ html{
 color: #114181;
 }
 
+.hidden{
+   display: none;
+
 .trans {
    border: transparent;
    background-color: transparent;
@@ -75,7 +78,7 @@ color: #114181;
    width: 20px;
    height: 20px;
    text-align: center;
-  margin-left: 4rem;
+   margin-left: 4rem;
    cursor: pointer;
    z-index: 4;
 }

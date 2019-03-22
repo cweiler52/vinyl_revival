@@ -11,6 +11,7 @@ import { DOCUMENT } from '@angular/common';
 export class AdminCreateComponent implements OnInit {
   products: any;
   createData: any;
+  title: string;
 
   constructor(
     private dbService: DatabaseService,

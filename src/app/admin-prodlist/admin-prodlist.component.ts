@@ -14,10 +14,9 @@ import { AdminCommentsComponent } from '../admin-comments/admin-comments.compone
 })
 export class AdminProdList implements OnInit {
   products: any;
-  createData = {};
+  createData: any;
   modalRef: BsModalRef;
   title: string;
-  // comments: [];
   showComments: any;
 
   constructor(
@@ -31,7 +30,6 @@ export class AdminProdList implements OnInit {
   getAllProducts() {
     this.dbService.getProducts().subscribe(
       data => { 
-        // console.log(data);
         this.products = data;
       }
     )
@@ -39,7 +37,7 @@ export class AdminProdList implements OnInit {
 
   openCreate(id: any) {
     
-      if (id === undefined){
+      if (!id){
         this.title = 'Add Product'
         this.createData = {
           album: null,
@@ -55,7 +53,6 @@ export class AdminProdList implements OnInit {
         this.title = 'Edit Product'
         this.dbService.getOneProduct(id).subscribe(
         data => {
-                // console.log(data);
                 this.createData = data;
                 this.openModal();
               }
@@ -74,7 +71,7 @@ export class AdminProdList implements OnInit {
     )
   }
 
-  openDeleteModal(id) {
+  openDeleteModal(id: any) {
     this.modalRef = this.modalService.show(AdminDeleteComponent,  {
       initialState: {
         title: 'Delete this product?',

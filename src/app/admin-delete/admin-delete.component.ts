@@ -18,7 +18,7 @@ export class AdminDeleteComponent implements OnInit {
   ngOnInit() {
   }
 
-  onDelete(id) {
+  onDelete(id: any) {
     this.dbService.deleteVinyl(id)
       .subscribe(
         res => {

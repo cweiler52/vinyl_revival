@@ -11,7 +11,7 @@ export class AdminDeleteComponent implements OnInit {
 createData = {}
   constructor(
     private dbService: DatabaseService,
-    private modalRef: BsModalRef
+    public modalRef: BsModalRef
   ) { }
 
   ngOnInit() {

@@ -14,7 +14,7 @@ export class AdminCreateComponent implements OnInit {
 
   constructor(
     private dbService: DatabaseService,
-    private modalRef: BsModalRef,
+    public modalRef: BsModalRef,
     @Inject(DOCUMENT) document) { }
 
   ngOnInit() {

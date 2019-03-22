@@ -20,6 +20,8 @@ export class ProductViewComponent implements OnInit {
   newFavCnt: number;
   commentCnt: number;
   commentsArr: any;
+  suggestions: any;
+  opened: any;
   modalRef: BsModalRef;
   auth = this.dbService.getCookies();
   addOpen: boolean = false;
@@ -135,7 +137,7 @@ export class ProductViewComponent implements OnInit {
         )
     }
 
-    onEdit(id: any) {
+    onEdit(id: number) {
       this.dbService.editComment(id, this.commentData)
         .subscribe(
           res => console.log(res),
@@ -143,7 +145,7 @@ export class ProductViewComponent implements OnInit {
         )
     }
 
-    onDelete(id: any) {
+    onDelete(id: number) {
     this.dbService.deleteComment(id)
       .subscribe(
         res => {
@@ -159,9 +161,4 @@ export class ProductViewComponent implements OnInit {
       )
   }
   
-  }
-  // editCheck(){
-  //   if (sessionStorage.uid !== this.auth.user_id){
-  //     const editable = false
-  //   }
-  // };
+}

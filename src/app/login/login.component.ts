@@ -8,8 +8,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginUserData = {}
-  title;
+  loginUserData: any
+  title: string;
   constructor(
     private dbService: DatabaseService,
     public modalRef: BsModalRef) { }

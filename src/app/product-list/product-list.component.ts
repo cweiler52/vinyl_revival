@@ -7,8 +7,8 @@ import { DatabaseService } from '../database.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products = [];
-
+  products: any;
+  p: number;
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {

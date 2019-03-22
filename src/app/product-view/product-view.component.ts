@@ -19,10 +19,17 @@ export class ProductViewComponent implements OnInit {
   favCnt: number;
   newFavCnt: number;
   commentCnt: number;
-  commentsArr: [];
-  suggestions: [];
+  commentsArr: any;
+  suggestions: any;
+  opened: any;
   modalRef: BsModalRef;
   auth = this.dbService.getCookies();
+  addOpen: boolean = false;
+  commentView: boolean = false;
+  editView: boolean = false;
+  commentData: string;
+  style: string;
+  suggestions: string;
 
   constructor(
     private dbService: DatabaseService,
@@ -65,21 +72,23 @@ export class ProductViewComponent implements OnInit {
 
   fav(): void {
     if(this.auth.is_loggedin){
-      const pid = +this.route.snapshot.paramMap.get('id');
-
+      const pid: number = +this.route.snapshot.paramMap.get('id');
+      // console.log(parseInt(this.auth.user_id), pid);
       this.dbService.favVinyl(parseInt(this.auth.user_id), pid)
         .subscribe(
           data => { 
+            // console.log('add');
             // console.log(data);
             let fCnt = document.getElementById('fav').innerHTML;
             this.newFavCnt = parseInt(fCnt)+1;
             document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
           },
           (err) => {
-            if (err.error.message === "SequelizeUniqueConstraintError") { 
+            if (err.error.name === "SequelizeUniqueConstraintError") { 
               this.dbService.favRemove(parseInt(this.auth.user_id), pid)
                 .subscribe(
                   data => { 
+                    // console.log('remove');
                     // console.log(data);
                     let fCnt = document.getElementById('fav').innerHTML;
                     this.newFavCnt = parseInt(fCnt)-1;
@@ -105,4 +114,52 @@ export class ProductViewComponent implements OnInit {
       }
     });
   }
+
+  editCheck(){
+      return this.auth.user_id
+    }
+    
+    editToggle(id){
+      document.getElementById(`comment_edit_${id}`).style.display = "block";
+    }
+    
+    viewToggle(){
+      const _commentView = !this.commentView;
+      this.commentView = _commentView
+    }
+
+    onCreate() {
+      const uid = this.auth.user_id;
+      const pid = +this.route.snapshot.paramMap.get('id');
+      this.dbService.createComment(parseInt(uid), pid, this.commentData)
+        .subscribe(
+          res => console.log(res),
+          err => console.log(err)
+        )
+    }
+
+    onEdit(id: number) {
+      this.dbService.editComment(id, this.commentData)
+        .subscribe(
+          res => console.log(res),
+          err => console.log(err)
+        )
+    }
+
+    onDelete(id: number) {
+    this.dbService.deleteComment(id)
+      .subscribe(
+        res => {
+          document.getElementById(`comment_${id}`).style.display = "none";
+          console.log(res)
+          //this.dbService.getOneProduct(pid).subscribe(
+            //data => {
+                    //console.log(data);
+             //     }
+          //)
+        },
+        err => console.log(err),
+      )
+  }
+  
 }

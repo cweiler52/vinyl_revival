@@ -8,8 +8,7 @@ import { DatabaseService } from '../database.service';
 })
 export class ProductListComponent implements OnInit {
   products = [];
-  favs = [];
-  comments = [];
+
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {
@@ -19,28 +18,10 @@ export class ProductListComponent implements OnInit {
   getAllProducts() {
     this.dbService.getProductsHome().subscribe(
       data => { 
-        console.log(data);
+        //console.log(data);
         this.products = data;
       }
     )
-  }
-  
-  // getAllFavs() {
-  //   this.dbService.getFavsHome().subscribe(
-  //     data => { 
-  //       console.log(data);
-  //       this.products = data;
-  //     }
-  //   )
-  // }
-
-  // getAllComments() {
-  //   this.dbService.getCommentsHome().subscribe(
-  //     data => { 
-  //       console.log(data);
-  //       this.products = data;
-  //     }
-  //   )
-  // }  
+  }  
 
 }

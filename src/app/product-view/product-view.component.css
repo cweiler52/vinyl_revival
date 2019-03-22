@@ -1,65 +1,66 @@
-.grid-container {
-    display: grid;
-    grid-column-gap: 5px;
-    margin-top: 3rem;
+
+html{
+   height: 100%;
+   width: 100%;
+}
+
+ mat-sidenav-content{
+    width: 100%;
+    height: 100%;
  }
- 
- .vinyl {
-    grid-column: 2fr;
-    grid-column-start: 5;
- }
+
  
  #text-layout{
-    grid-column: 5;
-    grid-column-start: 12;
-    height: 50%;
-    width: 70%;
+    height: 25%;
+    width: 45%;
+    font-size: calc(0.06 * (100vh - 140px));
+    letter-spacing: calc(0.03 * (100vh - 140px));
  }
+
  
  #side-nav{
     background: white;
-    width: 25vw;
+    width: 35vw;
  }
- #ep-size{
- height: 10%;
- overflow: scroll;
- }
- 
+
   
 
 
 /* PRODUCT STYLE */
 
 .prod-cover{
-    width: 25vw;
-    transition: all .2s ease-in-out;
+    width: 40vw;
+    height: 65vh;
+    cursor: pointer;
 }
 
-.prod-cover:hover{
-   transform: scale(1.1);
-}
 
 #header-art{
    transform: rotate(-90deg);
    position: relative;
    margin: 0;
    margin-left: 9rem;
-   
+}
+
+#pricetag{
+   background-color: teal;
+   width: 20%;
+   position: relative;
+   text-align: center;
+   margin-left: -8rem;
+   margin-top: 30rem;
+   z-index: 4;
 }
 
 
-
-/* #price-st{
- width: 22%;
- border: 2px solid lightblue;
- background-color: lightblue;
- border-radius: 70%;
- text-align: center;
- font-size: 4rem;
-} */
-
-
 /* COMMENT STYLES */
+
+.cmt-head{
+   text-align: left;
+   margin-left: 2rem;
+}
+
+
 
 #cmt-name-st{
 color: #114181;
@@ -67,13 +68,19 @@ color: #114181;
 
 .hidden{
    display: none;
+
+.trans {
+   border: transparent;
+   background-color: transparent;
 }
 
 #fav {
    width: 20px;
    height: 20px;
    text-align: center;
-   /* padding-top: 5px; */
-   border: 1px solid red;
+   margin-left: 4rem;
    cursor: pointer;
+   z-index: 4;
 }
+
+

@@ -42,10 +42,10 @@ export class AdminCreateComponent implements OnInit {
             document.getElementById(`crud-action_${id}`).innerHTML = 'updated';
             setTimeout(() => {
               document.getElementById(`crud-action_${id}`).innerHTML = '';
-            }, 4000);
+            }, 3000);
             setTimeout(() => {
               location.href = window.location.href
-            }, 5000);
+            }, 3500);
           }
         },
         err => console.log(err)

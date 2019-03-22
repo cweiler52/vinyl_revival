@@ -38,56 +38,47 @@ export class DatabaseService {
   constructor(
     private http: HttpClient) { }
 
-  getProducts() : Observable<Products[]> {
-    return this.http.get<Products[]>(this.dbProductsUrl, httpOptions);
-  }
-  
-  getOneProduct(id) : Observable<Products[]> {
-    return this.http.get<Products[]>(`${this.dbProductsUrl}/${id}`, httpOptions);
-  }
-
+  // PRODUCTS //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   getProductsHome() : Observable<Products[]> {
     return this.http.get<Products[]>(this.dbProductsUrl);
   }
-
+  getProducts() : Observable<Products[]> {
+    return this.http.get<Products[]>(this.dbProductsUrl, httpOptions);
+  }
+  getOneProduct(id: number) : Observable<Products[]> {
+    return this.http.get<Products[]>(`${this.dbProductsUrl}/${id}`, httpOptions);
+  }
   getProdView(id: number) : Observable<ProductsFC> {
     return this.http.get<ProductsFC>(`${this.dbProductsUrl}/${id}`, httpNoAuthOptions);
   }
   getProdSuggestions(id: number, genre: string) : Observable<any> {
     return this.http.get<Products[]>(`${this.dbProductsUrl}/suggestions/${id}/${genre}`, httpNoAuthOptions);
   }
-  
-  getFavsHome() : Observable<Favs[]> {
-    return this.http.get<Favs[]>(this.dbFavsUrl);
+  deleteVinyl(id: number) : Observable<Products> {
+    return this.http.delete<Products>(`${this.dbProductsUrl}/${id}`, httpOptions);
   }
-
-  getCommentsHome() : Observable<Comments[]> {
-    return this.http.get<Comments[]>(this.dbCommentsUrl);
-  } 
-
-  getCommentsAdmin(id: number) : Observable<Comments[]> {
-    return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
-  } 
-
-  deleteComment(id: any) : Observable<any> {
-    const deleteCommentsUrl = `${this.dbCommentsUrl}/${id}`
-    return this.http.delete<any>(deleteCommentsUrl, httpOptions)
-  }
-
-  deleteVinyl(id: any) : Observable<Products> {
-    const deleteProductsUrl = `${this.dbProductsUrl}/${id}`;
-    // console.log(deleteProductsUrl);
-    return this.http.delete<Products>(deleteProductsUrl, httpOptions);
-  }
-
-  createVinyl(product) : Observable<Products> {
+  createVinyl(product: any) : Observable<Products> {
     return this.http.post<any>( `${this.dbProductsUrl}/add`, product, httpOptions )
   }
-
-  editVinyl(product, id: any) : Observable<Products> {
+  editVinyl(product: any, id: number) : Observable<Products> {
     return this.http.put<any>( `${this.dbProductsUrl}/${id}`, product, httpOptions )
   }
 
+  // COMME//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  getCommentsHome() : Observable<Comments[]> {
+    return this.http.get<Comments[]>(this.dbCommentsUrl);
+  } 
+  getCommentsAdmin(id: number) : Observable<Comments[]> {
+    return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
+  } 
+  deleteComment(id: number) : Observable<any> {
+    return this.http.delete<any>(`${this.dbCommentsUrl}/${id}`, httpOptions)
+  }
+
+  // FAVS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  getFavsHome() : Observable<Favs[]> {
+    return this.http.get<Favs[]>(this.dbFavsUrl);
+  }
   favVinyl(uid: number, pid: number) {
     return this.http.post<any>( `${this.dbFavsUrl}/save`, { user_id: uid, product_id: pid }, httpOptions)
   }
@@ -95,7 +86,8 @@ export class DatabaseService {
     return this.http.delete<any>( `${this.dbFavsUrl}/${uid}/${pid}`, httpOptions)
   }
 
-  loginUser(user) {
+  // USER //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  loginUser(user: any) {
     return this.http.post<any>(this.dbLogUrl, user)
       .pipe(map(user => {
          if (user && user.sessionToken) {
@@ -108,8 +100,7 @@ export class DatabaseService {
          return user;
       }));
   }
-  
-  SignupUser(user) {
+  SignupUser(user: any) {
     return this.http.post<any>(this.dbSignUrl, user)
       .pipe(map(user => { console.log(user)
         if (user && user.sessionToken) {
@@ -122,7 +113,6 @@ export class DatabaseService {
         return user;
       }));
   }
-
   logoutUser() {
     sessionStorage.removeItem('img');
     sessionStorage.removeItem('name');
@@ -131,11 +121,9 @@ export class DatabaseService {
     sessionStorage.removeItem('uid');
     
   }
-
-  getUserProfile(id) : Observable<Profile> {
+  getUserProfile(id: number) : Observable<Profile> {
     return this.http.get<any>( `${this.dbUserUrl}/${id}`, httpOptions);
   }
-
   getCookies() {
     return this.auth = {
       is_admin: sessionStorage.getItem('role') === 'admin' ? true : false,

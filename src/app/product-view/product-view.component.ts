@@ -29,7 +29,6 @@ export class ProductViewComponent implements OnInit {
   editView: boolean = false;
   commentData: string;
   style: string;
-  suggestions: string;
 
   constructor(
     private dbService: DatabaseService,

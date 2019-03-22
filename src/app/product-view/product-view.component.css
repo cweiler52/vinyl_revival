@@ -68,10 +68,6 @@ color: #114181;
 
 .hidden{
    display: none;
-
-.trans {
-   border: transparent;
-   background-color: transparent;
 }
 
 #fav {

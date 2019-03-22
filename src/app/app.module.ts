@@ -39,8 +39,7 @@ import { AdminCommentsComponent } from './admin-comments/admin-comments.componen
     FormsModule,
     MaterialModule,
     NgxPaginationModule, 
-    ModalModule.forRoot(),
-    MatExpansionModule,
+    ModalModule.forRoot()
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

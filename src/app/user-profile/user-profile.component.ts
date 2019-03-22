@@ -18,7 +18,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   getProfile() {
-    this.dbService.getUserProfile(this.auth.user_id).subscribe(
+    this.dbService.getUserProfile(parseInt(this.auth.user_id)).subscribe(
       data => {
         console.log(data);
         this.profile = data;

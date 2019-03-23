@@ -9,12 +9,13 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./admin-create.component.css']
 })
 export class AdminCreateComponent implements OnInit {
-  products = [];
-  createData = {}
+  products: any;
+  createData: any;
+  title: string;
 
   constructor(
     private dbService: DatabaseService,
-    private modalRef: BsModalRef,
+    public modalRef: BsModalRef,
     @Inject(DOCUMENT) document) { }
 
   ngOnInit() {

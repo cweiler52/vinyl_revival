@@ -6,9 +6,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AdminCreateComponent } from '../admin-create/admin-create.component';
 import { AdminDeleteComponent } from '../admin-delete/admin-delete.component';
 import { AdminCommentsComponent } from '../admin-comments/admin-comments.component';
-//import { AdminEditComponent } from '../admin-edit/admin-edit.component';
-//import { ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-admin-prodlist',
@@ -16,12 +13,11 @@ import { AdminCommentsComponent } from '../admin-comments/admin-comments.compone
   styleUrls: ['./admin-prodlist.component.css']
 })
 export class AdminProdList implements OnInit {
-  products = [];
-  createData = {};
+  products: any;
+  createData: any;
   modalRef: BsModalRef;
   title: string;
-  // comments: [];
-  showComments = [];
+  showComments: any;
 
   constructor(
     private dbService: DatabaseService,
@@ -34,7 +30,6 @@ export class AdminProdList implements OnInit {
   getAllProducts() {
     this.dbService.getProducts().subscribe(
       data => { 
-        // console.log(data);
         this.products = data;
       }
     )
@@ -42,7 +37,7 @@ export class AdminProdList implements OnInit {
 
   openCreate(id: any) {
     
-      if (id === undefined){
+      if (!id){
         this.title = 'Add Product'
         this.createData = {
           album: null,
@@ -58,7 +53,6 @@ export class AdminProdList implements OnInit {
         this.title = 'Edit Product'
         this.dbService.getOneProduct(id).subscribe(
         data => {
-                // console.log(data);
                 this.createData = data;
                 this.openModal();
               }
@@ -77,7 +71,7 @@ export class AdminProdList implements OnInit {
     )
   }
 
-  openDeleteModal(id) {
+  openDeleteModal(id: any) {
     this.modalRef = this.modalService.show(AdminDeleteComponent,  {
       initialState: {
         title: 'Delete this product?',

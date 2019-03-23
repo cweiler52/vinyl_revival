@@ -132,6 +132,10 @@
     color: #B1B1B1;
     transition: 0.2s ease;
   }
+
+  .send-btn {
+    border-radius: 5%;
+  }
   
   a.send-btn:hover {
     color: #FAFAFA;

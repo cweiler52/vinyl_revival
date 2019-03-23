@@ -11,12 +11,15 @@ html{
 
  
  #text-layout{
-    height: 25%;
+    height: 15%;
     width: 45%;
     font-size: calc(0.06 * (100vh - 140px));
     letter-spacing: calc(0.03 * (100vh - 140px));
  }
 
+ .mat-figure{
+    height: 20%;
+ }
  
  #side-nav{
     background: white;

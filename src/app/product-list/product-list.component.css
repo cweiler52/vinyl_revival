@@ -28,6 +28,7 @@ div#text-lay {
     margin-left: 17.5rem;
     z-index: 3;
     text-align: center;
+    font-family: 'Roboto Slab', serif;
 }
 
 #fav{

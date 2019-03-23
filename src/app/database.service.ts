@@ -27,13 +27,13 @@ const httpNoAuthOptions = {
 })
 export class DatabaseService {
 
-  private dbLogUrl = `${APIURL}/api/login`;
-  private dbSignUrl = `${APIURL}/api/signup`;
-  private dbUserUrl = `${APIURL}/api/user`;
+  private dbLogUrl      = `${APIURL}/api/login`;
+  private dbSignUrl     = `${APIURL}/api/signup`;
+  private dbProfileUrl  = `${APIURL}/api/profile`;
   private dbProductsUrl = `${APIURL}/api/products`;
-  private dbFavsUrl = `${APIURL}/api/favs`;
+  private dbFavsUrl     = `${APIURL}/api/favs`;
   private dbCommentsUrl = `${APIURL}/api/comments`;
-  private dbCommentUrl = `${APIURL}/api/comment`;
+  private dbCommentUrl  = `${APIURL}/api/comment`;
   private auth: Auth;
 
   constructor(
@@ -128,9 +128,6 @@ export class DatabaseService {
     sessionStorage.removeItem('uid');
     
   }
-  getUserProfile(id: number) : Observable<Profile> {
-    return this.http.get<any>( `${this.dbUserUrl}/${id}`, httpOptions);
-  }
   getCookies() {
     return this.auth = {
       is_admin: sessionStorage.getItem('role') === 'admin' ? true : false,
@@ -139,5 +136,14 @@ export class DatabaseService {
       user_img: sessionStorage.getItem('img'),
       user_name: sessionStorage.getItem('name')
     }
+  }
+  getUserProfile(id: number) : Observable<Profile> {
+    return this.http.get<any>( `${this.dbProfileUrl}/${id}`, httpOptions);
+  }
+  editProfile(id: number, profile: any) : Observable<Profile> {
+    return this.http.put<any>( `${this.dbProfileUrl}/${id}`, profile, httpOptions )
+  }
+  deleteProfile(id: number) {
+    return this.http.delete<any>( `${this.dbProfileUrl}/${id}`, httpOptions)
   }
 }

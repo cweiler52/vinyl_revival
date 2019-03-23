@@ -19,7 +19,9 @@
 <mat-grid-list cols="3" rowHeight="4:4">
   <h4>COLLECTION</h4>
   <mat-grid-tile *ngFor="let fav of profile.favs">
-      <img [src]="fav.cover" width="90%" id="cover"/>
+      <a routerLink="/record/{{fav.id}}" routerLinkActive="active">
+        <img [src]="fav.cover" width="90%" id="cover"/>
+      </a>
   </mat-grid-tile>
 </mat-grid-list>
     

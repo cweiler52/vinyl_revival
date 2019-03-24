@@ -54,8 +54,12 @@ export class CommentsComponent implements OnChanges {
   }
   
   editToggle(id, text){
-    document.getElementById(`comment_edit_${id}`).style.display = "block";
+    //console.log(id, text)
+    document.getElementById('comment_create').classList.toggle('hidden');
+    document.getElementById(`comment_edit_${id}`).classList.toggle('show');
+    document.getElementById(`comment_edit_${id}`).classList.toggle('hidden');
     document.getElementById(`comment_input_edit_${id}`).value = text;
+    document.getElementById('comment_input_create').value = '';
   }
   
   viewToggle(){

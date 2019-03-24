@@ -1,0 +1,19 @@
+.edit_div {
+    padding: 10px 0 15px 0;
+}
+.edit_btn {
+    float: right; 
+    margin-right: 1%;
+}
+.edit_textarea {
+    width: 99%;
+}
+
+.user_comments {
+    width: 99%;
+    margin: 4px 0;
+}
+
+.float_right {
+    float: right;
+}

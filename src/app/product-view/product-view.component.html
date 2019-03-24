@@ -9,8 +9,8 @@
           <button type="submit" (click)="onCreate()">Post</button>
         </form>
       </div>
-      <div *ngIf="product.comments">
-        <div *ngFor="let text of product.comments"  id="cmt-st">
+      <div *ngIf="commentsArr" (refreshComments)="getCommentsForAlbum($event)">
+        <div *ngFor="let text of commentsArr" id="cmt-st">
           <div id="comment_{{text.id}}">
             <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
             {{text.comment}}
@@ -19,7 +19,7 @@
           </div>
           <div class="hidden" id="comment_edit_{{text.id}}">
             
-                <input type="text" [(ngModel)]="commentData" name="comment" ng-value="text.comment">
+                <input type="text" [(ngModel)]="commentData" name="comment" value="text.comment">
                 <button type="submit" (click)="onEdit(text.id)">Post</button>
             
           </div>  

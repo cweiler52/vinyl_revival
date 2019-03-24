@@ -1,0 +1,27 @@
+<h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
+<button (click)="viewToggle()">Add a Comment</button>
+
+<div *ngIf="commentView === true">
+  <form>
+    <input type="text" [(ngModel)]="commentData" name="comment">
+    <button type="submit" (click)="onCreate()">Post</button>
+  </form>
+</div>
+
+<div *ngIf="commentsArr">
+  <div *ngFor="let text of commentsArr" id="cmt-st">
+    <div id="comment_{{text.id}}">
+      <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
+      {{text.comment}}
+      <button *ngIf="text.userid == editCheck()" (click)="editToggle(text.id)">Edit</button>
+      <button *ngIf="text.userid == editCheck()" (click)="onDelete(text.id)">X</button>
+    </div>
+    <div class="hidden" id="comment_edit_{{text.id}}">
+      
+          <input type="text" [(ngModel)]="commentData" name="comment" value="text.comment">
+          <button type="submit" (click)="onEdit(text.id)">Post</button>
+      
+    </div>  
+  </div>
+  
+</div>

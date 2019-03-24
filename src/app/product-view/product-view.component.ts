@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location, DOCUMENT } from '@angular/common';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -29,6 +29,7 @@ export class ProductViewComponent implements OnInit {
   editView: boolean = false;
   commentData: string;
   style: string;
+  @Output() refreshComments = new EventEmitter();
 
   constructor(
     private dbService: DatabaseService,
@@ -45,7 +46,7 @@ export class ProductViewComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProdView(id).subscribe(
       data => {
-        // console.log(data);
+        console.log(data);
         this.favCnt = data.favs.length;
         this.commentCnt = data.comments.length;
         this.commentsArr = data.comments;
@@ -63,6 +64,17 @@ export class ProductViewComponent implements OnInit {
 
   onSuggestedClick(id){
     location.href = `/record/${id}`;
+  }
+
+  getCommentsForAlbum(){
+    const pid: number = +this.route.snapshot.paramMap.get('id');
+    this.dbService.getProductComments(pid).subscribe(
+      data => {
+        console.log('comments for album', data);
+        this.commentCnt = data.length;
+        this.commentsArr = data;
+      }
+    )
   }
 
   goBack(): void {
@@ -115,50 +127,57 @@ export class ProductViewComponent implements OnInit {
   }
 
   editCheck(){
-      return this.auth.user_id
-    }
-    
-    editToggle(id){
-      document.getElementById(`comment_edit_${id}`).style.display = "block";
-    }
-    
-    viewToggle(){
-      const _commentView = !this.commentView;
-      this.commentView = _commentView
-    }
+    return this.auth.user_id
+  }
+  
+  editToggle(id){
+    document.getElementById(`comment_edit_${id}`).style.display = "block";
+  }
+  
+  viewToggle(){
+    const _commentView = !this.commentView;
+    this.commentView = _commentView
+  }
 
-    onCreate() {
-      const uid = this.auth.user_id;
-      const pid = +this.route.snapshot.paramMap.get('id');
-      this.dbService.createComment(parseInt(uid), pid, this.commentData)
-        .subscribe(
-          res => console.log(res),
-          err => console.log(err)
-        )
+  onCreate() {
+    let uid: number = 0;
+    if(!this.auth.user_id){
+      // pull up the login modal
+      this.openSignup();
+    }else{
+      uid = parseInt(this.auth.user_id);
     }
-
-    onEdit(id: number) {
-      this.dbService.editComment(id, this.commentData)
-        .subscribe(
-          res => console.log(res),
-          err => console.log(err)
-        )
-    }
-
-    onDelete(id: number) {
-    this.dbService.deleteComment(id)
+    const pid = +this.route.snapshot.paramMap.get('id');
+    console.log(uid, pid, this.commentData);
+    this.dbService.createComment(uid, pid, this.commentData)
       .subscribe(
-        res => {
-          document.getElementById(`comment_${id}`).style.display = "none";
-          console.log(res)
-          //this.dbService.getOneProduct(pid).subscribe(
-            //data => {
-                    //console.log(data);
-             //     }
-          //)
-        },
-        err => console.log(err),
+        res => console.log(res),
+        err => console.log(err)
       )
+  }
+
+  onEdit(id: number) {
+    this.dbService.editComment(id, this.commentData)
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      )
+  }
+
+  onDelete(id: number) {
+  this.dbService.deleteComment(id)
+    .subscribe(
+      res => {
+        document.getElementById(`comment_${id}`).style.display = "none";
+        console.log(res)
+        //this.dbService.getOneProduct(pid).subscribe(
+          //data => {
+                  //console.log(data);
+            //     }
+        //)
+      },
+      err => console.log(err),
+    )
   }
   
 }

@@ -10,7 +10,13 @@ p {
 h1{
     margin: 0;
     position: relative;
-    top: -50%;
-    z-index: 5;
-    color: rgb(43, 117, 167);
+    margin-top: -5rem;
+    text-align: center;
+    z-index: 50;
+    font-size: 5rem;
+    color: white;
+}
+
+img{
+    max-height: 35rem;
 }

@@ -69,13 +69,13 @@ html{
 color: #114181;
 }
 
-.hidden{
+/* .hidden{
    display: none;
 
 .trans {
    border: transparent;
    background-color: transparent;
-}
+} */
 
 div #fav {
    width: 20px;

@@ -17,10 +17,8 @@
       <button *ngIf="text.userid == editCheck()" (click)="onDelete(text.id)">X</button>
     </div>
     <div class="hidden" id="comment_edit_{{text.id}}">
-      
-          <input type="text" [(ngModel)]="commentData" name="comment" value="text.comment">
-          <button type="submit" (click)="onEdit(text.id)">Post</button>
-      
+      <input type="text" [(ngModel)]="commentData" name="comment"  id="comment_input_edit_{{text.id}}" value="">
+      <button type="submit" (click)="onEdit(text.id, text.comment)">Post</button>
     </div>  
   </div>
   

@@ -16,10 +16,11 @@ body{
 #page-btn{
    float: right;
    margin-top: 5%;
+   color: rgb(38, 49, 49);
 }
 
 .mat-raised-button{
-  background-color: rgb(17, 66, 97);
+  background-color: rgb(38, 49, 49);
   color: white;
 }
 

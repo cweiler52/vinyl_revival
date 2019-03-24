@@ -13,6 +13,7 @@ html{
  #text-layout{
     height: 15%;
     width: 45%;
+    color: rgb(38, 49, 49);
     font-size: calc(0.06 * (100vh - 140px));
     letter-spacing: calc(0.03 * (100vh - 140px));
  }
@@ -46,7 +47,8 @@ html{
 }
 
 #pricetag{
-   background-color: teal;
+   background-color: rgb(38, 49, 49);
+   color: white;
    width: 20%;
    position: relative;
    text-align: center;
@@ -63,7 +65,17 @@ html{
    margin-left: 2rem;
 }
 
+#cmt-btn{
+   border: 2px solid rgb(38, 49, 49);
+   position: absolute;
+   margin-left: 45rem;
+   margin-top: -8rem;
+}
 
+#cmt-btn:hover{
+   background-color: rgb(38, 49, 49);
+   color: white;
+}
 
 #cmt-name-st{
 color: #114181;

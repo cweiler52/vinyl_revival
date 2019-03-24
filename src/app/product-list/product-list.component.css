@@ -15,7 +15,7 @@ body{
 
 #page-btn{
    float: right;
-   margin-top: 10%;
+   margin-top: 5%;
 }
 
 .mat-raised-button{
@@ -38,8 +38,8 @@ div#text-lay {
   z-index: 4;
   position: absolute;
   color: white;
-  border: 3px solid #660000;
-  background-color: #660000;
+  border: 3px solid rgb(180, 123, 17);
+  background-color: rgb(180, 123, 17);
   border-radius: 50%;
   width: 30px;
   height: 30px;

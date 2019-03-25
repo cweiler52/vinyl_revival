@@ -23,8 +23,8 @@ html{
  }
  
  #side-nav{
-    background: white;
-    width: 35vw;
+    background: rgb(38, 49, 49);
+    width: 25vw;
  }
 
   
@@ -118,14 +118,4 @@ mat-icon{
 
 
 
-/* SUGGESTED COVER */
-.prod-cover{
-   width: 23vw;
-   height: 35vh;
-   margin-left: 4rem;
-}
 
-
-.text-st{
-   margin-left: 4rem;
-}

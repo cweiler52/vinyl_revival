@@ -21,13 +21,33 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteToggle() {
+    document.getElementById(`deleter`).style.display = "block";
+
+  }
+
+  deleteProfile() {
+    this.dbService.deleteProfile(parseInt(this.auth.user_id))
+      .subscribe(
+        res => {
+          this.closeModal();
+          location.href = window.location.href},
+        err => console.log(err) 
+      )
+  }
+
   editProfile() {
-    this.dbService.editProfile(parseInt(this.auth.user_id), this.profile).subscribe(
+    this.dbService.editProfile(parseInt(this.auth.user_id), this.profileData).subscribe(
       data => {
         console.log(data);
         this.profile = data;
-      }
+        location.href = window.location.href},
+        err => console.log(err)
     )
+  }
+
+  closeModal(){
+    this.modalRef.hide();
   }
 
 }

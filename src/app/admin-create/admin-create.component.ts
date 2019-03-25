@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./admin-create.component.css']
 })
 export class AdminCreateComponent implements OnInit {
-  products: any;
+  //products: any;
   createData: any;
   title: string;
   @Output() refresh = new EventEmitter();
@@ -25,11 +25,11 @@ export class AdminCreateComponent implements OnInit {
   onCreate() {
     this.dbService.createVinyl(this.createData)
       .subscribe(
-        res => {
-          // console.log(res);
+        data => {
+          console.log('Create', data);
           this.closeModal();
           // location.href = window.location.href
-          this.refresh.emit();
+          this.refresh.emit(data)
         },
         err => console.log(err)
       )
@@ -38,19 +38,20 @@ export class AdminCreateComponent implements OnInit {
   onEdit(id: any) {
     this.dbService.editVinyl(this.createData, id)
       .subscribe(
-        res => {
-          // console.log(res);
+        data => {
+          console.log('Edit', data);
           this.closeModal();
-          if(res){
-            document.getElementById(`crud-action_${id}`).innerHTML = 'updated';
-            setTimeout(() => {
-              document.getElementById(`crud-action_${id}`).innerHTML = '';
-            }, 3000);
-            setTimeout(() => {
-              // location.href = window.location.href
-              this.refresh.emit();
-            }, 3500);
-          }
+          this.refresh.emit();
+          // if(data){
+          //   document.getElementById(`crud-action_${id}`).innerHTML = 'updated';
+          //   setTimeout(() => {
+          //     document.getElementById(`crud-action_${id}`).innerHTML = '';
+          //   }, 3000);
+          //   setTimeout(() => {
+          //     // location.href = window.location.href
+          //     this.refresh.emit();
+          //   }, 3500);
+          // }
         },
         err => console.log(err)
       )

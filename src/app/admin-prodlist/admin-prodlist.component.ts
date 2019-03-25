@@ -28,8 +28,10 @@ export class AdminProdList implements OnInit {
   }
 
   reloadData(){
+    console.log('triggered');
     this.getAllProducts();
   }
+  
   getAllProducts() {
     this.dbService.getProducts().subscribe(
       data => { 

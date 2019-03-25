@@ -1,14 +1,7 @@
 <mat-sidenav-container>
   <!-- USER Comments  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
-      <h4 class="cmt-head">COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
-       <button>CREATE</button>
-      <div *ngIf="product">  
-        <div *ngFor="let text of product.comments" id="cmt-st">
-          <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
-            {{text.comment}} 
-        </div>
-      </div>
+    <app-comments [commentsArr]="commentsArr" (refreshComments)="getCommentsForAlbum($event)"></app-comments>
   </mat-sidenav>
 
   

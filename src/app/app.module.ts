@@ -21,6 +21,7 @@ import { AdminDeleteComponent } from './admin-delete/admin-delete.component';
 import { AdminCommentsComponent } from './admin-comments/admin-comments.component';
 import { SlideshowModule } from "ng-simple-slideshow";
 import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.
     RoutingComponents,
     AdminDeleteComponent,
     AdminCommentsComponent,
-    UserProfileEditComponent
+    UserProfileEditComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

@@ -23,13 +23,12 @@ export class ProductViewComponent implements OnInit {
   suggestions: any;
   opened: any;
   modalRef: BsModalRef;
-  auth = this.dbService.getCookies();
+  auth: any = this.dbService.getCookies();
   addOpen: boolean = false;
   commentView: boolean = false;
   editView: boolean = false;
   commentData: string;
   style: string;
-  suggestions: string;
 
   constructor(
     private dbService: DatabaseService,
@@ -48,8 +47,8 @@ export class ProductViewComponent implements OnInit {
       data => {
         // console.log(data);
         this.favCnt = data.favs.length;
-        this.commentCnt = data.comments.length;
-        this.commentsArr = data.comments;
+        //this.commentCnt = data.comments.length;
+        //this.commentsArr = data.comments;
         this.product = data;
         // GET SUGGESTED ALBUMS
         this.dbService.getProdSuggestions(id, data.genre).subscribe(
@@ -66,6 +65,17 @@ export class ProductViewComponent implements OnInit {
     location.href = `/record/${id}`;
   }
 
+  getCommentsForAlbum(commentsArr){
+    const pid: number = +this.route.snapshot.paramMap.get('id');
+    this.dbService.getProductComments(pid).subscribe(
+      data => {
+        // console.log('comments for album', data);
+        this.commentCnt = data.length;
+        this.commentsArr = data;
+      }
+    )
+  }
+
   goBack(): void {
     this.location.back();
   }
@@ -73,33 +83,19 @@ export class ProductViewComponent implements OnInit {
   fav(): void {
     if(this.auth.is_loggedin){
       const pid: number = +this.route.snapshot.paramMap.get('id');
-      // console.log(parseInt(this.auth.user_id), pid);
       this.dbService.favVinyl(parseInt(this.auth.user_id), pid)
         .subscribe(
           data => { 
-            // console.log('add');
-            // console.log(data);
+            //console.log(data);
             let fCnt = document.getElementById('fav').innerHTML;
-            this.newFavCnt = parseInt(fCnt)+1;
-            document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
-          },
-          (err) => {
-            if (err.error.name === "SequelizeUniqueConstraintError") { 
-              this.dbService.favRemove(parseInt(this.auth.user_id), pid)
-                .subscribe(
-                  data => { 
-                    // console.log('remove');
-                    // console.log(data);
-                    let fCnt = document.getElementById('fav').innerHTML;
-                    this.newFavCnt = parseInt(fCnt)-1;
-                    document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
-                  }
-                )
+            if(data.outcome === 1){
+              this.newFavCnt = parseInt(fCnt)+1;
             }else{
-              console.log(err);
+              this.newFavCnt = parseInt(fCnt)-1;
             }
+            document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
           }
-        );
+        )
     }else{
       // pull up the login modal
       this.openSignup();
@@ -113,53 +109,6 @@ export class ProductViewComponent implements OnInit {
         loginUserData: {}
       }
     });
-  }
-
-  editCheck(){
-      return this.auth.user_id
-    }
-    
-    editToggle(id){
-      document.getElementById(`comment_edit_${id}`).style.display = "block";
-    }
-    
-    viewToggle(){
-      const _commentView = !this.commentView;
-      this.commentView = _commentView
-    }
-
-    onCreate() {
-      const uid = this.auth.user_id;
-      const pid = +this.route.snapshot.paramMap.get('id');
-      this.dbService.createComment(parseInt(uid), pid, this.commentData)
-        .subscribe(
-          res => console.log(res),
-          err => console.log(err)
-        )
-    }
-
-    onEdit(id: number) {
-      this.dbService.editComment(id, this.commentData)
-        .subscribe(
-          res => console.log(res),
-          err => console.log(err)
-        )
-    }
-
-    onDelete(id: number) {
-    this.dbService.deleteComment(id)
-      .subscribe(
-        res => {
-          document.getElementById(`comment_${id}`).style.display = "none";
-          console.log(res)
-          //this.dbService.getOneProduct(pid).subscribe(
-            //data => {
-                    //console.log(data);
-             //     }
-          //)
-        },
-        err => console.log(err),
-      )
   }
   
 }

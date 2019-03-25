@@ -1,0 +1,23 @@
+<h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
+<button (click)="viewToggle()">Add a Comment</button>
+
+<div *ngIf="commentView === true" id="comment_create" class="edit_div">
+  <textarea [(ngModel)]="commentData" name="comment" class="edit_textarea" id="comment_input_create"></textarea>
+  <button type="submit" class="edit_btn" (click)="onCreate()">Post</button>
+</div>
+
+<div *ngIf="commentsArr">
+  <div *ngFor="let text of commentsArr" id="cmt-st">
+    <div id="comment_{{text.id}}" class="user_comments">
+      <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
+      {{text.comment}}
+      <button class="float_right" *ngIf="text.userid == editCheck()" (click)="onDelete(text.id)">X</button>
+      <button class="float_right" *ngIf="text.userid == editCheck()" (click)="editToggle(text.id, text.comment)">Edit</button>
+    </div>
+    <div class="hidden edit_div" id="comment_edit_{{text.id}}">
+      <textarea [(ngModel)]="commentData" name="comment" id="comment_input_edit_{{text.id}}" class="edit_textarea"></textarea>
+      <button type="submit" class="edit_btn" (click)="onEdit(text.id)">Post</button>
+    </div>  
+  </div>
+  
+</div>

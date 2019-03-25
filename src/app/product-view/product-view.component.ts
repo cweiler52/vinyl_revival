@@ -46,7 +46,7 @@ export class ProductViewComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProdView(id).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.favCnt = data.favs.length;
         this.commentCnt = data.comments.length;
         this.commentsArr = data.comments;
@@ -70,7 +70,7 @@ export class ProductViewComponent implements OnInit {
     const pid: number = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProductComments(pid).subscribe(
       data => {
-        console.log('comments for album', data);
+        // console.log('comments for album', data);
         this.commentCnt = data.length;
         this.commentsArr = data;
       }
@@ -84,33 +84,19 @@ export class ProductViewComponent implements OnInit {
   fav(): void {
     if(this.auth.is_loggedin){
       const pid: number = +this.route.snapshot.paramMap.get('id');
-      // console.log(parseInt(this.auth.user_id), pid);
       this.dbService.favVinyl(parseInt(this.auth.user_id), pid)
         .subscribe(
           data => { 
-            // console.log('add');
-            // console.log(data);
+            //console.log(data);
             let fCnt = document.getElementById('fav').innerHTML;
-            this.newFavCnt = parseInt(fCnt)+1;
-            document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
-          },
-          (err) => {
-            if (err.error.name === "SequelizeUniqueConstraintError") { 
-              this.dbService.favRemove(parseInt(this.auth.user_id), pid)
-                .subscribe(
-                  data => { 
-                    // console.log('remove');
-                    // console.log(data);
-                    let fCnt = document.getElementById('fav').innerHTML;
-                    this.newFavCnt = parseInt(fCnt)-1;
-                    document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
-                  }
-                )
+            if(data.outcome === 1){
+              this.newFavCnt = parseInt(fCnt)+1;
             }else{
-              console.log(err);
+              this.newFavCnt = parseInt(fCnt)-1;
             }
+            document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
           }
-        );
+        )
     }else{
       // pull up the login modal
       this.openSignup();
@@ -167,14 +153,9 @@ export class ProductViewComponent implements OnInit {
   onDelete(id: number) {
   this.dbService.deleteComment(id)
     .subscribe(
-      res => {
+      data => {
         document.getElementById(`comment_${id}`).style.display = "none";
-        console.log(res)
-        //this.dbService.getOneProduct(pid).subscribe(
-          //data => {
-                  //console.log(data);
-            //     }
-        //)
+        console.log(data)
       },
       err => console.log(err),
     )

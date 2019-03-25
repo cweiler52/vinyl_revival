@@ -90,10 +90,7 @@ export class DatabaseService {
     return this.http.get<Favs[]>(this.dbFavsUrl);
   }
   favVinyl(uid: number, pid: number) {
-    return this.http.post<any>( `${this.dbFavsUrl}/save`, { user_id: uid, product_id: pid }, httpOptions)
-  }
-  favRemove(uid: number, pid: number) {
-    return this.http.delete<any>( `${this.dbFavsUrl}/${uid}/${pid}`, httpOptions)
+    return this.http.post<any>( `${this.dbFavsUrl}/handle`, { user_id: uid, product_id: pid }, httpOptions)
   }
 
   // USER //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

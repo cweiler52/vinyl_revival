@@ -66,8 +66,11 @@ html{
 color: #114181;
 }
 
-.hidden{
+.hidden {
    display: none;
+}
+.show {
+   display: block;
 }
 
 div #fav {

@@ -27,6 +27,9 @@ export class AdminProdList implements OnInit {
     this.getAllProducts();
   }
 
+  reloadData(){
+    this.getAllProducts();
+  }
   getAllProducts() {
     this.dbService.getProducts().subscribe(
       data => { 

@@ -72,6 +72,9 @@ export class DatabaseService {
   getCommentsAdmin(id: number) : Observable<Comments[]> {
     return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
   }
+  getProductComments(id: number) : Observable<Comments[]> {
+    return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
+  }
   createComment(uid: number, pid: number, comment: string) : Observable<any> {
     return this.http.post<any>(`${this.dbCommentUrl}/add`, {user_id: uid, product_id: pid, comment: comment}, httpOptions)
   }

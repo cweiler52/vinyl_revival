@@ -6,31 +6,26 @@
 
   
   <mat-sidenav-content *ngIf="product">
-    <mat-grid-list cols="10">
-      <mat-grid-tile rowspan="5" colspan="4" style="border:1px solid red">
+    <mat-grid-list cols="10" gutterSize="10px">
+      <mat-grid-tile rowspan="5" colspan="4">
       <img [src]="product.cover" class="product-cover"/>
       <div id="pricetag">${{ product.price }}</div>
       </mat-grid-tile>
-      <mat-grid-tile id="text-layout" colspan="4" rowspan="2" style="border:1px solid red">
+      <mat-grid-tile id="text-layout" colspan="4" rowspan="2">
         {{product.artist | uppercase }}
       </mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="2" style="border:1px solid red">
+      <mat-grid-tile colspan="2" rowspan="2">
         <div id="like">
             <mat-icon (click)="fav()">favorite</mat-icon> 
             <div id="fav">{{ favCnt }}</div>
         </div>
       </mat-grid-tile>
-    <mat-grid-tile colspan="5" rowspan="2" id="text-desc" style="border:1px solid red">
-      <!-- <div>
-          <mat-icon>favorite</mat-icon> 
-        <div (click)="fav()" id="fav">{{ favCnt }}</div>
-        <div>Like</div>
-      </div> -->
+    <mat-grid-tile colspan="4" rowspan="2" id="text-desc">
       {{ product.album }}<br>
       {{product.desc}}
     </mat-grid-tile>
-    <mat-grid-tile colspan="2" rowspan="1" style="border:1px solid red">
-      button
+    <mat-grid-tile cols="2" rowspan="2"> </mat-grid-tile>
+    <mat-grid-tile colspan="2" rowspan="1">
       <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>    
     </mat-grid-tile>
   </mat-grid-list>

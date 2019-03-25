@@ -51,7 +51,7 @@ import { CommentsComponent } from './comments/comments.component';
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [ LoginComponent, SignupComponent, AdminCreateComponent, AdminDeleteComponent, AdminCommentsComponent ] // THESE COMPONENTS POPULATE A MODAL
+  entryComponents: [ LoginComponent, SignupComponent, AdminCreateComponent, AdminDeleteComponent, AdminCommentsComponent, ProfileEditComponent ] // THESE COMPONENTS POPULATE A MODAL
 })
 
 export class AppModule { }

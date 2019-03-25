@@ -99,7 +99,20 @@ color: #114181;
 
 #fav{
   position: absolute;
-  margin-top: -5rem;
+  margin-top: -4.1rem;
+  margin-left: 3rem;
+  width: 30%;
+  color: red;
+}
+
+#like{
+   width: 30%;
+   margin-left: -2rem;
+   margin-top: -10rem;
+}
+
+mat-icon{
+   color: red;
 }
 
 

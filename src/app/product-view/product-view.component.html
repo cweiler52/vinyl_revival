@@ -13,10 +13,19 @@
       </mat-grid-tile>
       <mat-grid-tile id="text-layout" colspan="3" rowspan="2">
       {{product.artist | uppercase }}
+      <div id="like">
+          <mat-icon (click)="fav()">favorite</mat-icon> 
+        <div id="fav">{{ favCnt }}</div>
+        <!-- <div>Like</div> -->
+      </div>
     </mat-grid-tile>
       <br>
     <mat-grid-tile colspan="3" rowspan="1" id="text-desc">
-        <div id="fav" (click)="fav()">{{ favCnt }}</div><br>
+      <!-- <div>
+          <mat-icon>favorite</mat-icon> 
+        <div (click)="fav()" id="fav">{{ favCnt }}</div>
+        <div>Like</div>
+      </div> -->
       {{ product.album }}<br>
       {{product.desc}}
     </mat-grid-tile>

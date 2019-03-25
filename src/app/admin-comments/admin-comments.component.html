@@ -10,7 +10,8 @@
 <div *ngFor="let i of showComments" >
   <div id="comment_{{i.id}}">
     {{i.comment}}
-  <button (click)="onDelete(i.id, i.productid)">X</button>
+    <mat-icon (click)="onDelete(i.id, i.productid)">deleteforever</mat-icon>
+
   </div>
  </div>
 </div>

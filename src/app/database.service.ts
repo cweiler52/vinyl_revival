@@ -95,10 +95,10 @@ export class DatabaseService {
   }
 
    // PROFILE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-   getProfile() : Observable<Profile[]> {
-     return this.http.get<Profile[]>(this.dbProfileUrl);
+   getProfile(id: number) : Observable<Profile> {
+     return this.http.get<any>(this.dbProfileUrl);
    }
-   editProfile(id: number, name: string, email: string, image: string) : Observable<any> {
+   editProfile(id: number, profile: any) : Observable<Profile> {
      return this.http.put<any>(`${this.dbProfileUrl}/${id}`, httpOptions)
    }
    deleteProfile(id: number) : Observable<Profile> {

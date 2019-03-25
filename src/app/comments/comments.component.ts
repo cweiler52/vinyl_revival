@@ -15,7 +15,6 @@ import { SignupComponent } from '../signup/signup.component';
 export class CommentsComponent implements OnChanges {
   @Input() commentCnt: number;
   @Input() commentsArr: any;
-  
   @Output() refreshComments = new EventEmitter();
   auth = this.dbService.getCookies();
   addOpen: boolean = false;
@@ -54,10 +53,9 @@ export class CommentsComponent implements OnChanges {
     return this.auth.user_id
   }
   
-  editToggle(id, text){
+  editToggle(id){
     //console.log(id, text)
     document.getElementById(`comment_edit_${id}`).classList.toggle('hidden');
-    document.getElementById(`comment_input_edit_${id}`).value = text;
   }
   
   viewToggle(){

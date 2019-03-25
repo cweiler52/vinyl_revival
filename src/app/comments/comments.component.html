@@ -2,7 +2,7 @@
 <button (click)="viewToggle()">Add a Comment</button>
 
 <div *ngIf="commentView === true" id="comment_create" class="edit_div">
-  <textarea [(ngModel)]="commentData" name="comment" class="edit_textarea" id="comment_input_create"></textarea>
+  <textarea [(ngModel)]="newComment" name="comment" class="edit_textarea" id="comment_input_create"></textarea>
   <button type="submit" class="edit_btn" (click)="onCreate()">Post</button>
 </div>
 

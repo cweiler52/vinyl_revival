@@ -56,7 +56,6 @@ export class CommentsComponent implements OnChanges {
   
   editToggle(id, text){
     //console.log(id, text)
-    // document.getElementById('comment_create').addClass('hidden');
     document.getElementById(`comment_edit_${id}`).classList.toggle('hidden');
     document.getElementById(`comment_input_edit_${id}`).value = text;
   }

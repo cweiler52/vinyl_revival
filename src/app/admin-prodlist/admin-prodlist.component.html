@@ -6,7 +6,7 @@
       <td width="5%" class="border_bottom border_right align_center">Price</td>
       <td width="20%" colspan="2" class="align_center border_bottom padding_4"><input type="button" value="create" (click)=openCreate(0) /></td>
     </tr>
-    <tr class="k-alt" *ngFor="let item of products">
+    <tr class="k-alt" *ngFor="let item of products" (refresh)="reloadData($event)">
       <td width="30%" class="border_right">{{ item.artist }}</td>
       <td width="40%" class="border_right"><div class="float_left">{{ item.album }}</div><div id="crud-action_{{item.id}}" class="float_left padding_left_30 text_red"></div></td>
       <td width="5%" class="border_right align_center">{{ item.genre }}</td>

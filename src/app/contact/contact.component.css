@@ -1,5 +1,4 @@
 
-  
   body {
      margin: 0;
     padding: 0; 
@@ -71,12 +70,12 @@
   
   .container .inner .panel.panel-right .panel-content .form {
     display: block;
-    position: relative;
+    position: absolute;
     margin: 0 auto;
-    width: 400px;
-    min-height: 200px;
+    width: 300px;
+    min-height: 100px;
     top: 45%;
-    left: 20%;
+    left: 55%;
     transform: translateX(-50%) translateY(-25%);
   }
 
@@ -131,6 +130,10 @@
     float: right;
     color: #B1B1B1;
     transition: 0.2s ease;
+  }
+
+  .send-btn {
+    border-radius: 5%;
   }
   
   a.send-btn:hover {

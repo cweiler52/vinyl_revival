@@ -72,6 +72,9 @@ export class DatabaseService {
   getCommentsAdmin(id: number) : Observable<Comments[]> {
     return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
   }
+  getProductComments(id: number) : Observable<Comments[]> {
+    return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
+  }
   createComment(uid: number, pid: number, comment: string) : Observable<any> {
     return this.http.post<any>(`${this.dbCommentUrl}/add`, {user_id: uid, product_id: pid, comment: comment}, httpOptions)
   }
@@ -87,11 +90,19 @@ export class DatabaseService {
     return this.http.get<Favs[]>(this.dbFavsUrl);
   }
   favVinyl(uid: number, pid: number) {
-    return this.http.post<any>( `${this.dbFavsUrl}/save`, { user_id: uid, product_id: pid }, httpOptions)
+    return this.http.post<any>( `${this.dbFavsUrl}/handle`, { user_id: uid, product_id: pid }, httpOptions)
   }
-  favRemove(uid: number, pid: number) {
-    return this.http.delete<any>( `${this.dbFavsUrl}/${uid}/${pid}`, httpOptions)
-  }
+
+   // PROFILE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   getProfile(id: number) : Observable<Profile> {
+     return this.http.get<any>(this.dbProfileUrl);
+   }
+   editProfile(id: number, profile: any) : Observable<Profile> {
+     return this.http.put<any>(`${this.dbProfileUrl}/${id}`, httpOptions)
+   }
+   deleteProfile(id: number) : Observable<Profile> {
+     return this.http.delete<Profile>(`${this.dbProfileUrl}/${id}`, httpOptions);
+   }
 
   // USER //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   loginUser(user: any) {

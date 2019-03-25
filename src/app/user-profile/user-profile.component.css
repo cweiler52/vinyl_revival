@@ -25,7 +25,7 @@ section{
 }
 
 .left{
-    background-color:  rgb(17, 66, 97);
+    background-color:  rgb(38, 49, 49);
     width: 90%;
 }
 
@@ -102,6 +102,7 @@ hr{
     display: block;
     position: relative;
     width: 40%;
+    height: 40%;
     float: left;
     top: 5rem;
     margin-left: 10rem;

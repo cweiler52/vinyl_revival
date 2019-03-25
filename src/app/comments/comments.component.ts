@@ -22,6 +22,7 @@ export class CommentsComponent implements OnChanges {
   commentView: boolean = false;
   editView: boolean = false;
   commentData: string;
+  newComment: string;
   modalRef: BsModalRef;
 
   constructor(
@@ -55,11 +56,9 @@ export class CommentsComponent implements OnChanges {
   
   editToggle(id, text){
     //console.log(id, text)
-    document.getElementById('comment_create').classList.toggle('hidden');
-    document.getElementById(`comment_edit_${id}`).classList.toggle('show');
+    // document.getElementById('comment_create').addClass('hidden');
     document.getElementById(`comment_edit_${id}`).classList.toggle('hidden');
     document.getElementById(`comment_input_edit_${id}`).value = text;
-    document.getElementById('comment_input_create').value = '';
   }
   
   viewToggle(){
@@ -77,7 +76,7 @@ export class CommentsComponent implements OnChanges {
     }
     const pid = +this.route.snapshot.paramMap.get('id');
     // console.log(uid, pid, this.commentData);
-    this.dbService.createComment(uid, pid, this.commentData)
+    this.dbService.createComment(uid, pid, this.newComment)
       .subscribe(
         data => {
           // console.log('onCreate', data)

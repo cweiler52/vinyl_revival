@@ -34,20 +34,21 @@
     top: 50%;
   }
 
-
+.image-background{
+  height: 125%;
+  width: 100%;
+}
 
   .container .inner .panel.panel-left .image-background {
     position: fixed;
     margin: 0;
     padding: 0;
-    width: 50%;
-    height: 100%;
-    left: 1%;
-    top: 25%;
+    left: -3%;
+    top: 6%;
     opacity: 0.90;
     background-image: url('../../assets/vinyl.jpeg');
     background-repeat: no-repeat;
-    background-size: 125%;
+    background-size: 90%;
     
   
   }
@@ -55,7 +56,7 @@
   .container .inner .panel.panel-right {
     position: fixed;
     margin-right: -10%;
-    margin-top: .6rem;
+    margin-top: .3rem;
     height: 100%;
     width: 50%;
     left: 50%;

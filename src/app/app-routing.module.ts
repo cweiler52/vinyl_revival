@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'record/:id', component: ProductViewComponent },
   // USER PROFILE PAGE
-  { path: 'user/profile', component: UserProfileComponent, canActivate: [AuthGuard], data: ['user'] },
+  { path: 'user/profile', component: UserProfileComponent, canActivate: [AuthGuard], data: ['user', 'admin'] },
   // ADMIN PAGES
   { path: 'admin/products', component: AdminProdList, canActivate: [AuthGuard], data: ['admin'] },
 ];

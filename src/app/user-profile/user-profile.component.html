@@ -8,7 +8,7 @@
       <h1 class="title"><span>{{ profile.user.name }}</span></h1><br>
       <div class="color2"></div>
     <div class="text">
-        <h2>USER PROFILE</h2>
+        <h2><span *ngIf="!auth.is_admin">USER</span><span *ngIf="auth.is_admin">ADMIN</span> PROFILE</h2>
         <hr style="color:rgb(38, 49, 49);">
     Name: {{profile.user.name}}<br>
     Email: {{profile.user.email}}<br>

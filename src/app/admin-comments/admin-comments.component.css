@@ -1,0 +1,18 @@
+.noComments {
+    text-align: center;
+}
+
+.com {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 3px;   
+}
+
+div.eachComment:nth-child(odd) {
+    background: #EEE;
+}
+
+.trashcan {
+    cursor: pointer;
+}

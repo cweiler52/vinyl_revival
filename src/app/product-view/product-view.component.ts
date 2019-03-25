@@ -47,8 +47,6 @@ export class ProductViewComponent implements OnInit {
       data => {
         // console.log(data);
         this.favCnt = data.favs.length;
-        //this.commentCnt = data.comments.length;
-        //this.commentsArr = data.comments;
         this.product = data;
         // GET SUGGESTED ALBUMS
         this.dbService.getProdSuggestions(id, data.genre).subscribe(

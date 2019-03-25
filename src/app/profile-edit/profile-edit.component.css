@@ -1,0 +1,37 @@
+.hidden{
+    display: none;
+ }
+
+ .modal-body{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-body > * {
+    width: 100%;
+  }
+
+#btn{
+    width: 100%;
+    text-align: center;
+}
+
+.modal-header{
+    background-image: url('../../assets/Vinyl-Record.jpg');
+    background-position: center center;
+    background-size: 50%;
+    opacity: .8;
+}
+
+.modal-title{
+    color: white;
+    font-weight: bolder;
+}
+
+input.full {
+    width: 80%;
+}
+
+label {
+    width: 20%;
+}

@@ -28,7 +28,7 @@ export class UserProfileComponent implements OnInit {
   getProfile() {
     this.dbService.getUserProfile(parseInt(this.auth.user_id)).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.profile = data;
       }
     )
@@ -37,7 +37,7 @@ export class UserProfileComponent implements OnInit {
   editProfile() {
     this.dbService.editProfile(parseInt(this.auth.user_id), this.profile).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.profile = data;
       }
     )

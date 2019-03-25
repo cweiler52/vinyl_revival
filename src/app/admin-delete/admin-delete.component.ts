@@ -23,7 +23,8 @@ export class AdminDeleteComponent implements OnInit {
       .subscribe(
         res => {
           this.closeModal();
-          location.href = window.location.href},
+          location.href = window.location.href
+        },
         err => console.log(err)
       )
   }

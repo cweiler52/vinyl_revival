@@ -16,7 +16,7 @@
     <button class="edit" (click)="openEdit()"><span>Edit Profile</span></button>
     <br>
       </div>
-<mat-grid-list cols="3" rowHeight="4:2">
+<mat-grid-list cols="3" rowHeight="4:4">
   <h4>COLLECTION</h4>
   <mat-grid-tile *ngFor="let fav of profile.favs">
       <a routerLink="/record/{{fav.id}}" routerLinkActive="active">

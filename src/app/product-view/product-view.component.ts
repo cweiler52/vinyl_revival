@@ -45,7 +45,7 @@ export class ProductViewComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProdView(id).subscribe(
       data => {
-        //console.log(data);
+        // console.log(data);
         this.favCnt = data.favs.length;
         //this.commentCnt = data.comments.length;
         //this.commentsArr = data.comments;
@@ -69,10 +69,7 @@ export class ProductViewComponent implements OnInit {
     const pid: number = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProductComments(pid).subscribe(
       data => {
-        //console.log('event', commentsArr);
-        //console.log('comments for album', data);
-        this.editView = false;
-        this.commentView = false;
+        // console.log('comments for album', data);
         this.commentCnt = data.length;
         this.commentsArr = data;
       }
@@ -86,31 +83,19 @@ export class ProductViewComponent implements OnInit {
   fav(): void {
     if(this.auth.is_loggedin){
       const pid: number = +this.route.snapshot.paramMap.get('id');
-      // console.log(parseInt(this.auth.user_id), pid);
       this.dbService.favVinyl(parseInt(this.auth.user_id), pid)
         .subscribe(
           data => { 
-            // console.log('add', data);
+            //console.log(data);
             let fCnt = document.getElementById('fav').innerHTML;
-            this.newFavCnt = parseInt(fCnt)+1;
-            document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
-          },
-          (err) => {
-            if (err.error.name === "SequelizeUniqueConstraintError") { 
-              this.dbService.favRemove(parseInt(this.auth.user_id), pid)
-                .subscribe(
-                  data => { 
-                    // console.log('remove', data);
-                    let fCnt = document.getElementById('fav').innerHTML;
-                    this.newFavCnt = parseInt(fCnt)-1;
-                    document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
-                  }
-                )
+            if(data.outcome === 1){
+              this.newFavCnt = parseInt(fCnt)+1;
             }else{
-              console.log(err);
+              this.newFavCnt = parseInt(fCnt)-1;
             }
+            document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
           }
-        );
+        )
     }else{
       // pull up the login modal
       this.openSignup();
@@ -125,59 +110,5 @@ export class ProductViewComponent implements OnInit {
       }
     });
   }
-
-  // editCheck(){
-  //   return this.auth.user_id
-  // }
-  
-  // editToggle(id){
-  //   document.getElementById(`comment_edit_${id}`).style.display = "block";
-  // }
-  
-  // viewToggle(){
-  //   const _commentView = !this.commentView;
-  //   this.commentView = _commentView
-  // }
-
-  // onCreate() {
-  //   let uid: number = 0;
-  //   if(!this.auth.user_id){
-  //     // pull up the login modal
-  //     this.openSignup();
-  //   }else{
-  //     uid = parseInt(this.auth.user_id);
-  //   }
-  //   const pid = +this.route.snapshot.paramMap.get('id');
-  //   console.log(uid, pid, this.commentData);
-  //   this.dbService.createComment(uid, pid, this.commentData)
-  //     .subscribe(
-  //       res => console.log(res),
-  //       err => console.log(err)
-  //     )
-  // }
-
-  // onEdit(id: number) {
-  //   this.dbService.editComment(id, this.commentData)
-  //     .subscribe(
-  //       res => console.log(res),
-  //       err => console.log(err)
-  //     )
-  // }
-
-  // onDelete(id: number) {
-  // this.dbService.deleteComment(id)
-  //   .subscribe(
-  //     res => {
-  //       document.getElementById(`comment_${id}`).style.display = "none";
-  //       console.log(res)
-  //       //this.dbService.getOneProduct(pid).subscribe(
-  //         //data => {
-  //                 //console.log(data);
-  //           //     }
-  //       //)
-  //     },
-  //     err => console.log(err),
-  //   )
-  // }
   
 }

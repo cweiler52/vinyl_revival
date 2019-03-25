@@ -6,21 +6,21 @@
 
   
   <mat-sidenav-content *ngIf="product">
-    <mat-grid-list cols="8">
-      <mat-grid-tile rowspan="4" colspan="4">
+    <mat-grid-list cols="10">
+      <mat-grid-tile rowspan="5" colspan="4" style="border:1px solid red">
       <img [src]="product.cover" class="product-cover"/>
       <div id="pricetag">${{ product.price }}</div>
       </mat-grid-tile>
-      <mat-grid-tile id="text-layout" colspan="3" rowspan="2">
-      {{product.artist | uppercase }}
-      <div id="like">
-          <mat-icon (click)="fav()">favorite</mat-icon> 
-        <div id="fav">{{ favCnt }}</div>
-        <!-- <div>Like</div> -->
-      </div>
-    </mat-grid-tile>
-      <br>
-    <mat-grid-tile colspan="3" rowspan="1" id="text-desc">
+      <mat-grid-tile id="text-layout" colspan="4" rowspan="2" style="border:1px solid red">
+        {{product.artist | uppercase }}
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan="2" style="border:1px solid red">
+        <div id="like">
+            <mat-icon (click)="fav()">favorite</mat-icon> 
+            <div id="fav">{{ favCnt }}</div>
+        </div>
+      </mat-grid-tile>
+    <mat-grid-tile colspan="5" rowspan="2" id="text-desc" style="border:1px solid red">
       <!-- <div>
           <mat-icon>favorite</mat-icon> 
         <div (click)="fav()" id="fav">{{ favCnt }}</div>
@@ -29,11 +29,12 @@
       {{ product.album }}<br>
       {{product.desc}}
     </mat-grid-tile>
-
+    <mat-grid-tile colspan="2" rowspan="1" style="border:1px solid red">
+      button
+      <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>    
+    </mat-grid-tile>
   </mat-grid-list>
 
- <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
-  
 </mat-sidenav-content>
 </mat-sidenav-container>
 <div *ngFor="let item of suggestions" style="width: 33%; float: left;">

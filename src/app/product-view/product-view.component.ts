@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location, DOCUMENT } from '@angular/common';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -23,13 +23,12 @@ export class ProductViewComponent implements OnInit {
   suggestions: any;
   opened: any;
   modalRef: BsModalRef;
-  auth = this.dbService.getCookies();
+  auth: any = this.dbService.getCookies();
   addOpen: boolean = false;
   commentView: boolean = false;
   editView: boolean = false;
   commentData: string;
   style: string;
-  @Output() refreshComments = new EventEmitter();
 
   constructor(
     private dbService: DatabaseService,
@@ -48,8 +47,8 @@ export class ProductViewComponent implements OnInit {
       data => {
         // console.log(data);
         this.favCnt = data.favs.length;
-        this.commentCnt = data.comments.length;
-        this.commentsArr = data.comments;
+        //this.commentCnt = data.comments.length;
+        //this.commentsArr = data.comments;
         this.product = data;
         // GET SUGGESTED ALBUMS
         this.dbService.getProdSuggestions(id, data.genre).subscribe(
@@ -66,7 +65,7 @@ export class ProductViewComponent implements OnInit {
     location.href = `/record/${id}`;
   }
 
-  getCommentsForAlbum(){
+  getCommentsForAlbum(commentsArr){
     const pid: number = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProductComments(pid).subscribe(
       data => {
@@ -110,55 +109,6 @@ export class ProductViewComponent implements OnInit {
         loginUserData: {}
       }
     });
-  }
-
-  editCheck(){
-    return this.auth.user_id
-  }
-  
-  editToggle(id){
-    document.getElementById(`comment_edit_${id}`).style.display = "block";
-  }
-  
-  viewToggle(){
-    const _commentView = !this.commentView;
-    this.commentView = _commentView
-  }
-
-  onCreate() {
-    let uid: number = 0;
-    if(!this.auth.user_id){
-      // pull up the login modal
-      this.openSignup();
-    }else{
-      uid = parseInt(this.auth.user_id);
-    }
-    const pid = +this.route.snapshot.paramMap.get('id');
-    console.log(uid, pid, this.commentData);
-    this.dbService.createComment(uid, pid, this.commentData)
-      .subscribe(
-        res => console.log(res),
-        err => console.log(err)
-      )
-  }
-
-  onEdit(id: number) {
-    this.dbService.editComment(id, this.commentData)
-      .subscribe(
-        res => console.log(res),
-        err => console.log(err)
-      )
-  }
-
-  onDelete(id: number) {
-  this.dbService.deleteComment(id)
-    .subscribe(
-      data => {
-        document.getElementById(`comment_${id}`).style.display = "none";
-        console.log(data)
-      },
-      err => console.log(err),
-    )
   }
   
 }

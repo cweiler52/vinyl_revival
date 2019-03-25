@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter,  } from '@angular/core';
+import { Component, Input, Inject, Output, EventEmitter, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location, DOCUMENT } from '@angular/common';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -12,7 +12,7 @@ import { SignupComponent } from '../signup/signup.component';
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent implements OnChanges {
   @Input() commentCnt: number;
   @Input() commentsArr: any;
   
@@ -28,17 +28,38 @@ export class CommentsComponent implements OnInit {
     private dbService: DatabaseService,
     private route: ActivatedRoute,
     private location: Location,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService, 
+    @Inject(DOCUMENT) document) { }
 
-  ngOnInit() {
+  ngOnChanges() {
+    this.getCommentsForAlbum()
+    // console.log(this.commentCnt, this.commentsArr)
+  }
+
+  getCommentsForAlbum(){
+    const pid: number = +this.route.snapshot.paramMap.get('id');
+    this.dbService.getProductComments(pid).subscribe(
+      data => {
+        // console.log('comments for album', data);
+        this.editView = false;
+        this.commentView = false;
+        this.commentCnt = data.length;
+        this.commentsArr = data;
+      }
+    )
   }
 
   editCheck(){
     return this.auth.user_id
   }
   
-  editToggle(id){
-    document.getElementById(`comment_edit_${id}`).style.display = "block";
+  editToggle(id, text){
+    //console.log(id, text)
+    document.getElementById('comment_create').classList.toggle('hidden');
+    document.getElementById(`comment_edit_${id}`).classList.toggle('show');
+    document.getElementById(`comment_edit_${id}`).classList.toggle('hidden');
+    document.getElementById(`comment_input_edit_${id}`).value = text;
+    document.getElementById('comment_input_create').value = '';
   }
   
   viewToggle(){
@@ -55,10 +76,13 @@ export class CommentsComponent implements OnInit {
       uid = parseInt(this.auth.user_id);
     }
     const pid = +this.route.snapshot.paramMap.get('id');
-    console.log(uid, pid, this.commentData);
+    // console.log(uid, pid, this.commentData);
     this.dbService.createComment(uid, pid, this.commentData)
       .subscribe(
-        res => console.log(res),
+        data => {
+          // console.log('onCreate', data)
+          this.refreshComments.emit(data)
+        },
         err => console.log(err)
       )
   }
@@ -66,7 +90,10 @@ export class CommentsComponent implements OnInit {
   onEdit(id: number) {
     this.dbService.editComment(id, this.commentData)
       .subscribe(
-        res => console.log(res),
+        data => {
+          // console.log('onEdit', data) 
+          this.refreshComments.emit(data)
+        },
         err => console.log(err)
       )
   }
@@ -74,14 +101,9 @@ export class CommentsComponent implements OnInit {
   onDelete(id: number) {
   this.dbService.deleteComment(id)
     .subscribe(
-      res => {
-        document.getElementById(`comment_${id}`).style.display = "none";
-        console.log(res)
-        //this.dbService.getOneProduct(pid).subscribe(
-          //data => {
-                  //console.log(data);
-            //     }
-        //)
+      data => {
+        // console.log('onDelete', data)
+        this.refreshComments.emit(data)
       },
       err => console.log(err),
     )

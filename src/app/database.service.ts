@@ -34,6 +34,7 @@ export class DatabaseService {
   private dbFavsUrl = `${APIURL}/api/favs`;
   private dbCommentsUrl = `${APIURL}/api/comments`;
   private dbCommentUrl = `${APIURL}/api/comment`;
+  private dbProfileUrl = `${APIURL}/api/user`;
   private auth: Auth;
 
   constructor(
@@ -92,6 +93,17 @@ export class DatabaseService {
   favRemove(uid: number, pid: number) {
     return this.http.delete<any>( `${this.dbFavsUrl}/${uid}/${pid}`, httpOptions)
   }
+
+   // PROFILE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   getProfile() : Observable<Profile[]> {
+     return this.http.get<Profile[]>(this.dbProfileUrl);
+   }
+   editProfile(id: number, name: string, email: string, image: string) : Observable<any> {
+     return this.http.put<any>(`${this.dbProfileUrl}/${id}`, httpOptions)
+   }
+   deleteProfile(id: number) : Observable<Profile> {
+     return this.http.delete<Profile>(`${this.dbProfileUrl}/${id}`, httpOptions);
+   }
 
   // USER //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   loginUser(user: any) {

@@ -20,6 +20,7 @@ import { RoutingComponents } from './app-routing.module';
 import { AdminDeleteComponent } from './admin-delete/admin-delete.component';
 import { AdminCommentsComponent } from './admin-comments/admin-comments.component';
 import { SlideshowModule } from "ng-simple-slideshow";
+import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SlideshowModule } from "ng-simple-slideshow";
     NavbarComponent,
     RoutingComponents,
     AdminDeleteComponent,
-    AdminCommentsComponent
+    AdminCommentsComponent,
+    UserProfileEditComponent
   ],
   imports: [
     BrowserModule,

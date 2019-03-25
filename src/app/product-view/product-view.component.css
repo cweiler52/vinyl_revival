@@ -81,22 +81,21 @@ html{
 color: #114181;
 }
 
-/* .hidden{
-   display: none;
 
-.trans {
-   border: transparent;
-   background-color: transparent;
-} */
-
-div #fav {
+/* div #fav {
    width: 20px;
    height: 20px;
    text-align: center;
    margin-left: 4rem;
    cursor: pointer;
    z-index: 4;
+} */
+
+#fav{
+  position: absolute;
+  margin-top: -5rem;
 }
+
 
 
 /* SUGGESTED COVER */
@@ -106,7 +105,7 @@ div #fav {
    margin-left: 4rem;
 }
 
+
 .text-st{
    margin-left: 4rem;
 }
-

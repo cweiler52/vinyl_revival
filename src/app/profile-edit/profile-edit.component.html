@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <h4 class="modal-title pull left"> {{title}} </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body">
+  <form>
+  
+    <label for="email">Email:</label>
+    <input class="full"
+    [(ngModel)]="profileData.email"
+    type="text"
+    name="email"
+    required><br>
+  
+    <label for="image">Image:</label>
+    <input class="full"
+    [(ngModel)]="profileData.image"
+    type="text"
+    name="image"
+    required><br>
+  
+    <label for="image"></label>
+    <img *ngIf="profileData.id" [src]="profileData.image" /><br><br>
+    
+    <label for="name">Name:</label>
+    <input class="full"
+    [(ngModel)]="profileData.name"
+    type="text"
+    name="name"
+    required><br>
+
+    <label for="password">Password:</label>
+    <input class="smallest"
+    [(ngModel)]="profileData.password"
+    type="text"
+    name="password"
+    required><br>
+  
+    <br>
+    <div class="btns">
+      <button type="button" (click)="onEdit(peofileData.id)"> Update </button>
+    </div>
+  
+  </form>
+  </div>

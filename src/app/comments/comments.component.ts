@@ -15,13 +15,13 @@ import { SignupComponent } from '../signup/signup.component';
 export class CommentsComponent implements OnChanges {
   @Input() commentCnt: number;
   @Input() commentsArr: any;
-  
   @Output() refreshComments = new EventEmitter();
   auth = this.dbService.getCookies();
   addOpen: boolean = false;
   commentView: boolean = false;
   editView: boolean = false;
   commentData: string;
+  newComment: string;
   modalRef: BsModalRef;
 
   constructor(
@@ -53,13 +53,9 @@ export class CommentsComponent implements OnChanges {
     return this.auth.user_id
   }
   
-  editToggle(id, text){
+  editToggle(id){
     //console.log(id, text)
-    document.getElementById('comment_create').classList.toggle('hidden');
-    document.getElementById(`comment_edit_${id}`).classList.toggle('show');
     document.getElementById(`comment_edit_${id}`).classList.toggle('hidden');
-    document.getElementById(`comment_input_edit_${id}`).value = text;
-    document.getElementById('comment_input_create').value = '';
   }
   
   viewToggle(){
@@ -77,7 +73,7 @@ export class CommentsComponent implements OnChanges {
     }
     const pid = +this.route.snapshot.paramMap.get('id');
     // console.log(uid, pid, this.commentData);
-    this.dbService.createComment(uid, pid, this.commentData)
+    this.dbService.createComment(uid, pid, this.newComment)
       .subscribe(
         data => {
           // console.log('onCreate', data)

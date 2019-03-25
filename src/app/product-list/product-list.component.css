@@ -15,11 +15,12 @@ body{
 
 #page-btn{
    float: right;
-   margin-top: 10%;
+   margin-top: 5%;
+   color: rgb(38, 49, 49);
 }
 
 .mat-raised-button{
-  background-color: rgb(17, 66, 97);
+  background-color: rgb(38, 49, 49);
   color: white;
 }
 
@@ -28,6 +29,7 @@ div#text-lay {
     margin-left: 17.5rem;
     z-index: 3;
     text-align: center;
+    font-family: 'Roboto Slab', serif;
 }
 
 #fav{
@@ -37,8 +39,8 @@ div#text-lay {
   z-index: 4;
   position: absolute;
   color: white;
-  border: 3px solid #660000;
-  background-color: #660000;
+  border: 3px solid rgb(180, 123, 17);
+  background-color: rgb(180, 123, 17);
   border-radius: 50%;
   width: 30px;
   height: 30px;

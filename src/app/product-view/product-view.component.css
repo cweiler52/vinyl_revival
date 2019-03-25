@@ -11,12 +11,16 @@ html{
 
  
  #text-layout{
-    height: 25%;
+    height: 15%;
     width: 45%;
+    color: rgb(38, 49, 49);
     font-size: calc(0.06 * (100vh - 140px));
     letter-spacing: calc(0.03 * (100vh - 140px));
  }
 
+ .mat-figure{
+    height: 20%;
+ }
  
  #side-nav{
     background: white;
@@ -43,7 +47,8 @@ html{
 }
 
 #pricetag{
-   background-color: teal;
+   background-color: rgb(38, 49, 49);
+   color: white;
    width: 20%;
    position: relative;
    text-align: center;
@@ -60,7 +65,17 @@ html{
    margin-left: 2rem;
 }
 
+#cmt-btn{
+   border: 2px solid rgb(38, 49, 49);
+   position: absolute;
+   margin-left: 45rem;
+   margin-top: -8rem;
+}
 
+#cmt-btn:hover{
+   background-color: rgb(38, 49, 49);
+   color: white;
+}
 
 #cmt-name-st{
 color: #114181;
@@ -73,14 +88,20 @@ color: #114181;
    display: block;
 }
 
-div #fav {
+/* div #fav {
    width: 20px;
    height: 20px;
    text-align: center;
    margin-left: 4rem;
    cursor: pointer;
    z-index: 4;
+} */
+
+#fav{
+  position: absolute;
+  margin-top: -5rem;
 }
+
 
 
 /* SUGGESTED COVER */
@@ -90,7 +111,7 @@ div #fav {
    margin-left: 4rem;
 }
 
+
 .text-st{
    margin-left: 4rem;
 }
-

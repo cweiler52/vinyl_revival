@@ -7,8 +7,6 @@
   
   <mat-sidenav-content *ngIf="product">
     <mat-grid-list cols="8">
-      <div id="fav" (click)="fav()">{{ favCnt }}
-      </div>
       <mat-grid-tile rowspan="4" colspan="4">
       <img [src]="product.cover" class="product-cover"/>
       <div id="pricetag">${{ product.price }}</div>
@@ -17,7 +15,8 @@
       {{product.artist | uppercase }}
     </mat-grid-tile>
       <br>
-    <mat-grid-tile colspan="3" rowspan="1">
+    <mat-grid-tile colspan="3" rowspan="1" id="text-desc">
+        <div id="fav" (click)="fav()">{{ favCnt }}</div><br>
       {{ product.album }}<br>
       {{product.desc}}
     </mat-grid-tile>

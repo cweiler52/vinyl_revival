@@ -9,14 +9,14 @@
       <div class="color2"></div>
     <div class="text">
         <h2>USER PROFILE</h2>
-        <hr>
+        <hr style="color:rgb(38, 49, 49);">
     Name: {{profile.user.name}}<br>
     Email: {{profile.user.email}}<br>
     
     <button class="edit"><span>Edit Profile</span></button>
     <br>
       </div>
-<mat-grid-list cols="3" rowHeight="4:4">
+<mat-grid-list cols="3" rowHeight="4:2">
   <h4>COLLECTION</h4>
   <mat-grid-tile *ngFor="let fav of profile.favs">
       <a routerLink="/record/{{fav.id}}" routerLinkActive="active">

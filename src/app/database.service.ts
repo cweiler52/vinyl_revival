@@ -93,6 +93,17 @@ export class DatabaseService {
     return this.http.post<any>( `${this.dbFavsUrl}/handle`, { user_id: uid, product_id: pid }, httpOptions)
   }
 
+   // PROFILE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   getProfile(id: number) : Observable<Profile> {
+     return this.http.get<any>(this.dbProfileUrl);
+   }
+   editProfile(id: number, profile: any) : Observable<Profile> {
+     return this.http.put<any>(`${this.dbProfileUrl}/${id}`, httpOptions)
+   }
+   deleteProfile(id: number) : Observable<Profile> {
+     return this.http.delete<Profile>(`${this.dbProfileUrl}/${id}`, httpOptions);
+   }
+
   // USER //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   loginUser(user: any) {
     return this.http.post<any>(this.dbLogUrl, user)

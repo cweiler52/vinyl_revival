@@ -14,10 +14,9 @@ h1{
     text-align: center;
     z-index: 50;
     font-size: 5rem;
-    color: white;
+    color: black;
 }
 
-img{
-    max-height: 35rem;
+#back{
+    top: -50%;
 }
-

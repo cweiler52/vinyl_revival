@@ -27,7 +27,7 @@
     <mat-grid-tile colspan="4" rowspan="1">
       <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>    
     </mat-grid-tile>
-    <mat-grid-tile colspan="10" rowspan="3">
+    <mat-grid-tile colspan="10" rowspan="3" style="font-family:'Poppins'">
 <div *ngFor="let item of suggestions" style="width: 55%; margin-left: 4rem;" id="box">
       <img [src]="item.cover"  (click)="onSuggestedClick(item.id)" style="width: 55%" />
       <div class="caption fade-caption" (click)="onSuggestedClick(item.id)">

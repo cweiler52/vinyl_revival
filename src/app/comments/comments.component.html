@@ -10,7 +10,7 @@
   <div *ngFor="let text of commentsArr" id="cmt-st">
     <div id="comment_{{text.id}}" class="user_comments">
       <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
-      {{text.comment}}
+      <div id="cmt-text">{{text.comment}}
       <button class="float_right" *ngIf="text.userid == editCheck()" (click)="onDelete(text.id)" id="button2"><mat-icon>delete</mat-icon></button>
       <button class="float_right" *ngIf="text.userid == editCheck()" (click)="editToggle(text.id)" id="button2"><mat-icon style="color:white">edit</mat-icon></button>
     </div>

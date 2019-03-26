@@ -32,8 +32,10 @@
 <div *ngFor="let item of suggestions" style="width: 75%; margin-left: 4rem;" id="box" >
       <img [src]="item.cover"  (click)="onSuggestedClick(item.id)" style="width: 75%" />
       <div class="caption fade-caption" (click)="onSuggestedClick(item.id)">
+         <mat-icon>favorite</mat-icon>: {{item.favCount}}<br>
       {{ item.artist | uppercase }}<br>
       {{ item.album }}
+
       </div>
       </div>
     </mat-grid-tile>

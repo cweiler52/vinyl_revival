@@ -44,7 +44,7 @@
     margin: 0;
     padding: 0;
     left: -3%;
-    top: 6%;
+    height: 100%;
     opacity: 0.90;
     background-image: url('../../assets/vinyl.jpeg');
     background-repeat: no-repeat;
@@ -56,7 +56,6 @@
   .container .inner .panel.panel-right {
     position: fixed;
     margin-right: -10%;
-    margin-top: .3rem;
     height: 100%;
     width: 50%;
     left: 50%;

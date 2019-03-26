@@ -13,7 +13,6 @@ import { SignupComponent } from '../signup/signup.component';
   styleUrls: ['./comments.component.css']
 })
 export class CommentsComponent implements OnChanges {
-  @Input() commentCnt: number;
   @Input() commentsArr: any;
   @Output() refreshComments = new EventEmitter();
   auth = this.dbService.getCookies();
@@ -44,7 +43,6 @@ export class CommentsComponent implements OnChanges {
         this.editView     = false;
         this.commentView  = false;
         this.commentsArr  = data;
-        this.commentCnt   = this.commentsArr.length;
       }
     )
   }

@@ -18,7 +18,6 @@ export class ProductViewComponent implements OnInit {
   product: ProductsFC;
   favCnt: number;
   newFavCnt: number;
-  commentCnt: number = 0;
   commentsArr: any = [];
   suggestions: any;
   opened: any;
@@ -53,7 +52,6 @@ export class ProductViewComponent implements OnInit {
         this.product      = data;
         this.favCnt       = this.product.favs.length;
         this.commentsArr  = this.product.comments;
-        this.commentCnt   = this.product.comments.length;
 
         // GET SUGGESTED ALBUMS
         this.dbService.getProdSuggestions(id, data.genre).subscribe(
@@ -72,7 +70,6 @@ export class ProductViewComponent implements OnInit {
       data => {
         // console.log('comments for album', data);
         this.commentsArr  = data;
-        this.commentCnt   = data.length;
       }
     )
   }

@@ -43,7 +43,6 @@ html{
 .product-cover{
     width: 40vw;
     height: 65vh;
-    cursor: pointer;
 }
 
 
@@ -57,7 +56,7 @@ html{
 #pricetag{
    background-color: rgb(38, 49, 49);
    color: white;
-   width: 15%;
+   width: 20%;
    position: relative;
    text-align: center;
    margin-left: -7rem;
@@ -158,7 +157,7 @@ mat-icon{
    left: 0;  
    opacity: 0;  
    width: 55%;  
-   height: 85%;  
+   height: 100%;  
    text-align: center;  
    padding: 15px;
 }  

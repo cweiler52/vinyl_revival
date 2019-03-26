@@ -7,7 +7,7 @@
   
   <mat-sidenav-content *ngIf="product">
     <mat-grid-list cols="10" gutterSize="15px">
-      <mat-grid-tile rowspan="5" colspan="4">
+      <mat-grid-tile rowspan="5" colspan="4" >
       <img [src]="product.cover" class="product-cover"/>
       <div id="pricetag">${{ product.price }}</div>
       </mat-grid-tile>
@@ -27,9 +27,10 @@
     <mat-grid-tile colspan="4" rowspan="1">
       <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>    
     </mat-grid-tile>
+    <mat-grid-tile colspan="10" style="background-color:rgb(38, 49, 49); color: white;"><h3>Suggested Vinyls</h3></mat-grid-tile>
     <mat-grid-tile colspan="10" rowspan="3" style="font-family:'Poppins'">
-<div *ngFor="let item of suggestions" style="width: 55%; margin-left: 4rem;" id="box">
-      <img [src]="item.cover"  (click)="onSuggestedClick(item.id)" style="width: 55%" />
+<div *ngFor="let item of suggestions" style="width: 75%; margin-left: 4rem;" id="box" >
+      <img [src]="item.cover"  (click)="onSuggestedClick(item.id)" style="width: 75%" />
       <div class="caption fade-caption" (click)="onSuggestedClick(item.id)">
       {{ item.artist | uppercase }}<br>
       {{ item.album }}

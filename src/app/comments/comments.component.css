@@ -1,0 +1,41 @@
+.edit_div {
+    padding: 10px 0 15px 0;
+}
+.edit_btn {
+    float: right; 
+    margin-top: -1%;
+    color: black;
+}
+.edit_textarea {
+    width: 99%;
+}
+
+.user_comments {
+    width: 99%;
+    margin: 4px 0;
+}
+
+.float_right {
+    float: right;
+}
+
+#button2{
+    border: transparent;
+    background-color: transparent;
+}
+
+#cmt-text{
+    margin-left: 1rem;
+}
+
+.user_comments:nth-child(1){
+background-color: rgba(129, 163, 163, 0.774);
+margin: .5rem;
+}
+
+#cmt-add{
+    margin-top: 5%;
+   margin-left: 1rem;
+    border-radius: 5%;
+    background-color: rgba(84, 104, 104, 0.774);
+}

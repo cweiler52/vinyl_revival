@@ -7,10 +7,14 @@
 
 
   <div class="modal-body">
-<div *ngFor="let i of showComments" >
-  <div id="comment_{{i.id}}">
-    {{i.comment}}
-  <button (click)="onDelete(i.id, i.productid)">X</button>
-  </div>
- </div>
+    <div *ngIf="showComments">
+      <div *ngFor="let c of showComments" class="eachComment">
+        <div id="comment_{{c.id}}" class="com">
+          <div>{{c.comment}}</div>
+          <mat-icon class="trashcan" (click)="onDelete(c.id, c.productid)">deleteforever</mat-icon>
+      </div>
+    </div>
+    <div *ngIf="showComments.length === 0" class="noComments">
+      No Comments to show for this album
+    </div>
 </div>

@@ -18,12 +18,16 @@ export class ProductViewComponent implements OnInit {
   product: ProductsFC;
   favCnt: number;
   newFavCnt: number;
-  commentCnt: number;
-  commentsArr: any;
+  commentsArr: any = [];
   suggestions: any;
   opened: any;
   modalRef: BsModalRef;
-  auth = this.dbService.getCookies();
+  auth: any = this.dbService.getCookies();
+  addOpen: boolean = false;
+  commentView: boolean = false;
+  editView: boolean = false;
+  commentData: string;
+  style: string;
 
   constructor(
     private dbService: DatabaseService,
@@ -36,15 +40,19 @@ export class ProductViewComponent implements OnInit {
     this.getOneProduct();
   }
 
+  onSuggestedClick(id){
+    location.href = `/record/${id}`;
+  }
+
   getOneProduct(){
     const id = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProdView(id).subscribe(
       data => {
         // console.log(data);
-        this.favCnt = data.favs.length;
-        this.commentCnt = data.comments.length;
-        this.commentsArr = data.comments;
-        this.product = data;
+        this.product      = data;
+        this.favCnt       = this.product.favs.length;
+        this.commentsArr  = this.product.comments;
+
         // GET SUGGESTED ALBUMS
         this.dbService.getProdSuggestions(id, data.genre).subscribe(
           suggs => {
@@ -56,44 +64,32 @@ export class ProductViewComponent implements OnInit {
     )
   }
 
-  onSuggestedClick(id){
-    location.href = `/record/${id}`;
-  }
-
-  goBack(): void {
-    this.location.back();
+  getCommentsForAlbum(event){
+    const pid: number = +this.route.snapshot.paramMap.get('id');
+    this.dbService.getProductComments(pid).subscribe(
+      data => {
+        // console.log('comments for album', data);
+        this.commentsArr  = data;
+      }
+    )
   }
 
   fav(): void {
     if(this.auth.is_loggedin){
       const pid: number = +this.route.snapshot.paramMap.get('id');
-      // console.log(parseInt(this.auth.user_id), pid);
       this.dbService.favVinyl(parseInt(this.auth.user_id), pid)
         .subscribe(
           data => { 
-            // console.log('add');
-            // console.log(data);
+            //console.log(data);
             let fCnt = document.getElementById('fav').innerHTML;
-            this.newFavCnt = parseInt(fCnt)+1;
-            document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
-          },
-          (err) => {
-            if (err.error.name === "SequelizeUniqueConstraintError") { 
-              this.dbService.favRemove(parseInt(this.auth.user_id), pid)
-                .subscribe(
-                  data => { 
-                    // console.log('remove');
-                    // console.log(data);
-                    let fCnt = document.getElementById('fav').innerHTML;
-                    this.newFavCnt = parseInt(fCnt)-1;
-                    document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
-                  }
-                )
+            if(data.outcome === 1){
+              this.newFavCnt = parseInt(fCnt)+1;
             }else{
-              console.log(err);
+              this.newFavCnt = parseInt(fCnt)-1;
             }
+            document.getElementById('fav').innerHTML = `${this.newFavCnt}`;
           }
-        );
+        )
     }else{
       // pull up the login modal
       this.openSignup();
@@ -108,4 +104,5 @@ export class ProductViewComponent implements OnInit {
       }
     });
   }
+  
 }

@@ -31,9 +31,9 @@ export class AdminCommentsComponent implements OnInit {
           document.getElementById(`comment_${id}`).style.display = "none";
           this.dbService.getCommentsAdmin(pid).subscribe(
             data => {
-                    console.log(data);
-                    if (data.length === 0){this.closeModal()}
-                  }
+              // console.log(data);
+              if (data.length === 0){this.closeModal()}
+            }
           )
         },
         err => console.log(err),

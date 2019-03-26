@@ -27,6 +27,9 @@ export class AdminProdList implements OnInit {
     this.getAllProducts();
   }
 
+  reloadData(){
+    this.getAllProducts();
+  }
   getAllProducts() {
     this.dbService.getProducts().subscribe(
       data => { 
@@ -50,7 +53,7 @@ export class AdminProdList implements OnInit {
         this.openModal();
 
       } else {
-        this.title = 'Edit Product'
+        this.title = 'Edit Product';
         this.dbService.getOneProduct(id).subscribe(
         data => {
                 this.createData = data;
@@ -65,7 +68,8 @@ export class AdminProdList implements OnInit {
   openDelete(id: any) {
     this.dbService.getOneProduct(id).subscribe(
       data => {
-              console.log(data);
+              //console.log(data);
+              this.createData = data
               this.openDeleteModal(id)
             }
     )
@@ -75,7 +79,7 @@ export class AdminProdList implements OnInit {
     this.modalRef = this.modalService.show(AdminDeleteComponent,  {
       initialState: {
         title: 'Delete this product?',
-        createData: this.createData,
+        createData: this.createData
       }
     });
   }
@@ -93,8 +97,7 @@ export class AdminProdList implements OnInit {
   getComments(id: any) {
     this.dbService.getCommentsAdmin(id).subscribe(
       data => {
-              console.log(data);
-              //this.commentCnt = data.comments.length;
+              // console.log(data);
               this.showComments = data;
               this.openComments()
             }

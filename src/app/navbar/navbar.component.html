@@ -1,15 +1,16 @@
 <div style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
     <ul>
+        <li><img src="../../assets/VINYL REVIVAL.png" style="width:20%;"/></li>
         <li><a routerLink="/" routerLinkActive="active">Home</a></li>
         <li><a routerLink="/about" routerLinkActive="active">About</a></li>
         <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
     </ul>
     <ul>
         <li *ngIf="this.auth.is_loggedin && auth.is_admin"><a routerLink="/admin/products" routerLinkActive="active">Admin Products</a></li>
-        <li *ngIf="this.auth.is_loggedin && !auth.is_admin"><a routerLink="/user/profile">Account</a></li>
+        <li *ngIf="this.auth.is_loggedin"><a routerLink="/user/profile">Account</a></li>
 
-        <li *ngIf="!this.auth.is_loggedin"><button (click)="openLogin()">Login</button></li>
-        <li *ngIf="!this.auth.is_loggedin"><button (click)="openSignup()">Sign Up</button></li>
-        <li *ngIf="this.auth.is_loggedin"><button (click)="onLogout()">Logout</button></li>
+        <li *ngIf="!this.auth.is_loggedin"><button (click)="openLogin()" style="border-radius:5%" id="lg-btn">Login</button></li>
+        <li *ngIf="!this.auth.is_loggedin"><button (click)="openSignup()" style="border-radius:5%" id="lg-btn">Sign Up</button></li>
+        <li *ngIf="this.auth.is_loggedin"><button (click)="onLogout()" style="border-radius:5%" id="lg-btn">Logout</button></li>
     </ul>
 </div>

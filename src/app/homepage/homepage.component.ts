@@ -6,7 +6,9 @@ import { Component, OnInit, Inject } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
+  imageSources =[
+    "../assets/vinylstore.jpg", "../assets/vinyl2.jpeg", "../assets/record.jpeg"
+  ]
   constructor( ) { }
 
   ngOnInit() {

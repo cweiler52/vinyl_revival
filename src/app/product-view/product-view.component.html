@@ -1,45 +1,42 @@
 <mat-sidenav-container>
   <!-- USER Comments  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
-      <h4 class="cmt-head">COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
-       <button>CREATE</button>
-      <div *ngIf="product">  
-        <div *ngFor="let text of product.comments" id="cmt-st">
-          <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
-            {{text.comment}} 
-        </div>
-      </div>
+    <app-comments *ngIf="commentsArr" [commentsArr]="commentsArr" (refreshComments)="getCommentsForAlbum($event)"></app-comments>
   </mat-sidenav>
 
   
   <mat-sidenav-content *ngIf="product">
-    <mat-grid-list cols="8">
-      <div id="fav" (click)="fav()">{{ favCnt }}
-      </div>
-      <mat-grid-tile rowspan="4" colspan="4">
-      <img [src]="product.cover" class="prod-cover"/>
+    <mat-grid-list cols="10" gutterSize="15px">
+      <mat-grid-tile rowspan="5" colspan="4">
+      <img [src]="product.cover" class="product-cover"/>
       <div id="pricetag">${{ product.price }}</div>
       </mat-grid-tile>
-      <mat-grid-tile id="text-layout" colspan="3" rowspan="2">
-      {{product.artist | uppercase }}
-    </mat-grid-tile>
-      <br>
-    <mat-grid-tile colspan="3" rowspan="1">
+      <mat-grid-tile id="text-layout" colspan="4" rowspan="2">
+        {{product.artist | uppercase }}
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan="2">
+        <div id="like">
+            <mat-icon (click)="fav()">favorite</mat-icon> 
+            <div id="fav">{{ favCnt }}</div>
+        </div>
+      </mat-grid-tile>
+    <mat-grid-tile colspan="4" rowspan="2" id="text-desc">
       {{ product.album }}<br>
       {{product.desc}}
     </mat-grid-tile>
-
+    <mat-grid-tile colspan="4" rowspan="1">
+      <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>    
+    </mat-grid-tile>
+    <mat-grid-tile colspan="10" rowspan="3" style="font-family:'Poppins'">
+<div *ngFor="let item of suggestions" style="width: 55%; margin-left: 4rem;" id="box">
+      <img [src]="item.cover"  (click)="onSuggestedClick(item.id)" style="width: 55%" />
+      <div class="caption fade-caption" (click)="onSuggestedClick(item.id)">
+      {{ item.artist | uppercase }}<br>
+      {{ item.album }}
+      </div>
+      </div>
+    </mat-grid-tile>
   </mat-grid-list>
 
- <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>
-  
 </mat-sidenav-content>
 </mat-sidenav-container>
-
-<div *ngFor="let item of suggestions" style="width: 33%; float: left;">
-    <div class="vinyl">
-      <img [src]="item.cover" class="prod-cover" (click)="onSuggestedClick(item.id)"/>
-    </div>
-  {{ item.artist | uppercase }}<br>
-  {{ item.album }}
-</div>

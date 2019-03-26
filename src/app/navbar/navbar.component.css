@@ -2,14 +2,27 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 10px;
+    margin-top: 1rem;
 }
 
 li {
     display: inline;
-    padding: 10px;
+    padding: 20px;
     font-family: 'Poppins', sans-serif;
 }
 
 a{
     color: inherit;
+}
+
+#lg-btn{
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    background-color:  rgba(38, 49, 49, 0.829);
+    color: white;
+}
+
+#lg-btn:hover{
+    background-color: rgb(38, 49, 49);
+    color: white;
 }

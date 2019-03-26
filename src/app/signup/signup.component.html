@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4 class="modal-title"> {{ title | uppercase }} </h4>
+    <h4 class="modal-title"> {{ title | uppercase }} or <span class="uppercase" (click)="openLogin()">Login</span> </h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -12,6 +12,13 @@
   type="email"
   name="email"
   required>
+
+  <label for="password"> Password: </label>
+  <input
+  [(ngModel)]="loginUserData.password"
+  type="password"
+  name="password"
+  required>
   
   <label for="name">Name: </label>
   <input
@@ -19,13 +26,14 @@
   type="name"
   name="name"
   required>
-  
-  <label for="password"> Password: </label>
+
+  <label for="image">Image:</label>
   <input
-  [(ngModel)]="loginUserData.password"
-  type="password"
-  name="password"
+  [(ngModel)]="loginUserData.image"
+  type="text"
+  name="image"
   required>
+  
   <br>
   <button
   type="button" (click)="onSignup()" id="btn">

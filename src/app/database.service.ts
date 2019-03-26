@@ -27,12 +27,13 @@ const httpNoAuthOptions = {
 })
 export class DatabaseService {
 
-  private dbLogUrl = `${APIURL}/api/login`;
-  private dbSignUrl = `${APIURL}/api/signup`;
-  private dbUserUrl = `${APIURL}/api/user`;
+  private dbLogUrl      = `${APIURL}/api/login`;
+  private dbSignUrl     = `${APIURL}/api/signup`;
+  private dbProfileUrl  = `${APIURL}/api/profile`;
   private dbProductsUrl = `${APIURL}/api/products`;
-  private dbFavsUrl = `${APIURL}/api/favs`;
+  private dbFavsUrl     = `${APIURL}/api/favs`;
   private dbCommentsUrl = `${APIURL}/api/comments`;
+  private dbCommentUrl  = `${APIURL}/api/comment`;
   private auth: Auth;
 
   constructor(
@@ -64,15 +65,24 @@ export class DatabaseService {
     return this.http.put<any>( `${this.dbProductsUrl}/${id}`, product, httpOptions )
   }
 
-  // COMME//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // COMMENTS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
   getCommentsHome() : Observable<Comments[]> {
     return this.http.get<Comments[]>(this.dbCommentsUrl);
   } 
   getCommentsAdmin(id: number) : Observable<Comments[]> {
     return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
-  } 
+  }
+  getProductComments(id: number) : Observable<Comments[]> {
+    return this.http.get<Comments[]>(`${this.dbCommentsUrl}/${id}`, httpOptions);
+  }
+  createComment(uid: number, pid: number, comment: string) : Observable<any> {
+    return this.http.post<any>(`${this.dbCommentUrl}/add`, {user_id: uid, product_id: pid, comment: comment}, httpOptions)
+  }
+  editComment(id: number, comment: string) : Observable<any> {
+    return this.http.put<any>(`${this.dbCommentUrl}/${id}`, {comment: comment}, httpOptions)
+  }
   deleteComment(id: number) : Observable<any> {
-    return this.http.delete<any>(`${this.dbCommentsUrl}/${id}`, httpOptions)
+    return this.http.delete<any>(`${this.dbCommentUrl}/${id}`, httpOptions)
   }
 
   // FAVS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,10 +90,18 @@ export class DatabaseService {
     return this.http.get<Favs[]>(this.dbFavsUrl);
   }
   favVinyl(uid: number, pid: number) {
-    return this.http.post<any>( `${this.dbFavsUrl}/save`, { user_id: uid, product_id: pid }, httpOptions)
+    return this.http.post<any>( `${this.dbFavsUrl}/handle`, { user_id: uid, product_id: pid }, httpOptions)
   }
-  favRemove(uid: number, pid: number) {
-    return this.http.delete<any>( `${this.dbFavsUrl}/${uid}/${pid}`, httpOptions)
+
+  // PROFILE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  getUserProfile(id: number) : Observable<Profile> {
+    return this.http.get<any>( `${this.dbProfileUrl}/${id}`, httpOptions);
+  }
+  editProfile(id: number, profile: any) : Observable<Profile> {
+    return this.http.put<any>( `${this.dbProfileUrl}/${id}`, profile, httpOptions )
+  }
+  deleteProfile(id: number) {
+    return this.http.delete<any>( `${this.dbProfileUrl}/${id}`, httpOptions)
   }
 
   // USER //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -121,9 +139,6 @@ export class DatabaseService {
     sessionStorage.removeItem('uid');
     
   }
-  getUserProfile(id: number) : Observable<Profile> {
-    return this.http.get<any>( `${this.dbUserUrl}/${id}`, httpOptions);
-  }
   getCookies() {
     return this.auth = {
       is_admin: sessionStorage.getItem('role') === 'admin' ? true : false,
@@ -133,4 +148,5 @@ export class DatabaseService {
       user_name: sessionStorage.getItem('name')
     }
   }
+
 }

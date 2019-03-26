@@ -1,6 +1,6 @@
 <main *ngIf="profile">
   <section class="left">
-    <img [src]="profile.user.image" id="avatar" height="60%"/>
+    <img [src]="profile.user.image" id="avatar" width="100%"/>
     
   </section>
   
@@ -8,18 +8,20 @@
       <h1 class="title"><span>{{ profile.user.name }}</span></h1><br>
       <div class="color2"></div>
     <div class="text">
-        <h2>USER PROFILE</h2>
-        <hr>
+        <h2><span *ngIf="!auth.is_admin">USER</span><span *ngIf="auth.is_admin">ADMIN</span> PROFILE</h2>
+        <hr style="color:rgb(38, 49, 49);">
     Name: {{profile.user.name}}<br>
     Email: {{profile.user.email}}<br>
     
-    <button class="edit"><span>Edit Profile</span></button>
+    <button class="edit" (click)="openEdit()"><span>Edit Profile</span></button>
     <br>
       </div>
-<mat-grid-list cols="3" rowHeight="4:4">
+<mat-grid-list cols="4" rowHeight="1:1">
   <h4>COLLECTION</h4>
   <mat-grid-tile *ngFor="let fav of profile.favs">
-      <img [src]="fav.cover" width="90%" id="cover"/>
+      <a routerLink="/record/{{fav.id}}" routerLinkActive="active">
+        <img [src]="fav.cover" width="90%" id="cover"/>
+      </a>
   </mat-grid-tile>
 </mat-grid-list>
     

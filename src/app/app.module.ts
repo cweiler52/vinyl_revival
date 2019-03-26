@@ -19,6 +19,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RoutingComponents } from './app-routing.module';
 import { AdminDeleteComponent } from './admin-delete/admin-delete.component';
 import { AdminCommentsComponent } from './admin-comments/admin-comments.component';
+import { SlideshowModule } from "ng-simple-slideshow";
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+// import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,10 @@ import { AdminCommentsComponent } from './admin-comments/admin-comments.componen
     NavbarComponent,
     RoutingComponents,
     AdminDeleteComponent,
-    AdminCommentsComponent
+    AdminCommentsComponent,
+    ProfileEditComponent,
+    // UserProfileEditComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +46,12 @@ import { AdminCommentsComponent } from './admin-comments/admin-comments.componen
     FormsModule,
     MaterialModule,
     NgxPaginationModule, 
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SlideshowModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [ LoginComponent, SignupComponent, AdminCreateComponent, AdminDeleteComponent, AdminCommentsComponent ] // THESE COMPONENTS POPULATE A MODAL
+  entryComponents: [ LoginComponent, SignupComponent, AdminCreateComponent, AdminDeleteComponent, AdminCommentsComponent, ProfileEditComponent ] // THESE COMPONENTS POPULATE A MODAL
 })
 
 export class AppModule { }

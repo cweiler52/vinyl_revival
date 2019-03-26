@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { DatabaseService } from '../database.service';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { DOCUMENT } from '@angular/common';
@@ -12,6 +12,7 @@ export class AdminCreateComponent implements OnInit {
   products: any;
   createData: any;
   title: string;
+  // @Output() refresh = new EventEmitter();
 
   constructor(
     private dbService: DatabaseService,
@@ -28,6 +29,7 @@ export class AdminCreateComponent implements OnInit {
           // console.log(res);
           this.closeModal();
           location.href = window.location.href
+          // this.refresh.emit();
         },
         err => console.log(err)
       )
@@ -43,10 +45,11 @@ export class AdminCreateComponent implements OnInit {
             document.getElementById(`crud-action_${id}`).innerHTML = 'updated';
             setTimeout(() => {
               document.getElementById(`crud-action_${id}`).innerHTML = '';
-            }, 3000);
+            }, 2500);
             setTimeout(() => {
               location.href = window.location.href
-            }, 3500);
+              // this.refresh.emit();
+            }, 2550);
           }
         },
         err => console.log(err)
@@ -56,9 +59,5 @@ export class AdminCreateComponent implements OnInit {
   closeModal(){
     this.modalRef.hide();
   }
-
-  // onDelete() {
-
-  // }
 
 }

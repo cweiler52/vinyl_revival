@@ -11,27 +11,38 @@ html{
 
  
  #text-layout{
-    height: 25%;
+    height: 15%;
     width: 45%;
+    color: rgb(38, 49, 49);
     font-size: calc(0.06 * (100vh - 140px));
     letter-spacing: calc(0.03 * (100vh - 140px));
  }
 
+ .mat-figure{
+    height: 20%;
+ }
  
  #side-nav{
-    background: white;
-    width: 35vw;
+    background-color: rgba(255, 255, 255, 0.801);
+    width: 25vw;
  }
 
+ #cmt-add{
+    margin-left: 7rem;
+ }
+
+ h4{
+    color: rgba(43, 54, 54, 0.795);
+    text-align: center;
+ }
   
 
 
 /* PRODUCT STYLE */
 
-.prod-cover{
+.product-cover{
     width: 40vw;
     height: 65vh;
-    cursor: pointer;
 }
 
 
@@ -43,11 +54,12 @@ html{
 }
 
 #pricetag{
-   background-color: teal;
+   background-color: rgb(38, 49, 49);
+   color: white;
    width: 20%;
    position: relative;
    text-align: center;
-   margin-left: -8rem;
+   margin-left: -7rem;
    margin-top: 30rem;
    z-index: 4;
 }
@@ -60,24 +72,99 @@ html{
    margin-left: 2rem;
 }
 
+#cmt-btn{
+   border: 2px solid rgb(38, 49, 49);
+   position: absolute;
+   text-align: left;
+}
 
+#cmt-btn:hover{
+   background-color: rgb(38, 49, 49);
+   color: white;
+}
 
 #cmt-name-st{
-color: #114181;
+color: white;
+margin-left: .5rem;
 }
 
-.trans {
-   border: transparent;
-   background-color: transparent;
+.user_comments{
+   color: black;
 }
 
-#fav {
-   width: 20px;
-   height: 20px;
-   text-align: center;
-  margin-left: 4rem;
+.hidden {
+   display: none;
+}
+.show {
+   display: block;
+}
+
+
+#fav{
+  position: absolute;
+  margin-top: -4.1rem;
+  margin-left: 3rem;
+  width: 30%;
+  color: red;
+}
+
+#like{
+   width: 30%;
+   margin-left: -2rem;
+   margin-top: -1rem;
+   font-size: calc(0.06 * (100vh - 140px));
+}
+
+mat-icon{
+   color: red;
    cursor: pointer;
-   z-index: 4;
 }
 
+#box {  
+  
+   cursor: pointer;  
+   height: 268px;  
+   margin: 5px;  
+   position: relative;  
+   overflow: hidden;  
+   width: 168px;  
+ 
+}  
+ 
+#box img {  
+   position: absolute;  
+   left: 0;  
+   -webkit-transition: all 300ms ease-out;  
+   -moz-transition: all 300ms ease-out;  
+   -o-transition: all 300ms ease-out;  
+   -ms-transition: all 300ms ease-out;  
+   transition: all 300ms ease-out;  
+}  
+
+
+#box .caption {  
+   font-family: 'poppins';
+   font-size: 1.5em;
+   background-color: rgba(0,0,0,0.8);  
+   position: absolute;  
+   color: #fff;  
+   z-index: 100;  
+   -webkit-transition: all 300ms ease-out;  
+   -moz-transition: all 300ms ease-out;  
+   -o-transition: all 300ms ease-out;  
+   -ms-transition: all 300ms ease-out;  
+   transition: all 300ms ease-out;  
+   left: 0;  
+   opacity: 0;  
+   width: 55%;  
+   height: 100%;  
+   text-align: center;  
+   padding: 15px;
+}  
+
+
+
+#box:hover .fade-caption {  
+   opacity: 1;  
+}  
 

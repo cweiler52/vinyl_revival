@@ -40,11 +40,11 @@ export class CommentsComponent implements OnChanges {
     const pid: number = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProductComments(pid).subscribe(
       data => {
-        console.log('comments for album', data);
-        this.editView = false;
-        this.commentView = false;
-        this.commentCnt = data.length;
-        this.commentsArr = data;
+        // console.log('comments for album', data);
+        this.editView     = false;
+        this.commentView  = false;
+        this.commentsArr  = data;
+        this.commentCnt   = this.commentsArr.length;
       }
     )
   }

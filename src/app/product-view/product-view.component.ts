@@ -49,11 +49,11 @@ export class ProductViewComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProdView(id).subscribe(
       data => {
-        console.log(data);
-        this.favCnt       = data.favs.length;
-        this.commentCnt   = data.comments.length;
-        this.commentsArr  = data.comments;
+        // console.log(data);
         this.product      = data;
+        this.favCnt       = this.product.favs.length;
+        this.commentsArr  = this.product.comments;
+        this.commentCnt   = this.product.comments.length;
 
         // GET SUGGESTED ALBUMS
         this.dbService.getProdSuggestions(id, data.genre).subscribe(
@@ -70,9 +70,9 @@ export class ProductViewComponent implements OnInit {
     const pid: number = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProductComments(pid).subscribe(
       data => {
-        console.log('comments for album', data);
-        this.commentCnt   = data.length;
+        // console.log('comments for album', data);
         this.commentsArr  = data;
+        this.commentCnt   = data.length;
       }
     )
   }

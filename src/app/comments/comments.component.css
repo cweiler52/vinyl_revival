@@ -35,6 +35,7 @@ margin: .5rem;
 
 #cmt-add{
     margin-top: 5%;
+   margin-left: 1rem;
     border-radius: 5%;
     background-color: rgba(84, 104, 104, 0.774);
 }

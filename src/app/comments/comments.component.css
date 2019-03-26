@@ -3,8 +3,8 @@
 }
 .edit_btn {
     float: right; 
-    margin-right: 1%;
-    color: white;
+    margin-top: -1%;
+    color: black;
 }
 .edit_textarea {
     width: 99%;
@@ -22,4 +22,18 @@
 #button2{
     border: transparent;
     background-color: transparent;
+}
+
+#cmt-text{
+    margin-left: 1rem;
+}
+
+.user_comments:nth-child(1){
+background-color: rgba(129, 163, 163, 0.774);
+margin: .5rem;
+}
+
+#cmt-add{
+    border-radius: 5%;
+    background-color: rgba(84, 104, 104, 0.774);
 }

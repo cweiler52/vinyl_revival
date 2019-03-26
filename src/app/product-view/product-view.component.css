@@ -23,7 +23,7 @@ html{
  }
  
  #side-nav{
-    background: rgb(38, 49, 49);
+    background-color: rgba(255, 255, 255, 0.801);
     width: 25vw;
  }
 
@@ -32,7 +32,7 @@ html{
  }
 
  h4{
-    color: white;
+    color: rgba(43, 54, 54, 0.795);
     text-align: center;
  }
   
@@ -85,12 +85,12 @@ html{
 }
 
 #cmt-name-st{
-color: #5d82c4;
+color: white;
 margin-left: .5rem;
 }
 
 .user_comments{
-   color: white;
+   color: black;
 }
 
 .hidden {

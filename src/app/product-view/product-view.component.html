@@ -28,9 +28,9 @@
       <button mat-button (click)="sidenav.open()" id="cmt-btn">View Comments</button>    
     </mat-grid-tile>
     <mat-grid-tile colspan="10" rowspan="3">
-<div *ngFor="let item of suggestions" style="width: 55%; margin-left: 4rem;">
-      <img [src]="item.cover"  (click)="onSuggestedClick(item.id)" style="width: 55%"/>
-      <div class="text-st">
+<div *ngFor="let item of suggestions" style="width: 55%; margin-left: 4rem;" id="box">
+      <img [src]="item.cover"  (click)="onSuggestedClick(item.id)" style="width: 55%" />
+      <div class="caption fade-caption" (click)="onSuggestedClick(item.id)">
       {{ item.artist | uppercase }}<br>
       {{ item.album }}
       </div>

@@ -41,10 +41,10 @@ export class CommentsComponent implements OnChanges {
     this.dbService.getProductComments(pid).subscribe(
       data => {
         // console.log('comments for album', data);
-        this.editView = false;
-        this.commentView = false;
-        this.commentCnt = data.length;
-        this.commentsArr = data;
+        this.editView     = false;
+        this.commentView  = false;
+        this.commentsArr  = data;
+        this.commentCnt   = this.commentsArr.length;
       }
     )
   }
@@ -54,7 +54,6 @@ export class CommentsComponent implements OnChanges {
   }
   
   editToggle(id){
-    //console.log(id, text)
     document.getElementById(`comment_edit_${id}`).classList.toggle('hidden');
   }
   
@@ -64,23 +63,22 @@ export class CommentsComponent implements OnChanges {
   }
 
   onCreate() {
-    let uid: number = 0;
     if(!this.auth.user_id){
       // pull up the login modal
       this.openSignup();
     }else{
-      uid = parseInt(this.auth.user_id);
+      let uid: number = parseInt(this.auth.user_id);
+      const pid = +this.route.snapshot.paramMap.get('id');
+      // console.log(uid, pid, this.commentData);
+      this.dbService.createComment(uid, pid, this.newComment)
+        .subscribe(
+          data => {
+            // console.log('onCreate', data)
+            this.refreshComments.emit(data)
+          },
+          err => console.log(err)
+        )
     }
-    const pid = +this.route.snapshot.paramMap.get('id');
-    // console.log(uid, pid, this.commentData);
-    this.dbService.createComment(uid, pid, this.newComment)
-      .subscribe(
-        data => {
-          // console.log('onCreate', data)
-          this.refreshComments.emit(data)
-        },
-        err => console.log(err)
-      )
   }
 
   onEdit(id: number) {

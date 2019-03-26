@@ -1,5 +1,5 @@
 <h4>COMMENTS: <span *ngIf="commentCnt !== 0">{{ commentCnt }}</span></h4>
-<button (click)="viewToggle()">Add a Comment</button>
+<button (click)="viewToggle()" id="cmt-add">Add a Comment</button>
 
 <div *ngIf="commentView === true" id="comment_create" class="edit_div">
   <textarea [(ngModel)]="newComment" name="comment" class="edit_textarea" id="comment_input_create"></textarea>
@@ -11,8 +11,8 @@
     <div id="comment_{{text.id}}" class="user_comments">
       <div id="cmt-name-st"><b>{{text.user.name}}:</b></div>
       {{text.comment}}
-      <button class="float_right" *ngIf="text.userid == editCheck()" (click)="onDelete(text.id)">X</button>
-      <button class="float_right" *ngIf="text.userid == editCheck()" (click)="editToggle(text.id)">Edit</button>
+      <button class="float_right" *ngIf="text.userid == editCheck()" (click)="onDelete(text.id)" id="button2"><mat-icon>delete</mat-icon></button>
+      <button class="float_right" *ngIf="text.userid == editCheck()" (click)="editToggle(text.id)" id="button2"><mat-icon style="color:white">edit</mat-icon></button>
     </div>
     <div class="hidden edit_div" id="comment_edit_{{text.id}}">
       <textarea [(ngModel)]="commentData" name="comment" id="comment_input_edit_{{text.id}}" class="edit_textarea"></textarea>

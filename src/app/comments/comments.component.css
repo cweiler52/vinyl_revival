@@ -4,6 +4,7 @@
 .edit_btn {
     float: right; 
     margin-right: 1%;
+    color: white;
 }
 .edit_textarea {
     width: 99%;
@@ -16,4 +17,9 @@
 
 .float_right {
     float: right;
+}
+
+#button2{
+    border: transparent;
+    background-color: transparent;
 }

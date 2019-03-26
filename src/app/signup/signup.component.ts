@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../database.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +14,8 @@ export class SignupComponent implements OnInit {
   title: string;
   constructor(
     private dbService: DatabaseService,
-    public modalRef: BsModalRef) { }
+    public modalRef: BsModalRef,
+    private modalService: BsModalService) { }
 
   ngOnInit() {
   }
@@ -26,5 +29,18 @@ export class SignupComponent implements OnInit {
       )
   }
 
+  openLogin() {
+    this.closeModal();
+    this.modalRef = this.modalService.show(LoginComponent,  {
+      initialState: {
+        title: 'Login',
+        loginUserData: {}
+      }
+    });
+  }
+
+  closeModal(){
+    this.modalRef.hide();
+  }
 
 }

@@ -18,8 +18,8 @@ export class ProductViewComponent implements OnInit {
   product: ProductsFC;
   favCnt: number;
   newFavCnt: number;
-  commentCnt: number;
-  commentsArr: any;
+  commentCnt: number = 0;
+  commentsArr: any = [];
   suggestions: any;
   opened: any;
   modalRef: BsModalRef;
@@ -41,13 +41,20 @@ export class ProductViewComponent implements OnInit {
     this.getOneProduct();
   }
 
+  onSuggestedClick(id){
+    location.href = `/record/${id}`;
+  }
+
   getOneProduct(){
     const id = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProdView(id).subscribe(
       data => {
-        // console.log(data);
-        this.favCnt = data.favs.length;
-        this.product = data;
+        console.log(data);
+        this.favCnt       = data.favs.length;
+        this.commentCnt   = data.comments.length;
+        this.commentsArr  = data.comments;
+        this.product      = data;
+
         // GET SUGGESTED ALBUMS
         this.dbService.getProdSuggestions(id, data.genre).subscribe(
           suggs => {
@@ -59,23 +66,15 @@ export class ProductViewComponent implements OnInit {
     )
   }
 
-  onSuggestedClick(id){
-    location.href = `/record/${id}`;
-  }
-
-  getCommentsForAlbum(commentsArr){
+  getCommentsForAlbum(event){
     const pid: number = +this.route.snapshot.paramMap.get('id');
     this.dbService.getProductComments(pid).subscribe(
       data => {
-        // console.log('comments for album', data);
-        this.commentCnt = data.length;
-        this.commentsArr = data;
+        console.log('comments for album', data);
+        this.commentCnt   = data.length;
+        this.commentsArr  = data;
       }
     )
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 
   fav(): void {

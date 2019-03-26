@@ -1,23 +1,75 @@
-p {
+
+
+.container .inner .panel {
+    position: absolute;
+    box-sizing: border-box;
+    width: 75%;
+    float: left;
+  }
+  
+
+  .container .inner .panel .panel-content {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    left: 37%;
+    top: 50%;
+  }
+
+.image-background{
+  height: 100%;
+  width: 100%;
+}
+
+  .container .inner .panel.panel-left .image-background {
+    position: fixed;
     margin: 0;
     padding: 0;
-    text-align: center;
-    left: 25%;
+    left: -1%;
+    margin-top: 1.5%;
+    height: 100vh;
+    opacity: 0.90;
+    background-image: url("../../assets/Vinyl-Record.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
+  
+  }
+  
+  .container .inner .panel.panel-right {
+    position: fixed;
+    margin-top: 10%;
+    margin-right: -40%;
+    height: 70%;
     width: 50%;
+    left: 50%;
+    background: white;
+  }
+  
+  .container .inner .panel.panel-right .panel-content .form {
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    width: 300px;
+    min-height: 100px;
+    top: -30%;
+    left: -5%;
+  }
+
+  .container .inner .panel.panel-right .panel-content .form h1 {
+    display: block;
+    margin: 0 0 45px 0;
+    color: #B1B1B1;
+    font-weight: 200;
+    font-size: 18px;
+  }
+
+h1, p{
+    display: block;
     position: relative;
+    margin: 0 auto;
+    width: 500px;
+    min-height: 50px;
+    top: -30%;
+    left: -35%; 
 }
-
-h1{
-    margin: 0;
-    position: relative;
-    margin-top: -5rem;
-    text-align: center;
-    z-index: 50;
-    font-size: 5rem;
-    color: white;
-}
-
-img{
-    max-height: 35rem;
-}
-

@@ -24,3 +24,8 @@
     color: white;
     font-weight: bolder;
 }
+
+.uppercase {
+  text-transform: uppercase;
+  cursor: pointer;
+}

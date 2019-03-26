@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <!-- USER Comments  -->
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" position="end" id="side-nav">
-    <app-comments [commentsArr]="commentsArr" (refreshComments)="getCommentsForAlbum($event)"></app-comments>
+    <app-comments *ngIf="commentsArr" [commentsArr]="commentsArr" (refreshComments)="getCommentsForAlbum($event)"></app-comments>
   </mat-sidenav>
 
   

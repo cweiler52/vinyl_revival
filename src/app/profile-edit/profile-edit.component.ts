@@ -37,7 +37,7 @@ export class ProfileEditComponent implements OnInit {
   }
 
   editProfile() {
-    this.dbService.editProfile(parseInt(this.auth.user_id), this.profileData).subscribe(
+    this.dbService.editProfile(parseInt(this.auth.user_id), this.profileData.user).subscribe(
       data => {
         console.log(data);
         this.profile = data;

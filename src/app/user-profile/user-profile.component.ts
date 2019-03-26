@@ -34,19 +34,11 @@ export class UserProfileComponent implements OnInit {
     )
   }
 
-  editProfile() {
-    this.dbService.editProfile(parseInt(this.auth.user_id), this.profile).subscribe(
-      data => {
-        // console.log(data);
-        this.profile = data;
-      }
-    )
-  }
-
   openEdit() {
     this.dbService.getUserProfile(parseInt(this.auth.user_id)).subscribe(
       data => {
         this.profileData = data;
+        console.log(data);
         this.openModal();
       }
     )

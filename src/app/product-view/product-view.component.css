@@ -68,8 +68,7 @@ html{
 #cmt-btn{
    border: 2px solid rgb(38, 49, 49);
    position: absolute;
-   margin-left: 45rem;
-   margin-top: -8rem;
+   text-align: left;
 }
 
 #cmt-btn:hover{
@@ -108,7 +107,8 @@ color: #114181;
 #like{
    width: 30%;
    margin-left: -2rem;
-   margin-top: -10rem;
+   margin-top: -1rem;
+   font-size: calc(0.06 * (100vh - 140px));
 }
 
 mat-icon{

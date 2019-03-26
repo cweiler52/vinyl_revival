@@ -7,7 +7,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
   imageSources =[
-    "../assets/vinylstore.jpg", "../assets/vinyl2.jpeg"
+    "../assets/vinylstore.jpg", "../assets/vinyl2.jpeg", "../assets/record.jpeg"
   ]
   constructor( ) { }
 

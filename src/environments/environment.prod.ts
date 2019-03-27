@@ -3,10 +3,10 @@ export const environment = {
 };
 
 export let APIURL = '';
-
+console.log(window.location.hostname);
 switch (window.location.hostname) {
     // this is the deployed angular application
-    case 'vinylrevival.herokuapp.com/':
+    case 'vinylrevival.herokuapp.com':
         // this is the full url of your deployed API
         APIURL = 'https://vinylrevival-server.herokuapp.com/'
     break;

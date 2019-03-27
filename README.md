@@ -1,6 +1,6 @@
 # Vinyl Revival
 
-This project was a group project created by Callie Riggs, Arris Henriques, & Cliff Weiler.
+This project was a group project created by Callie Riggs, Arris Henriques & Cliff Weiler.
 
 ## Purpose
 

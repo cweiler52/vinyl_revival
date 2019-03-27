@@ -40,8 +40,8 @@ export class DatabaseService {
     private http: HttpClient) { }
 
   // PRODUCTS //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  getProductsHome() : Observable<Products[]> {
-    return this.http.get<Products[]>(this.dbProductsUrl);
+  getProductsHome(sort: string) : Observable<Products[]> {
+    return this.http.get<Products[]>(`${this.dbProductsUrl}/${sort}`, httpNoAuthOptions);
   }
   getProducts() : Observable<Products[]> {
     return this.http.get<Products[]>(this.dbProductsUrl, httpOptions);

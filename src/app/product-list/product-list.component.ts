@@ -12,11 +12,12 @@ export class ProductListComponent implements OnInit {
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {
-    this.getAllProducts();
+    this.getAllProducts('album');
   }
 
-  getAllProducts() {
-    this.dbService.getProductsHome().subscribe(
+  getAllProducts(sort) {
+    let qsort = sort ? sort : 'album';
+    this.dbService.getProductsHome(qsort).subscribe(
       data => { 
         //console.log(data);
         this.products = data;

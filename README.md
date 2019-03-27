@@ -1,27 +1,24 @@
 # Vinyl Revival
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
+This project was a group project created by Callie Riggs, Arris Henriques, & Cliff Weiler.
 
-## Development server
+## Purpose
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The purpose of this project was to learn and utilize Angular7 to build a website or an app that met certain requirements per the attending academy
 
-## Code scaffolding
+## Specs
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The framework/libraries used were Angular7, Angular Material, Bootstrap, NodeJS, Express, & PostgreSQL
+A combination of custom styling as well as material and bootstrap styling was used.
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+This site implemented:
+Routing, AuthGuards, Event Emitter, Location, BCrypt for password hashing, Storage of access tokens and user role distinctions in sessionStorage, Database Associations, 2-Column Unique Key Contraints, Angular-Material w/ Animations, Bootstrap
 
-## Running unit tests
+## Heroku Deployment
+The deployed client is on Heroku @ https://vinylrevival.herokuapp.com
+The deployed server is on Heroku @ https://vinylrevival-server.herokuapp.com
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Admin Role Login Info
+credentials: cw@gmail.com / abc123
